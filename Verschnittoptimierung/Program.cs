@@ -16,7 +16,10 @@ namespace Verschnittoptimierung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Verschnittoptimierung());
+            Verschnittoptimierung verschnittoptimierung = new Verschnittoptimierung();
+            Base global = Base.GetInstance();
+            global.Verschnittoptimierung = verschnittoptimierung;
+            Application.Run(verschnittoptimierung);
         }
     }
 }

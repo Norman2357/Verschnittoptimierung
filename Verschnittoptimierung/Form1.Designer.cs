@@ -36,18 +36,18 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.display = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.ButtonSingleStep = new System.Windows.Forms.Button();
+            this.buttonQuickStep = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.saveElementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadElementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
@@ -139,13 +139,15 @@
             this.groupBox4.Text = "Evolutionary Algorithm";
             this.groupBox4.Visible = false;
             // 
-            // panel1
+            // display
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.panel1.Location = new System.Drawing.Point(44, 41);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1100, 550);
-            this.panel1.TabIndex = 6;
+            this.display.AutoScroll = true;
+            this.display.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.display.Location = new System.Drawing.Point(44, 41);
+            this.display.Name = "display";
+            this.display.Size = new System.Drawing.Size(1100, 550);
+            this.display.TabIndex = 6;
+            this.display.Paint += new System.Windows.Forms.PaintEventHandler(display_Paint);
             // 
             // button1
             // 
@@ -165,6 +167,7 @@
             // comboBox1
             // 
             this.comboBox1.Items.AddRange(new object[] {
+            "Create Board",
             "Fill",
             "Local Optimization",
             "Evolutionary Algorithm"});
@@ -175,25 +178,27 @@
             this.comboBox1.Text = "None";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button5
+            // ButtonSingleStep
             // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Location = new System.Drawing.Point(192, 635);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(32, 23);
-            this.button5.TabIndex = 7;
-            this.button5.UseVisualStyleBackColor = true;
+            this.ButtonSingleStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSingleStep.BackgroundImage")));
+            this.ButtonSingleStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonSingleStep.Location = new System.Drawing.Point(192, 635);
+            this.ButtonSingleStep.Name = "ButtonSingleStep";
+            this.ButtonSingleStep.Size = new System.Drawing.Size(32, 23);
+            this.ButtonSingleStep.TabIndex = 7;
+            this.ButtonSingleStep.UseVisualStyleBackColor = true;
+            this.ButtonSingleStep.Click += new System.EventHandler(this.buttonSingleStep_Click);
             // 
-            // button6
+            // buttonQuickStep
             // 
-            this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Location = new System.Drawing.Point(230, 635);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(32, 23);
-            this.button6.TabIndex = 8;
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonQuickStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuickStep.BackgroundImage")));
+            this.buttonQuickStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonQuickStep.Location = new System.Drawing.Point(230, 635);
+            this.buttonQuickStep.Name = "buttonQuickStep";
+            this.buttonQuickStep.Size = new System.Drawing.Size(32, 23);
+            this.buttonQuickStep.TabIndex = 8;
+            this.buttonQuickStep.UseVisualStyleBackColor = true;
+            this.buttonQuickStep.Click += new System.EventHandler(this.buttonQuickStep_Click);
             // 
             // label1
             // 
@@ -222,15 +227,27 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.toolStripMenuItem1.Text = "Save Settings";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.saveToolStripMenuItem.Text = "Load Settings";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveElementsToolStripMenuItem
+            // 
+            this.saveElementsToolStripMenuItem.Name = "saveElementsToolStripMenuItem";
+            this.saveElementsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.saveElementsToolStripMenuItem.Text = "Save Elements";
+            // 
+            // loadElementsToolStripMenuItem
+            // 
+            this.loadElementsToolStripMenuItem.Name = "loadElementsToolStripMenuItem";
+            this.loadElementsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.loadElementsToolStripMenuItem.Text = "Load Elements";
             // 
             // toolStrip1
             // 
@@ -241,18 +258,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1151, 25);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // saveElementsToolStripMenuItem
-            // 
-            this.saveElementsToolStripMenuItem.Name = "saveElementsToolStripMenuItem";
-            this.saveElementsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveElementsToolStripMenuItem.Text = "Save Elements";
-            // 
-            // loadElementsToolStripMenuItem
-            // 
-            this.loadElementsToolStripMenuItem.Name = "loadElementsToolStripMenuItem";
-            this.loadElementsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadElementsToolStripMenuItem.Text = "Load Elements";
             // 
             // label2
             // 
@@ -310,14 +315,14 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.buttonQuickStep);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ButtonSingleStep);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.display);
             this.Name = "Verschnittoptimierung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verschnittoptimierung - Norman Naujokat";
@@ -330,29 +335,29 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripMenuItem saveElementsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadElementsToolStripMenuItem;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.Panel display;
+        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.Button ButtonSingleStep;
+        public System.Windows.Forms.Button buttonQuickStep;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        public System.Windows.Forms.ToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStripMenuItem saveElementsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem loadElementsToolStripMenuItem;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button button7;
+        public System.Windows.Forms.GroupBox groupBox5;
     }
 }
 

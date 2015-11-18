@@ -17,6 +17,18 @@ namespace Verschnittoptimierung
         public Verschnittoptimierung()
         {
             InitializeComponent();
+            /*
+            ScrollBar scrollbar = new VScrollBar();
+            scrollbar.Scroll += (sender, e) => { display.VerticalScroll.Value = scrollbar.Value; };
+            display.Controls.Add(scrollbar);
+            */
+            Base global = Base.GetInstance();
+
+            Button displayButton = new Button();
+            displayButton.Location = new Point(3000, 300);
+            display.Controls.Add(displayButton);
+
+            global.Verschnittoptimierung = this;
         }
         
         private void Verschnittoptimierung_Load(object sender, EventArgs e)
@@ -122,5 +134,23 @@ namespace Verschnittoptimierung
                 button7.BackgroundImage = Resources.arrowDown;
             }
         }
+        private void buttonSingleStep_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.ExecuteStep(0);
+        }
+
+        private void buttonQuickStep_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void display_Paint(object sender, PaintEventArgs e)
+        {
+            // e.Graphics.TranslateTransform(display.AutoScrollPosition.X, display.AutoScrollPosition.Y);
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.ExecuteStep(0);
+        }
+
     }
 }
