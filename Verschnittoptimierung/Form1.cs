@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Verschnittoptimierung.Properties;
+using System.Threading;
 
 namespace Verschnittoptimierung
 {
@@ -17,18 +18,20 @@ namespace Verschnittoptimierung
         public Verschnittoptimierung()
         {
             InitializeComponent();
-            /*
-            ScrollBar scrollbar = new VScrollBar();
-            scrollbar.Scroll += (sender, e) => { display.VerticalScroll.Value = scrollbar.Value; };
-            display.Controls.Add(scrollbar);
-            */
+
             Base global = Base.GetInstance();
 
+            /*
             Button displayButton = new Button();
-            displayButton.Location = new Point(3000, 300);
+            displayButton.Height = 40;
+            displayButton.Width = 20;
+            displayButton.Text = "<";
+            displayButton.Location = new Point(3000, 240);
             display.Controls.Add(displayButton);
+            */
 
             global.Verschnittoptimierung = this;
+            // global.g = global.Verschnittoptimierung.display.CreateGraphics();
         }
         
         private void Verschnittoptimierung_Load(object sender, EventArgs e)
@@ -142,15 +145,53 @@ namespace Verschnittoptimierung
 
         private void buttonQuickStep_Click(object sender, EventArgs e)
         {
-
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.ExecuteStep(1);
         }
 
         private void display_Paint(object sender, PaintEventArgs e)
         {
-            // e.Graphics.TranslateTransform(display.AutoScrollPosition.X, display.AutoScrollPosition.Y);
+            // for testing only
+            /*
             StepExecution stepExecution = new StepExecution();
-            stepExecution.ExecuteStep(0);
+            stepExecution.Test();
+            */
+            
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.DrawBoards();
+            
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            if (objectsMinLength.Value < 10)
+            {
+                objectsMinLength.Value = 10;
+            }
+            if (objectsMinLength.Value > 80)
+            {
+                objectsMinLength.Value = 80;
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

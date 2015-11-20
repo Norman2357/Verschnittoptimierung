@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Verschnittoptimierung
 {
-    class Board
+    class myObject
     {
-        public int boardID;
-        public Boolean isCollectionBoard;
+        public int objectID;
+        public float width;
+        public float height;
         public MyPoint edgeLeftUp;
         public MyPoint edgeRightDown;
     }
