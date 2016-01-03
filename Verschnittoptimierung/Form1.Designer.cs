@@ -57,11 +57,13 @@
             this.ButtonSingleStep = new System.Windows.Forms.Button();
             this.buttonQuickStep = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveElementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadElementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.fitnessValue = new System.Windows.Forms.Label();
@@ -81,6 +83,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.Output = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberObjects)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxLength)).BeginInit();
@@ -121,22 +124,42 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 88);
+            this.label12.Location = new System.Drawing.Point(7, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.Size = new System.Drawing.Size(89, 13);
             this.label12.TabIndex = 15;
-            this.label12.Text = "number";
+            this.label12.Text = "number of boards";
             // 
             // numberObjects
             // 
-            this.numberObjects.Location = new System.Drawing.Point(54, 86);
+            this.numberObjects.Location = new System.Drawing.Point(102, 37);
+            this.numberObjects.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numberObjects.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numberObjects.Name = "numberObjects";
             this.numberObjects.Size = new System.Drawing.Size(53, 20);
             this.numberObjects.TabIndex = 14;
+            this.numberObjects.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // objectsMaxLength
             // 
             this.objectsMaxLength.Location = new System.Drawing.Point(196, 112);
+            this.objectsMaxLength.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.objectsMaxLength.Name = "objectsMaxLength";
             this.objectsMaxLength.Size = new System.Drawing.Size(43, 20);
             this.objectsMaxLength.TabIndex = 13;
@@ -149,6 +172,11 @@
             // objectsMinLength
             // 
             this.objectsMinLength.Location = new System.Drawing.Point(102, 112);
+            this.objectsMinLength.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.objectsMinLength.Name = "objectsMinLength";
             this.objectsMinLength.Size = new System.Drawing.Size(43, 20);
             this.objectsMinLength.TabIndex = 1;
@@ -162,7 +190,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(241, 37);
+            this.label11.Location = new System.Drawing.Point(106, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(21, 13);
             this.label11.TabIndex = 12;
@@ -171,7 +199,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(99, 37);
+            this.label10.Location = new System.Drawing.Point(224, 66);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(21, 13);
             this.label10.TabIndex = 11;
@@ -191,7 +219,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 66);
+            this.label8.Location = new System.Drawing.Point(6, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 9;
@@ -202,9 +230,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(158, 114);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.Size = new System.Drawing.Size(26, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "max %";
+            this.label6.Text = "max";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -212,27 +240,37 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 114);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.Size = new System.Drawing.Size(98, 13);
             this.label7.TabIndex = 6;
-            this.label7.Text = "edge length min %";
+            this.label7.Text = "objects / board min";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // boardHeight
             // 
-            this.boardHeight.Location = new System.Drawing.Point(186, 35);
+            this.boardHeight.Location = new System.Drawing.Point(51, 64);
             this.boardHeight.Maximum = new decimal(new int[] {
-            50000,
+            236,
+            0,
+            0,
+            0});
+            this.boardHeight.Minimum = new decimal(new int[] {
+            180,
             0,
             0,
             0});
             this.boardHeight.Name = "boardHeight";
             this.boardHeight.Size = new System.Drawing.Size(53, 20);
             this.boardHeight.TabIndex = 3;
+            this.boardHeight.Value = new decimal(new int[] {
+            236,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(144, 37);
+            this.label5.Location = new System.Drawing.Point(9, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
             this.label5.TabIndex = 4;
@@ -241,24 +279,34 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 37);
+            this.label4.Location = new System.Drawing.Point(131, 66);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "width";
+            this.label4.Text = "length";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // boardWidth
             // 
-            this.boardWidth.Location = new System.Drawing.Point(44, 35);
+            this.boardWidth.Location = new System.Drawing.Point(169, 64);
             this.boardWidth.Maximum = new decimal(new int[] {
             5000,
+            0,
+            0,
+            0});
+            this.boardWidth.Minimum = new decimal(new int[] {
+            236,
             0,
             0,
             0});
             this.boardWidth.Name = "boardWidth";
             this.boardWidth.Size = new System.Drawing.Size(53, 20);
             this.boardWidth.TabIndex = 1;
+            this.boardWidth.Value = new decimal(new int[] {
+            236,
+            0,
+            0,
+            0});
             // 
             // button2
             // 
@@ -372,6 +420,7 @@
             // 
             this.comboBox1.Items.AddRange(new object[] {
             "Create Board(s) + Objects",
+            "Create Benchmark",
             "Fill",
             "Local Optimization",
             "Evolutionary Algorithm"});
@@ -413,50 +462,65 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Perform Action";
             // 
-            // toolStripDropDownButton1
+            // Menu
             // 
-            this.toolStripDropDownButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.BackgroundImage")));
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.saveToolStripMenuItem,
-            this.saveElementsToolStripMenuItem,
-            this.loadElementsToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
+            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveBenchmark,
+            this.LoadBenchmark,
+            this.SaveSettings,
+            this.LoadSettings,
+            this.SaveSolution,
+            this.LoadSolution});
+            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
+            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(29, 22);
+            this.Menu.Text = "Menu";
+            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
-            // toolStripMenuItem1
+            // SaveBenchmark
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
-            this.toolStripMenuItem1.Text = "Save Settings";
+            this.SaveBenchmark.Name = "SaveBenchmark";
+            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.SaveBenchmark.Text = "Save Benchmark";
             // 
-            // saveToolStripMenuItem
+            // LoadBenchmark
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.saveToolStripMenuItem.Text = "Load Settings";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.LoadBenchmark.Name = "LoadBenchmark";
+            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.LoadBenchmark.Text = "Load Benchmark";
+            this.LoadBenchmark.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
-            // saveElementsToolStripMenuItem
+            // SaveSettings
             // 
-            this.saveElementsToolStripMenuItem.Name = "saveElementsToolStripMenuItem";
-            this.saveElementsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.saveElementsToolStripMenuItem.Text = "Save Elements";
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
+            this.SaveSettings.Text = "Save Settings";
             // 
-            // loadElementsToolStripMenuItem
+            // LoadSettings
             // 
-            this.loadElementsToolStripMenuItem.Name = "loadElementsToolStripMenuItem";
-            this.loadElementsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.loadElementsToolStripMenuItem.Text = "Load Elements";
+            this.LoadSettings.Name = "LoadSettings";
+            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
+            this.LoadSettings.Text = "Load Settings";
+            // 
+            // SaveSolution
+            // 
+            this.SaveSolution.Name = "SaveSolution";
+            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
+            this.SaveSolution.Text = "Save Solution";
+            // 
+            // LoadSolution
+            // 
+            this.LoadSolution.Name = "LoadSolution";
+            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
+            this.LoadSolution.Text = "Load Solution";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1});
+            this.Menu});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1151, 25);
@@ -643,12 +707,22 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "Objects total size";
             // 
+            // Output
+            // 
+            this.Output.AutoSize = true;
+            this.Output.Location = new System.Drawing.Point(299, 624);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(39, 13);
+            this.Output.TabIndex = 14;
+            this.Output.Text = "Output";
+            // 
             // Verschnittoptimierung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.Output);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.fitnessValue);
@@ -702,12 +776,12 @@
         public System.Windows.Forms.Button ButtonSingleStep;
         public System.Windows.Forms.Button buttonQuickStep;
         public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        public System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        public System.Windows.Forms.ToolStripDropDownButton Menu;
+        public System.Windows.Forms.ToolStripMenuItem SaveBenchmark;
+        public System.Windows.Forms.ToolStripMenuItem LoadBenchmark;
         public System.Windows.Forms.ToolStrip toolStrip1;
-        public System.Windows.Forms.ToolStripMenuItem saveElementsToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem loadElementsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem SaveSettings;
+        public System.Windows.Forms.ToolStripMenuItem LoadSettings;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Label fitnessValue;
         public System.Windows.Forms.Button button7;
@@ -741,6 +815,9 @@
         public System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label Output;
+        private System.Windows.Forms.ToolStripMenuItem SaveSolution;
+        private System.Windows.Forms.ToolStripMenuItem LoadSolution;
     }
 }
 

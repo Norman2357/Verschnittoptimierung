@@ -12,5 +12,9 @@ namespace Verschnittoptimierung
         public Boolean isCollectionBoard;
         public MyPoint edgeLeftUp;
         public MyPoint edgeRightDown;
+        public int width;
+        public int height;
+        public int size;
+        public List<Rect> RectList;
     }
 }

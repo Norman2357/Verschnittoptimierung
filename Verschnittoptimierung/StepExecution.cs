@@ -44,8 +44,12 @@ namespace Verschnittoptimierung
                     global.generalBoardHeight = generalBoardHeight;
                     global.generalBoardWidth = generalBoardWidth;
 
-                    // create and draw board(s)
                     CalculateMult();
+
+                    // global.boardGap = Convert.ToInt32(0.1 * global.generalBoardHeight);
+
+                    // create and draw board(s)
+                    
                     Creation creation = new Creation();
                     creation.CreateBoards();
                     DrawBoards();
@@ -91,8 +95,11 @@ namespace Verschnittoptimierung
                         edgeLeftUp = new MyPoint(global.BoardList[i].edgeLeftUp.x, global.BoardList[i].edgeLeftUp.y);
                         edgeRightDown = new MyPoint(global.BoardList[i].edgeRightDown.x, global.BoardList[i].edgeRightDown.y);
 
-                        edgeLeftUp = Resize(edgeLeftUp);
-                        edgeRightDown = Resize(edgeRightDown);
+                        // resize not used
+                        // edgeLeftUp = Resize(edgeLeftUp);
+                        // edgeRightDown = Resize(edgeRightDown);
+                        global.Verschnittoptimierung.Output.Text = Convert.ToString(global.BoardList[0].edgeRightDown.y);
+                        //global.Verschnittoptimierung.Output.Text = Convert.ToString(global.Verschnittoptimierung.display.Height);
 
                         Brush brush = new SolidBrush(Color.AliceBlue);
                         g.TranslateTransform(global.Verschnittoptimierung.display.AutoScrollPosition.X, global.Verschnittoptimierung.display.AutoScrollPosition.Y);
@@ -110,7 +117,29 @@ namespace Verschnittoptimierung
         }
         public void DrawRects()
         {
+            using (Graphics g = global.Verschnittoptimierung.display.CreateGraphics())
+            {
+                using (Pen pen = new Pen(Color.Black, 2))
+                {
+                    MyPoint edgeLeftUp;
+                    MyPoint edgeRightDown;
 
+                    edgeLeftUp = new MyPoint(global.BoardList[0].edgeLeftUp.x, global.BoardList[0].edgeLeftUp.y);
+                    edgeRightDown = new MyPoint(30, 30);
+;
+
+                    Brush brush = new SolidBrush(Color.AntiqueWhite);
+                    g.TranslateTransform(global.Verschnittoptimierung.display.AutoScrollPosition.X, global.Verschnittoptimierung.display.AutoScrollPosition.Y);
+
+                    g.DrawRectangle(pen, edgeLeftUp.x, edgeLeftUp.y,
+                        edgeRightDown.x - edgeLeftUp.x,
+                        edgeRightDown.y - edgeLeftUp.y);
+
+                    g.FillRectangle(brush, edgeLeftUp.x, edgeLeftUp.y,
+                        edgeRightDown.x - edgeLeftUp.x,
+                        edgeRightDown.y - edgeLeftUp.y);
+                }
+            }
         }
         public MyPoint Resize(MyPoint point)
         {
@@ -126,6 +155,9 @@ namespace Verschnittoptimierung
 
             // calculate mult
             global.mult = yBoardGeneral / global.generalBoardHeight;
+
+            // set yBoardGeneral (real board height on display)
+            global.boardHeightInterface = yBoardGeneral;
         }
 
 

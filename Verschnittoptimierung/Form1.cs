@@ -146,7 +146,8 @@ namespace Verschnittoptimierung
         private void buttonQuickStep_Click(object sender, EventArgs e)
         {
             StepExecution stepExecution = new StepExecution();
-            stepExecution.ExecuteStep(1);
+            // stepExecution.ExecuteStep(1);
+            stepExecution.DrawRects();
         }
 
         private void display_Paint(object sender, PaintEventArgs e)
@@ -190,6 +191,11 @@ namespace Verschnittoptimierung
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
         {
 
         }

@@ -9,8 +9,8 @@ namespace Verschnittoptimierung
     class myObject
     {
         public int objectID;
-        public float width;
-        public float height;
+        public int width;
+        public int height;
         public MyPoint edgeLeftUp;
         public MyPoint edgeRightDown;
     }

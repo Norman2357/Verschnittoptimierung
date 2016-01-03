@@ -20,16 +20,17 @@ namespace Verschnittoptimierung
         public float generalBoardWidth;
         public float generalBoardHeight;
         public float mult;
+        public float boardHeightInterface;
         public int boardGap;
 
-        public List<myObject> ObjectList;
-
         public int executionRunning;
+
+        public Benchmark benchmark;
+        public Solution solution;
 
         private Base()
         {
             this.BoardList = new List<Board>();
-            this.ObjectList = new List<myObject>();
             this.boardGap = 20;
         }
 
