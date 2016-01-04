@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.numberObjects = new System.Windows.Forms.NumericUpDown();
-            this.objectsMaxLength = new System.Windows.Forms.NumericUpDown();
-            this.objectsMinLength = new System.Windows.Forms.NumericUpDown();
+            this.numberBoards = new System.Windows.Forms.NumericUpDown();
+            this.objectsMaxNumber = new System.Windows.Forms.NumericUpDown();
+            this.objectsMinNumber = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -85,9 +85,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberObjects)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectsMaxLength)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectsMinLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).BeginInit();
             this.display.SuspendLayout();
@@ -99,9 +99,9 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.numberObjects);
-            this.groupBox1.Controls.Add(this.objectsMaxLength);
-            this.groupBox1.Controls.Add(this.objectsMinLength);
+            this.groupBox1.Controls.Add(this.numberBoards);
+            this.groupBox1.Controls.Add(this.objectsMaxNumber);
+            this.groupBox1.Controls.Add(this.objectsMinNumber);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
@@ -130,62 +130,62 @@
             this.label12.TabIndex = 15;
             this.label12.Text = "number of boards";
             // 
-            // numberObjects
+            // numberBoards
             // 
-            this.numberObjects.Location = new System.Drawing.Point(102, 37);
-            this.numberObjects.Maximum = new decimal(new int[] {
+            this.numberBoards.Location = new System.Drawing.Point(102, 37);
+            this.numberBoards.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numberObjects.Minimum = new decimal(new int[] {
+            this.numberBoards.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numberObjects.Name = "numberObjects";
-            this.numberObjects.Size = new System.Drawing.Size(53, 20);
-            this.numberObjects.TabIndex = 14;
-            this.numberObjects.Value = new decimal(new int[] {
+            this.numberBoards.Name = "numberBoards";
+            this.numberBoards.Size = new System.Drawing.Size(53, 20);
+            this.numberBoards.TabIndex = 14;
+            this.numberBoards.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
             // 
-            // objectsMaxLength
+            // objectsMaxNumber
             // 
-            this.objectsMaxLength.Location = new System.Drawing.Point(196, 112);
-            this.objectsMaxLength.Minimum = new decimal(new int[] {
+            this.objectsMaxNumber.Location = new System.Drawing.Point(196, 112);
+            this.objectsMaxNumber.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.objectsMaxLength.Name = "objectsMaxLength";
-            this.objectsMaxLength.Size = new System.Drawing.Size(43, 20);
-            this.objectsMaxLength.TabIndex = 13;
-            this.objectsMaxLength.Value = new decimal(new int[] {
+            this.objectsMaxNumber.Name = "objectsMaxNumber";
+            this.objectsMaxNumber.Size = new System.Drawing.Size(43, 20);
+            this.objectsMaxNumber.TabIndex = 13;
+            this.objectsMaxNumber.Value = new decimal(new int[] {
             20,
             0,
             0,
             0});
             // 
-            // objectsMinLength
+            // objectsMinNumber
             // 
-            this.objectsMinLength.Location = new System.Drawing.Point(102, 112);
-            this.objectsMinLength.Minimum = new decimal(new int[] {
+            this.objectsMinNumber.Location = new System.Drawing.Point(102, 112);
+            this.objectsMinNumber.Minimum = new decimal(new int[] {
             2,
             0,
             0,
             0});
-            this.objectsMinLength.Name = "objectsMinLength";
-            this.objectsMinLength.Size = new System.Drawing.Size(43, 20);
-            this.objectsMinLength.TabIndex = 1;
-            this.objectsMinLength.Value = new decimal(new int[] {
+            this.objectsMinNumber.Name = "objectsMinNumber";
+            this.objectsMinNumber.Size = new System.Drawing.Size(43, 20);
+            this.objectsMinNumber.TabIndex = 1;
+            this.objectsMinNumber.Value = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.objectsMinLength.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
+            this.objectsMinNumber.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // label11
             // 
@@ -747,9 +747,9 @@
             this.Load += new System.EventHandler(this.Verschnittoptimierung_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numberObjects)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectsMaxLength)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.objectsMinLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).EndInit();
             this.display.ResumeLayout(false);
@@ -793,14 +793,14 @@
         public System.Windows.Forms.NumericUpDown boardHeight;
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.NumericUpDown objectsMinLength;
+        public System.Windows.Forms.NumericUpDown objectsMinNumber;
         public System.Windows.Forms.Label label11;
         public System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label label9;
         public System.Windows.Forms.Label label8;
         public System.Windows.Forms.Label label12;
-        public System.Windows.Forms.NumericUpDown numberObjects;
-        public System.Windows.Forms.NumericUpDown objectsMaxLength;
+        public System.Windows.Forms.NumericUpDown numberBoards;
+        public System.Windows.Forms.NumericUpDown objectsMaxNumber;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.TextBox textBox5;
         public System.Windows.Forms.Label label19;

@@ -8,11 +8,12 @@ namespace Verschnittoptimierung
 {
     class Rect
     {
-        int rectID;
-        MyPoint edgeLeftUp;
-        MyPoint edgeRightDown;
-        int width;
-        int height;
-        int size;
+        public int rectID;
+        // edgeLeftUp and edgeRightDown are positions on the board they are on; NOT positions on the display(!)
+        public MyPoint edgeLeftUp;
+        public MyPoint edgeRightDown;
+        public int width;
+        public int height;
+        public int size;
     }
 }

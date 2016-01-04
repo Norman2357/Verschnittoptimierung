@@ -54,6 +54,35 @@ namespace Verschnittoptimierung
                     creation.CreateBoards();
                     DrawBoards();
                     break;
+                case "Create Benchmark":
+                    // 1. step: verify benchmark information
+                    if(global.Verschnittoptimierung.boardHeight.Value <= global.Verschnittoptimierung.boardWidth.Value)
+                    {
+                        // create benchmark
+                        Benchmark benchmark = new Benchmark();
+                        benchmark.CreateBenchmark(global);
+                        benchmark.CreateRects(Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value)
+                            , Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value));
+                        global.benchmark = benchmark;
+                        // info: benchmark (boards with rects that fit exactly) created
+
+                        // for testing:
+                        Show show = new Show(global);
+                        show.ShowBenchmark(global.benchmark);
+                    }
+                    else
+                    {
+                        // not enough information entered or too much information entered
+                        System.Windows.Forms.MessageBox.Show("Not enough information specified.");
+                        /*
+                        FolderBrowserDialog fbd = new FolderBrowserDialog();
+                    DialogResult result = fbd.ShowDialog();
+
+                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+                    System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                    */
+                    }
+                    break;
                 case "Fill":
                     break;
                 case "Local Optimization":

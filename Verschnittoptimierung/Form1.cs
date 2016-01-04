@@ -170,13 +170,13 @@ namespace Verschnittoptimierung
 
         private void numericUpDown5_ValueChanged(object sender, EventArgs e)
         {
-            if (objectsMinLength.Value < 10)
+            if (objectsMinNumber.Value < 10)
             {
-                objectsMinLength.Value = 10;
+                objectsMinNumber.Value = 10;
             }
-            if (objectsMinLength.Value > 80)
+            if (objectsMinNumber.Value > 80)
             {
-                objectsMinLength.Value = 80;
+                objectsMinNumber.Value = 80;
             }
         }
 
