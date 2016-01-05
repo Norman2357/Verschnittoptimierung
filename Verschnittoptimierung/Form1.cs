@@ -12,10 +12,10 @@ using System.Threading;
 
 namespace Verschnittoptimierung
 {
-    public partial class Verschnittoptimierung : Form
+    public partial class Verschnittoptimierung1 : Form
     {
 
-        public Verschnittoptimierung()
+        public Verschnittoptimierung1()
         {
             InitializeComponent();
 

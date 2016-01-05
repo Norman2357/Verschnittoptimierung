@@ -13,7 +13,7 @@ namespace Verschnittoptimierung
         // for singleton-pattern
         private static Base instance;
         
-        public Verschnittoptimierung Verschnittoptimierung;
+        public Verschnittoptimierung1 Verschnittoptimierung;
 
         public int numberBoards;
         public List<Board> BoardList;
