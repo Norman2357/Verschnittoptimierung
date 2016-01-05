@@ -84,6 +84,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.Label();
+            this.buttonSelectView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -469,10 +470,10 @@
             this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SaveBenchmark,
             this.LoadBenchmark,
-            this.SaveSettings,
-            this.LoadSettings,
             this.SaveSolution,
-            this.LoadSolution});
+            this.LoadSolution,
+            this.SaveSettings,
+            this.LoadSettings});
             this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
             this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.Menu.Name = "Menu";
@@ -485,37 +486,42 @@
             this.SaveBenchmark.Name = "SaveBenchmark";
             this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
             this.SaveBenchmark.Text = "Save Benchmark";
+            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
             // 
             // LoadBenchmark
             // 
             this.LoadBenchmark.Name = "LoadBenchmark";
             this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
             this.LoadBenchmark.Text = "Load Benchmark";
-            this.LoadBenchmark.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
             // 
             // SaveSettings
             // 
             this.SaveSettings.Name = "SaveSettings";
             this.SaveSettings.Size = new System.Drawing.Size(163, 22);
             this.SaveSettings.Text = "Save Settings";
+            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
             // 
             // LoadSettings
             // 
             this.LoadSettings.Name = "LoadSettings";
             this.LoadSettings.Size = new System.Drawing.Size(163, 22);
             this.LoadSettings.Text = "Load Settings";
+            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
             // 
             // SaveSolution
             // 
             this.SaveSolution.Name = "SaveSolution";
             this.SaveSolution.Size = new System.Drawing.Size(163, 22);
             this.SaveSolution.Text = "Save Solution";
+            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
             // 
             // LoadSolution
             // 
             this.LoadSolution.Name = "LoadSolution";
             this.LoadSolution.Size = new System.Drawing.Size(163, 22);
             this.LoadSolution.Text = "Load Solution";
+            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
             // 
             // toolStrip1
             // 
@@ -716,12 +722,22 @@
             this.Output.TabIndex = 14;
             this.Output.Text = "Output";
             // 
-            // Verschnittoptimierung
+            // buttonSelectView
+            // 
+            this.buttonSelectView.Enabled = false;
+            this.buttonSelectView.Location = new System.Drawing.Point(476, 12);
+            this.buttonSelectView.Name = "buttonSelectView";
+            this.buttonSelectView.Size = new System.Drawing.Size(101, 21);
+            this.buttonSelectView.TabIndex = 15;
+            this.buttonSelectView.UseVisualStyleBackColor = true;
+            // 
+            // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.buttonSelectView);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.button7);
@@ -741,7 +757,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.display);
-            this.Name = "Verschnittoptimierung";
+            this.Name = "Verschnittoptimierung1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Verschnittoptimierung - Norman Naujokat";
             this.Load += new System.EventHandler(this.Verschnittoptimierung_Load);
@@ -816,8 +832,9 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label Output;
-        private System.Windows.Forms.ToolStripMenuItem SaveSolution;
-        private System.Windows.Forms.ToolStripMenuItem LoadSolution;
+        public System.Windows.Forms.ToolStripMenuItem SaveSolution;
+        public System.Windows.Forms.ToolStripMenuItem LoadSolution;
+        public System.Windows.Forms.Button buttonSelectView;
     }
 }
 

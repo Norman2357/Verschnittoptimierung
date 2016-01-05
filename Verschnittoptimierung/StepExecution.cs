@@ -60,13 +60,13 @@ namespace Verschnittoptimierung
                     {
                         // create benchmark
                         Benchmark benchmark = new Benchmark();
-                        benchmark.CreateBenchmark(global);
-                        benchmark.CreateRects(Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value)
-                            , Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value));
+                        BenchmarkManagement benchmarkManagement = new BenchmarkManagement();
+                        benchmarkManagement.CreateBenchmark(global, benchmark);
+                        benchmarkManagement.CreateRects(Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value)
+                            , Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value), benchmark);
                         global.benchmark = benchmark;
                         // info: benchmark (boards with rects that fit exactly) created
-
-                        // for testing:
+                        
                         Show show = new Show(global);
                         show.ShowBenchmark(global.benchmark);
                     }
@@ -105,6 +105,21 @@ namespace Verschnittoptimierung
                 }   
             }
             */
+        }
+
+        public void DrawNewDisplay()
+        {
+            if(global.contentToShow.Equals("benchmark"))
+            {
+                Show show = new Show(global);
+                show.ShowBenchmark(global.benchmark);
+            }
+            else if (global.contentToShow.Equals("solution"))
+            {
+                Show show = new Show(global);
+                show.ShowSolution(global.solution);
+            }
+            
         }
 
         public void DrawBoards()
@@ -200,6 +215,36 @@ namespace Verschnittoptimierung
                     g.TranslateTransform(global.Verschnittoptimierung.display.AutoScrollPosition.X, global.Verschnittoptimierung.display.AutoScrollPosition.Y);
                     g.DrawRectangle(pen, 100, 100, 100, 200);
                 }
+            }
+        }
+
+
+        public void SaveOrLoad(string action)
+        {
+            SaveAndLoad saveAndLoad = new SaveAndLoad(global);
+            if(action.Equals("save benchmark"))
+            {
+                saveAndLoad.SaveBenchmark();
+            }
+            else if (action.Equals("load benchmark"))
+            {
+                saveAndLoad.LoadBenchmark();
+            }
+            else if (action.Equals("save solution"))
+            {
+                saveAndLoad.SaveSolution();
+            }
+            else if (action.Equals("load solution"))
+            {
+                saveAndLoad.LoadSolution();
+            }
+            else if (action.Equals("save settings"))
+            {
+                saveAndLoad.SaveSettings();
+            }
+            else if (action.Equals("load settings"))
+            {
+                saveAndLoad.LoadSettings();
             }
         }
 

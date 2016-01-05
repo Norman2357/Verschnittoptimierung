@@ -28,10 +28,15 @@ namespace Verschnittoptimierung
         public Benchmark benchmark;
         public Solution solution;
 
+        public string contentToShow;
+        // displayWidth set in beginning, should be 1100. later changed if required (for scrolling horizontally)
+        public int displayWidth;
+
         private Base()
         {
             this.BoardList = new List<Board>();
             this.boardGap = 20;
+            this.contentToShow = "";
         }
 
         public static Base GetInstance()

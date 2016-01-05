@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Verschnittoptimierung.Properties;
 using System.Threading;
+using System.IO;
 
 namespace Verschnittoptimierung
 {
@@ -32,6 +33,41 @@ namespace Verschnittoptimierung
 
             global.Verschnittoptimierung = this;
             // global.g = global.Verschnittoptimierung.display.CreateGraphics();
+
+            // set display width in global initially
+            global.displayWidth = global.Verschnittoptimierung.display.Width;
+
+            // check if initial folder path is required
+            string path = Environment.CurrentDirectory;
+            // without bin\Debug
+            path = path.Substring(0, path.Length - 9) + "Resources\\FolderPathGeneral.txt";
+            string pathStored = System.IO.File.ReadAllText(path);
+            if(pathStored.Equals(""))
+            {
+                // get initial folder path
+                MessageBox.Show("Welcome to 'waste material optimization'. Please enter the folder path where the data for this program should be stored.");
+                FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+                folderBrowserDialog.ShowDialog();
+                string pathReceived = folderBrowserDialog.SelectedPath;
+                global.Verschnittoptimierung.Output.Text = pathReceived;
+
+                // set the folder path in resources
+                using (StreamWriter writer = new StreamWriter(path))
+                {
+                    writer.Write(pathReceived);
+                }
+
+                // create initial subfolders
+                string pathVerschnittoptimierung = pathReceived + "\\Verschnittoptimierung";
+                string pathBenchmarks = pathVerschnittoptimierung + "\\benchmarks";
+                string pathSolutions = pathVerschnittoptimierung + "\\solutions";
+                string pathSettings = pathVerschnittoptimierung + "\\settings";
+
+                Directory.CreateDirectory(pathVerschnittoptimierung);
+                Directory.CreateDirectory(pathBenchmarks);
+                Directory.CreateDirectory(pathSolutions);
+                Directory.CreateDirectory(pathSettings);
+            }
         }
         
         private void Verschnittoptimierung_Load(object sender, EventArgs e)
@@ -119,11 +155,6 @@ namespace Verschnittoptimierung
 
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             if(!groupBox5.Visible)
@@ -159,7 +190,9 @@ namespace Verschnittoptimierung
             */
             
             StepExecution stepExecution = new StepExecution();
-            stepExecution.DrawBoards();
+            // stepExecution.DrawBoards();
+            stepExecution.DrawNewDisplay();
+            
             
         }
 
@@ -199,5 +232,42 @@ namespace Verschnittoptimierung
         {
 
         }
+        // save and load
+        private void SaveBenchmark_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("save benchmark");
+        }
+
+        private void LoadBenchmark_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("load benchmark");
+        }
+        
+        private void SaveSolution_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("save solution");
+        }
+
+        private void LoadSolution_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("load solution");
+        }
+
+        private void SaveSettings_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("save settings");
+        }
+
+        private void LoadSettings_Click(object sender, EventArgs e)
+        {
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.SaveOrLoad("load settings");
+        }
+
     }
 }
