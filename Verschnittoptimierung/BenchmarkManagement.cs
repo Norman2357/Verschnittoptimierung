@@ -158,6 +158,14 @@ namespace Verschnittoptimierung
                     rectID++;
                 }
 
+                // add number of rects and number of boards
+                benchmark.numberOfRects = 0;
+                for(int l = 0; l < benchmark.boardList.Count; l++)
+                {
+                    benchmark.numberOfRects += benchmark.boardList[i].RectList.Count;
+                }
+                benchmark.numberOfBoards = benchmark.boardList.Count;
+
             }
             // for testing:
             //1. size test

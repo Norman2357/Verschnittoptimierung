@@ -36,7 +36,7 @@ namespace Verschnittoptimierung
             int pre = 6;
             for(int i = pre; i > 0; i--)
             {
-                if(benchmarkNr < Math.Pow(10,i))
+                if(benchmarkNr < Math.Pow(10,i-1))
                 {
                     pathStored += "0";
                 }
@@ -46,6 +46,7 @@ namespace Verschnittoptimierung
                     break;
                 }
             }
+            pathStored += "_";
 
             // "date bonus"
             global.benchmark.creationTime = DateTime.Now;

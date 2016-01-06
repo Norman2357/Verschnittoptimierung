@@ -10,12 +10,13 @@ namespace Verschnittoptimierung
     public class Benchmark
     {
         public int benchmarkID;
+        public int numberOfBoards;
+        public int numberOfRects;
+        public DateTime creationTime;
         
         public List<Board> boardList;
         
-        public int numberOfRects;
         
-        public DateTime creationTime;
         
         
 
