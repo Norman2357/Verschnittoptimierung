@@ -60,31 +60,31 @@
             this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
             this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
             this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.fitnessValue = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.cl_percentageAreaFilled = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.Label();
             this.buttonSelectView = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cl_objectsTotal = new System.Windows.Forms.TextBox();
+            this.cl_objectsLeft = new System.Windows.Forms.TextBox();
+            this.cl_objectsPlaced = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -495,20 +495,6 @@
             this.LoadBenchmark.Text = "Load Benchmark";
             this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
             // 
-            // SaveSettings
-            // 
-            this.SaveSettings.Name = "SaveSettings";
-            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
-            this.SaveSettings.Text = "Save Settings";
-            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
-            // 
-            // LoadSettings
-            // 
-            this.LoadSettings.Name = "LoadSettings";
-            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
-            this.LoadSettings.Text = "Load Settings";
-            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
-            // 
             // SaveSolution
             // 
             this.SaveSolution.Name = "SaveSolution";
@@ -522,6 +508,20 @@
             this.LoadSolution.Size = new System.Drawing.Size(163, 22);
             this.LoadSolution.Text = "Load Solution";
             this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
+            // 
+            // SaveSettings
+            // 
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
+            this.SaveSettings.Text = "Save Settings";
+            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
+            // 
+            // LoadSettings
+            // 
+            this.LoadSettings.Name = "LoadSettings";
+            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
+            this.LoadSettings.Text = "Load Settings";
+            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
             // 
             // toolStrip1
             // 
@@ -565,19 +565,19 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.textBox3);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.textBox1);
             this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.textBox5);
+            this.groupBox5.Controls.Add(this.label24);
+            this.groupBox5.Controls.Add(this.textBox11);
+            this.groupBox5.Controls.Add(this.cl_objectsPlaced);
+            this.groupBox5.Controls.Add(this.cl_objectsLeft);
+            this.groupBox5.Controls.Add(this.cl_objectsTotal);
+            this.groupBox5.Controls.Add(this.label25);
+            this.groupBox5.Controls.Add(this.label23);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.cl_percentageAreaFilled);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Location = new System.Drawing.Point(905, 41);
             this.groupBox5.Name = "groupBox5";
@@ -587,131 +587,32 @@
             this.groupBox5.Text = "Results Details";
             this.groupBox5.Visible = false;
             // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(109, 75);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(36, 20);
-            this.textBox5.TabIndex = 14;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(151, 78);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(15, 13);
-            this.label19.TabIndex = 13;
-            this.label19.Text = "%";
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 77);
+            this.label20.Location = new System.Drawing.Point(16, 225);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 13);
             this.label20.TabIndex = 12;
             this.label20.Text = "waste material";
             // 
-            // label18
+            // cl_percentageAreaFilled
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(218, 108);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(15, 13);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "%";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(191, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(21, 20);
-            this.textBox4.TabIndex = 10;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(91, 107);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 13);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "quantity";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(136, 105);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(36, 20);
-            this.textBox3.TabIndex = 8;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 107);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 13);
-            this.label16.TabIndex = 7;
-            this.label16.Text = " unsolved";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(109, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(36, 20);
-            this.textBox2.TabIndex = 6;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(151, 48);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(24, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "cm²";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 13);
-            this.label15.TabIndex = 4;
-            this.label15.Text = " occupied size";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(109, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(36, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(151, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "cm²";
+            this.cl_percentageAreaFilled.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_percentageAreaFilled.Enabled = false;
+            this.cl_percentageAreaFilled.Location = new System.Drawing.Point(74, 62);
+            this.cl_percentageAreaFilled.Name = "cl_percentageAreaFilled";
+            this.cl_percentageAreaFilled.Size = new System.Drawing.Size(41, 20);
+            this.cl_percentageAreaFilled.TabIndex = 3;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 21);
+            this.label13.Location = new System.Drawing.Point(16, 65);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(87, 13);
+            this.label13.Size = new System.Drawing.Size(52, 13);
             this.label13.TabIndex = 0;
-            this.label13.Text = "Objects total size";
+            this.label13.Text = "area filled";
             // 
             // Output
             // 
@@ -730,6 +631,106 @@
             this.buttonSelectView.Size = new System.Drawing.Size(101, 21);
             this.buttonSelectView.TabIndex = 15;
             this.buttonSelectView.UseVisualStyleBackColor = true;
+            this.buttonSelectView.Click += new System.EventHandler(this.buttonSelectView_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(16, 21);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(66, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Objects total";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(133, 21);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(39, 13);
+            this.label23.TabIndex = 21;
+            this.label23.Text = "placed";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(133, 44);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(21, 13);
+            this.label25.TabIndex = 23;
+            this.label25.Text = "left";
+            // 
+            // cl_objectsTotal
+            // 
+            this.cl_objectsTotal.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsTotal.Enabled = false;
+            this.cl_objectsTotal.Location = new System.Drawing.Point(79, 18);
+            this.cl_objectsTotal.Name = "cl_objectsTotal";
+            this.cl_objectsTotal.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsTotal.TabIndex = 24;
+            // 
+            // cl_objectsLeft
+            // 
+            this.cl_objectsLeft.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsLeft.Enabled = false;
+            this.cl_objectsLeft.Location = new System.Drawing.Point(176, 41);
+            this.cl_objectsLeft.Name = "cl_objectsLeft";
+            this.cl_objectsLeft.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsLeft.TabIndex = 25;
+            // 
+            // cl_objectsPlaced
+            // 
+            this.cl_objectsPlaced.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsPlaced.Enabled = false;
+            this.cl_objectsPlaced.Location = new System.Drawing.Point(176, 18);
+            this.cl_objectsPlaced.Name = "cl_objectsPlaced";
+            this.cl_objectsPlaced.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsPlaced.TabIndex = 26;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(218, 225);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(15, 13);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "%";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(191, 222);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(21, 20);
+            this.textBox5.TabIndex = 29;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(91, 224);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(44, 13);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "quantity";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox11.Enabled = false;
+            this.textBox11.Location = new System.Drawing.Point(136, 222);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(36, 20);
+            this.textBox11.TabIndex = 27;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(120, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "%";
             // 
             // Verschnittoptimierung1
             // 
@@ -818,23 +819,23 @@
         public System.Windows.Forms.NumericUpDown numberBoards;
         public System.Windows.Forms.NumericUpDown objectsMaxNumber;
         public System.Windows.Forms.Label label13;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.Label label19;
         public System.Windows.Forms.Label label20;
-        public System.Windows.Forms.Label label18;
-        public System.Windows.Forms.TextBox textBox4;
-        public System.Windows.Forms.Label label17;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.Label label16;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.Label label14;
-        public System.Windows.Forms.Label label15;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.TextBox cl_percentageAreaFilled;
         public System.Windows.Forms.Label Output;
         public System.Windows.Forms.ToolStripMenuItem SaveSolution;
         public System.Windows.Forms.ToolStripMenuItem LoadSolution;
         public System.Windows.Forms.Button buttonSelectView;
+        public System.Windows.Forms.Label label19;
+        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.Label label24;
+        public System.Windows.Forms.TextBox textBox11;
+        public System.Windows.Forms.TextBox cl_objectsPlaced;
+        public System.Windows.Forms.TextBox cl_objectsLeft;
+        public System.Windows.Forms.TextBox cl_objectsTotal;
+        public System.Windows.Forms.Label label25;
+        public System.Windows.Forms.Label label23;
+        public System.Windows.Forms.Label label22;
+        public System.Windows.Forms.Label label3;
     }
 }
 

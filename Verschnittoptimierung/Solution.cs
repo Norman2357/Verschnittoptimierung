@@ -7,22 +7,28 @@ using System.Threading.Tasks;
 namespace Verschnittoptimierung
 {
     [Serializable()]
-    class Solution
+    public class Solution
     {
         public int SolutionID;
-        public List<Board> BoardList;
+        public int usedBenchmarkID;
+
+        public int numberOfBoards;
         public int numberOfRects;
         public DateTime creationTime;
-        // in %
-        public int successRate;
+        // cl values
+        public float percentageFilledArea;
+        public int numberRectsPlaced;
+        public int numberRectsLeft;
+
+        public List<Board> BoardList;
 
         // id of the benchmark used for this solution
-        Benchmark benchmark;
+        public Benchmark benchmark;
 
         public Solution()
         {
             BoardList = new List<Board>();
-            successRate = 0;
+            percentageFilledArea = 0;
         }
     }
 }

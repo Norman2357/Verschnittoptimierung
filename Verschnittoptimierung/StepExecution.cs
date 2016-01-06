@@ -58,6 +58,11 @@ namespace Verschnittoptimierung
                     // 1. step: verify benchmark information
                     if(global.Verschnittoptimierung.boardHeight.Value <= global.Verschnittoptimierung.boardWidth.Value)
                     {
+                        // before creating benchmark clear the screen
+                        // clear screen
+                        global.Verschnittoptimierung.display.Invalidate();
+
+
                         // create benchmark
                         Benchmark benchmark = new Benchmark();
                         //benchmark.BoardList = new List<Board>();
@@ -67,14 +72,18 @@ namespace Verschnittoptimierung
                             , Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value), benchmark);
                         global.benchmark = benchmark;
                         // info: benchmark (boards with rects that fit exactly) created
-                        
+
+                        // also create a basic solution
+                        SolutionManagement solutionManagement = new SolutionManagement();
+                        solutionManagement.CreateBasicSolution(global, global.benchmark);
+
                         Show show = new Show(global);
                         show.ShowBenchmark(global.benchmark);
                     }
                     else
                     {
                         // not enough information entered or too much information entered
-                        System.Windows.Forms.MessageBox.Show("Not enough information specified.");
+                        System.Windows.Forms.MessageBox.Show("Not enough information specified or wrong information. Check the min, max fields.");
                         /*
                         FolderBrowserDialog fbd = new FolderBrowserDialog();
                     DialogResult result = fbd.ShowDialog();
@@ -121,6 +130,22 @@ namespace Verschnittoptimierung
                 show.ShowSolution(global.solution);
             }
             
+        }
+
+        public void SetContentToShow()
+        {
+            // clear screen
+            global.Verschnittoptimierung.display.Invalidate();
+
+            Show show = new Show(global);
+            if(global.contentToShow.Equals("benchmark"))
+            {
+                show.ShowSolution(global.solution);
+            }
+            else if(global.contentToShow.Equals("solution"))
+            {
+                show.ShowBenchmark(global.benchmark);
+            }
         }
 
         public void DrawBoards()

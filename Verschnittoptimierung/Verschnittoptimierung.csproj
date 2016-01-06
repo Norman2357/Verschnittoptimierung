@@ -51,6 +51,7 @@
     <Compile Include="Benchmark.cs" />
     <Compile Include="BenchmarkManagement.cs" />
     <Compile Include="Board.cs" />
+    <Compile Include="ClassificationNumbers.cs" />
     <Compile Include="Creation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -65,8 +66,10 @@
     <Compile Include="Rect.cs" />
     <Compile Include="SaveAndLoad.cs" />
     <Compile Include="SerializableBenchmark.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Show.cs" />
     <Compile Include="Solution.cs" />
+    <Compile Include="SolutionManagement.cs" />
     <Compile Include="StepExecution.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -107,6 +110,7 @@
     <Content Include="Resources\BenchmarkNr.txt" />
     <Content Include="Resources\FolderPathGeneral.txt" />
     <Content Include="Resources\PathLatestSettings.txt" />
+    <Content Include="Resources\SettingsNr.txt" />
     <Content Include="Resources\SolutionNr.txt" />
     <None Include="Resources\arrowUp.JPG.jpg" />
   </ItemGroup>
