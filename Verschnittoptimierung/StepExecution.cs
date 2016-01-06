@@ -60,6 +60,7 @@ namespace Verschnittoptimierung
                     {
                         // create benchmark
                         Benchmark benchmark = new Benchmark();
+                        //benchmark.BoardList = new List<Board>();
                         BenchmarkManagement benchmarkManagement = new BenchmarkManagement();
                         benchmarkManagement.CreateBenchmark(global, benchmark);
                         benchmarkManagement.CreateRects(Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value)

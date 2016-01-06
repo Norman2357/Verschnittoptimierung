@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Verschnittoptimierung
 {
-    class Board
+    [Serializable()]
+    public class Board
     {
         public int boardID;
         public Boolean isCollectionBoard;

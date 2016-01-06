@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Verschnittoptimierung
 {
-    class Rect
+    public class Rect
     {
         public int rectID;
         // edgeLeftUp and edgeRightDown are positions on the board they are on; NOT positions on the display(!)

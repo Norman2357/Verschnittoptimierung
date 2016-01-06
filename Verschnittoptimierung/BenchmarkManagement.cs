@@ -15,10 +15,10 @@ namespace Verschnittoptimierung
             // without bin\Debug
             path = path.Substring(0, path.Length - 9) + "Resources\\BenchmarkNr.txt";
             global.Verschnittoptimierung.Output.Text = path;
-            benchmark.BenchmarkID = Convert.ToInt32(System.IO.File.ReadAllText(path));
+            benchmark.benchmarkID = Convert.ToInt32(System.IO.File.ReadAllText(path));
 
             // set creationTime
-            benchmark.CreationTime = DateTime.Now;
+            benchmark.creationTime = DateTime.Now;
             // add boards to benchmark
             for (int i = 0; i < global.Verschnittoptimierung.numberBoards.Value; i++)
             {
@@ -28,7 +28,8 @@ namespace Verschnittoptimierung
                 board.width = Convert.ToInt32(global.Verschnittoptimierung.boardWidth.Value);
                 board.isCollectionBoard = false;
                 board.size = board.height * board.width;
-                benchmark.BoardList.Add(board);
+                
+                benchmark.boardList.Add(board);
             }
             // no collection board in benchmark. code can still be useful for creating a solution
             /*
@@ -47,30 +48,30 @@ namespace Verschnittoptimierung
         {
             int rectID = 1;
             Random random = new Random();
-            for (int i = 0; i < benchmark.BoardList.Count; i++)
+            for (int i = 0; i < benchmark.boardList.Count; i++)
             {
                 int numberOfRequiredRects = random.Next(minRects, maxRects + 1);
 
                 // "convert" the board to a rect, meaning adding a rect to the board with the size of the board
                 Rect rect = new Rect();
-                rect.height = benchmark.BoardList[i].height;
-                rect.width = benchmark.BoardList[i].width;
+                rect.height = benchmark.boardList[i].height;
+                rect.width = benchmark.boardList[i].width;
                 rect.size = rect.height * rect.width;
                 rect.edgeLeftUp = new MyPoint(0, rect.height);
                 rect.edgeRightDown = new MyPoint(rect.width, 0);
-                benchmark.BoardList[i].RectList.Add(rect);
+                benchmark.boardList[i].RectList.Add(rect);
 
                 // split the largest rect of the rectList until number of rects = required number of rects
                 for (int j = 1; j < numberOfRequiredRects; j++)
                 {
                     // 1. find largest rect
                     Rect largestRect;
-                    largestRect = benchmark.BoardList[i].RectList[0];
-                    for (int k = 0; k < benchmark.BoardList[i].RectList.Count; k++)
+                    largestRect = benchmark.boardList[i].RectList[0];
+                    for (int k = 0; k < benchmark.boardList[i].RectList.Count; k++)
                     {
-                        if (benchmark.BoardList[i].RectList[k].size > largestRect.size)
+                        if (benchmark.boardList[i].RectList[k].size > largestRect.size)
                         {
-                            largestRect = benchmark.BoardList[i].RectList[k];
+                            largestRect = benchmark.boardList[i].RectList[k];
                         }
                     }
                     // 2. decide if to split horizontal or vertical
@@ -142,18 +143,18 @@ namespace Verschnittoptimierung
                     rectTwo.size = rectTwo.height * rectTwo.width;
 
                     // add rects to list
-                    benchmark.BoardList[i].RectList.Add(rectOne);
-                    benchmark.BoardList[i].RectList.Add(rectTwo);
+                    benchmark.boardList[i].RectList.Add(rectOne);
+                    benchmark.boardList[i].RectList.Add(rectTwo);
 
 
                     // 4. remove the largest rect from the rect list
-                    benchmark.BoardList[i].RectList.Remove(largestRect);
+                    benchmark.boardList[i].RectList.Remove(largestRect);
                 }
 
                 // add rectIDs
-                for (int j = 0; j < benchmark.BoardList[i].RectList.Count; j++)
+                for (int j = 0; j < benchmark.boardList[i].RectList.Count; j++)
                 {
-                    benchmark.BoardList[i].RectList[j].rectID = rectID;
+                    benchmark.boardList[i].RectList[j].rectID = rectID;
                     rectID++;
                 }
 
@@ -161,12 +162,12 @@ namespace Verschnittoptimierung
             // for testing:
             //1. size test
             String success = "success";
-            for (int i = 0; i < benchmark.BoardList.Count; i++)
+            for (int i = 0; i < benchmark.boardList.Count; i++)
             {
-                int size = benchmark.BoardList[i].size;
-                for (int j = 0; j < benchmark.BoardList[i].RectList.Count; j++)
+                int size = benchmark.boardList[i].size;
+                for (int j = 0; j < benchmark.boardList[i].RectList.Count; j++)
                 {
-                    size -= benchmark.BoardList[i].RectList[j].size;
+                    size -= benchmark.boardList[i].RectList[j].size;
                 }
                 if (size != 0)
                 {
@@ -174,11 +175,11 @@ namespace Verschnittoptimierung
                 }
             }
             // 2. > 236 test
-            for (int i = 0; i < benchmark.BoardList.Count; i++)
+            for (int i = 0; i < benchmark.boardList.Count; i++)
             {
-                for (int j = 0; j < benchmark.BoardList[i].RectList.Count; j++)
+                for (int j = 0; j < benchmark.boardList[i].RectList.Count; j++)
                 {
-                    if (benchmark.BoardList[i].RectList[j].edgeLeftUp.y > 236)
+                    if (benchmark.boardList[i].RectList[j].edgeLeftUp.y > 236)
                     {
                         int s = 1;
                     }

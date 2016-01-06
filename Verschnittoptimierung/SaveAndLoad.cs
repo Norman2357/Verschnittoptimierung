@@ -48,25 +48,25 @@ namespace Verschnittoptimierung
             }
 
             // "date bonus"
-            global.benchmark.CreationTime = DateTime.Now;
+            global.benchmark.creationTime = DateTime.Now;
 
-            if (global.benchmark.CreationTime.Day < 10)
+            if (global.benchmark.creationTime.Day < 10)
             {
                 pathStored += "0";
             }
-            pathStored += global.benchmark.CreationTime.Day + ".";
-            if(global.benchmark.CreationTime.Month <10)
+            pathStored += global.benchmark.creationTime.Day + ".";
+            if(global.benchmark.creationTime.Month <10)
             {
                 pathStored += "0";
             }
-            pathStored += global.benchmark.CreationTime.Month + ".";
-            pathStored += global.benchmark.CreationTime.Year + "_";
+            pathStored += global.benchmark.creationTime.Month + ".";
+            pathStored += global.benchmark.creationTime.Year + "_";
 
             // "board bonus"
-            pathStored += global.benchmark.BoardList.Count + "_";
+            pathStored += global.benchmark.boardList.Count + "_";
 
             // "rect bonus"
-            pathStored += global.benchmark.NumberOfRects + ".xml";
+            pathStored += global.benchmark.numberOfRects + ".xml";
 
             // II. serialize benchmark to xml at the current location
             XmlSerializer serializer = new XmlSerializer(typeof(Benchmark));

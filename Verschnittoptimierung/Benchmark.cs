@@ -9,30 +9,15 @@ namespace Verschnittoptimierung
     [Serializable()]
     public class Benchmark
     {
-        private int benchmarkID;
-        public int BenchmarkID 
-        {
-            get { return benchmarkID; }
-            set { benchmarkID = value; }
-        }
-        private List<Board> boardList;
-        public List<Board> BoardList
-        {
-            get { return boardList; }
-            set { boardList = value; }
-        }
-        private int numberOfRects;
-        public int NumberOfRects
-        {
-            get { return numberOfRects; }
-            set { numberOfRects = value; }
-        }
-        private DateTime creationTime;
-        public DateTime CreationTime
-        {
-            get { return creationTime; }
-            set { creationTime = value; }
-        }
+        public int benchmarkID;
+        
+        public List<Board> boardList;
+        
+        public int numberOfRects;
+        
+        public DateTime creationTime;
+        
+        
 
         public Benchmark()
         {

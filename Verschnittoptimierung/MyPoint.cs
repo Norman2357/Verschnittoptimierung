@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Verschnittoptimierung
 {
-    class MyPoint
+    public class MyPoint
     {
         public float x;
         public float y;
@@ -15,6 +15,10 @@ namespace Verschnittoptimierung
         {
             this.x = x;
             this.y = y;
+        }
+        public MyPoint()
+        {
+
         }
     }
 }
