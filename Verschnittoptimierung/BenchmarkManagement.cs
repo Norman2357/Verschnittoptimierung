@@ -14,7 +14,7 @@ namespace Verschnittoptimierung
             string path = Environment.CurrentDirectory;
             // without bin\Debug
             path = path.Substring(0, path.Length - 9) + "Resources\\BenchmarkNr.txt";
-            global.Verschnittoptimierung.Output.Text = path;
+            // global.Verschnittoptimierung.Output.Text = path;
             benchmark.benchmarkID = Convert.ToInt32(System.IO.File.ReadAllText(path));
 
             // set creationTime
@@ -64,79 +64,97 @@ namespace Verschnittoptimierung
                 // split the largest rect of the rectList until number of rects = required number of rects
                 for (int j = 1; j < numberOfRequiredRects; j++)
                 {
-                    // 1. find largest rect
-                    Rect largestRect;
-                    largestRect = benchmark.boardList[i].RectList[0];
-                    for (int k = 0; k < benchmark.boardList[i].RectList.Count; k++)
-                    {
-                        if (benchmark.boardList[i].RectList[k].size > largestRect.size)
-                        {
-                            largestRect = benchmark.boardList[i].RectList[k];
-                        }
-                    }
-                    // 2. decide if to split horizontal or vertical
-                    Boolean splitVertical;
-
-                    if (random.Next(0, 2) == 0)
-                    {
-                        splitVertical = false;
-                    }
-                    else
-                    {
-                        splitVertical = true;
-                    }
-                    // 3. create two new rects out of the largest one and add them to the rect list
+                    Rect largestRect = new Rect();
                     Rect rectOne = new Rect();
                     Rect rectTwo = new Rect();
-                    if (splitVertical)
+
+                    Boolean nullCoordsOccured = true;
+                    while(nullCoordsOccured == true)
                     {
-                        double largestRectWidthDouble = Convert.ToDouble(largestRect.width);
-                        // new width between 10% and 90% of largestRect's width
-                        // several conversions have to be done to use Ceiling and random for integer
-                        int newWidth = Convert.ToInt32(Math.Ceiling(largestRectWidthDouble * (Convert.ToDouble(random.Next(1, 10)) / 10)));
-                        if (newWidth == largestRect.width)
+                        // 1. find largest rect
+                        largestRect = benchmark.boardList[i].RectList[0];
+                        for (int k = 0; k < benchmark.boardList[i].RectList.Count; k++)
                         {
-                            // this would not create 2 new rects
+                            if (benchmark.boardList[i].RectList[k].size > largestRect.size)
+                            {
+                                largestRect = benchmark.boardList[i].RectList[k];
+                            }
+                        }
+                        // 2. decide if to split horizontal or vertical
+                        Boolean splitVertical;
+
+                        if (random.Next(0, 2) == 0)
+                        {
+                            splitVertical = false;
                         }
                         else
                         {
-                            rectOne.height = largestRect.height;
-                            rectTwo.height = largestRect.height;
-                            rectOne.width = newWidth;
-                            rectTwo.width = largestRect.width - newWidth;
-
-                            rectOne.edgeLeftUp = largestRect.edgeLeftUp;
-                            rectOne.edgeRightDown = new MyPoint(largestRect.edgeLeftUp.x + rectOne.width, largestRect.edgeRightDown.y);
-
-                            rectTwo.edgeLeftUp = new MyPoint(rectOne.edgeRightDown.x, rectOne.edgeLeftUp.y);
-                            rectTwo.edgeRightDown = largestRect.edgeRightDown;
+                            splitVertical = true;
                         }
-                    }
-                    // if split horizontal
-                    else
-                    {
-                        double largestRectHeightDouble = Convert.ToDouble(largestRect.height);
-                        // new height between 10% and 90% of largestRect's height
-                        // several conversions have to be done to use Ceiling and random for integer
-                        int newHeight = Convert.ToInt32(Math.Ceiling(largestRectHeightDouble * (Convert.ToDouble(random.Next(1, 10)) / 10)));
-                        if (newHeight == largestRect.height)
+                        // 3. create two new rects out of the largest one and add them to the rect list
+                        rectOne = new Rect();
+                        rectTwo = new Rect();
+
+                        if (splitVertical)
                         {
-                            // this would not create 2 new rects
+                            double largestRectWidthDouble = Convert.ToDouble(largestRect.width);
+                            // new width between 10% and 90% of largestRect's width
+                            // several conversions have to be done to use Ceiling and random for integer
+                            int newWidth = Convert.ToInt32(Math.Ceiling(largestRectWidthDouble * (Convert.ToDouble(random.Next(1, 10)) / 10)));
+                            if (newWidth == largestRect.width)
+                            {
+                                // this would not create 2 new rects. retry
+                                nullCoordsOccured = true;
+                            }
+                            else
+                            {
+                                rectOne.height = largestRect.height;
+                                rectTwo.height = largestRect.height;
+                                rectOne.width = newWidth;
+                                rectTwo.width = largestRect.width - newWidth;
+
+                                rectOne.edgeLeftUp = largestRect.edgeLeftUp;
+                                rectOne.edgeRightDown = new MyPoint(largestRect.edgeLeftUp.x + rectOne.width, largestRect.edgeRightDown.y);
+
+                                rectTwo.edgeLeftUp = new MyPoint(rectOne.edgeRightDown.x, rectOne.edgeLeftUp.y);
+                                rectTwo.edgeRightDown = largestRect.edgeRightDown;
+
+                                nullCoordsOccured = false;
+                                
+                            }
                         }
+                        // if split horizontal
                         else
                         {
-                            rectOne.height = newHeight;
-                            rectTwo.height = largestRect.height - newHeight;
-                            rectOne.width = largestRect.width;
-                            rectTwo.width = largestRect.width;
+                            double largestRectHeightDouble = Convert.ToDouble(largestRect.height);
+                            // new height between 10% and 90% of largestRect's height
+                            // several conversions have to be done to use Ceiling and random for integer
+                            int newHeight = Convert.ToInt32(Math.Ceiling(largestRectHeightDouble * (Convert.ToDouble(random.Next(1, 10)) / 10)));
+                            if (newHeight == largestRect.height)
+                            {
+                                // this would not create 2 new rects. retry
+                                nullCoordsOccured = true;
+                            }
+                            else
+                            {
+                                rectOne.height = newHeight;
+                                rectTwo.height = largestRect.height - newHeight;
+                                rectOne.width = largestRect.width;
+                                rectTwo.width = largestRect.width;
 
-                            rectOne.edgeLeftUp = largestRect.edgeLeftUp;
-                            rectOne.edgeRightDown = new MyPoint(largestRect.edgeRightDown.x, largestRect.edgeLeftUp.y - rectOne.height);
+                                rectOne.edgeLeftUp = largestRect.edgeLeftUp;
+                                rectOne.edgeRightDown = new MyPoint(largestRect.edgeRightDown.x, largestRect.edgeLeftUp.y - rectOne.height);
 
-                            rectTwo.edgeLeftUp = new MyPoint(rectOne.edgeLeftUp.x, rectOne.edgeRightDown.y);
-                            rectTwo.edgeRightDown = largestRect.edgeRightDown;
+                                rectTwo.edgeLeftUp = new MyPoint(rectOne.edgeLeftUp.x, rectOne.edgeRightDown.y);
+                                rectTwo.edgeRightDown = largestRect.edgeRightDown;
+
+                                nullCoordsOccured = false;
+                            }
                         }
                     }
+
+
+                    
 
                     // add rect data
                     rectOne.size = rectOne.height * rectOne.width;
@@ -187,10 +205,12 @@ namespace Verschnittoptimierung
             {
                 for (int j = 0; j < benchmark.boardList[i].RectList.Count; j++)
                 {
+                    /*
                     if (benchmark.boardList[i].RectList[j].edgeLeftUp.y > 236)
                     {
                         int s = 1;
                     }
+                    */
                 }
             }
 

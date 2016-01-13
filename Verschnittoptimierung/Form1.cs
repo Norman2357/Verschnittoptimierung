@@ -49,7 +49,7 @@ namespace Verschnittoptimierung
                 FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
                 folderBrowserDialog.ShowDialog();
                 string pathReceived = folderBrowserDialog.SelectedPath;
-                global.Verschnittoptimierung.Output.Text = pathReceived;
+                // global.Verschnittoptimierung.Output.Text = pathReceived;
 
                 // set the folder path in resources
                 using (StreamWriter writer = new StreamWriter(path))
@@ -176,9 +176,9 @@ namespace Verschnittoptimierung
 
         private void buttonQuickStep_Click(object sender, EventArgs e)
         {
-            StepExecution stepExecution = new StepExecution();
+            // StepExecution stepExecution = new StepExecution();
             // stepExecution.ExecuteStep(1);
-            stepExecution.DrawRects();
+            // stepExecution.DrawRects();
         }
 
         private void display_Paint(object sender, PaintEventArgs e)

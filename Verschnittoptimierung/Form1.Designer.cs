@@ -69,22 +69,22 @@
             this.fitnessValue = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.cl_objectsPlaced = new System.Windows.Forms.TextBox();
+            this.cl_objectsLeft = new System.Windows.Forms.TextBox();
+            this.cl_objectsTotal = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.cl_percentageAreaFilled = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.Label();
             this.buttonSelectView = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cl_objectsTotal = new System.Windows.Forms.TextBox();
-            this.cl_objectsLeft = new System.Windows.Forms.TextBox();
-            this.cl_objectsPlaced = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -156,8 +156,13 @@
             // objectsMaxNumber
             // 
             this.objectsMaxNumber.Location = new System.Drawing.Point(196, 112);
+            this.objectsMaxNumber.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.objectsMaxNumber.Minimum = new decimal(new int[] {
-            2,
+            10,
             0,
             0,
             0});
@@ -173,8 +178,13 @@
             // objectsMinNumber
             // 
             this.objectsMinNumber.Location = new System.Drawing.Point(102, 112);
+            this.objectsMinNumber.Maximum = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
             this.objectsMinNumber.Minimum = new decimal(new int[] {
-            2,
+            10,
             0,
             0,
             0});
@@ -420,7 +430,6 @@
             // comboBox1
             // 
             this.comboBox1.Items.AddRange(new object[] {
-            "Create Board(s) + Objects",
             "Create Benchmark",
             "Fill",
             "Local Optimization",
@@ -587,6 +596,105 @@
             this.groupBox5.Text = "Results Details";
             this.groupBox5.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(120, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(15, 13);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "%";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(218, 225);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(15, 13);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "%";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(191, 222);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(21, 20);
+            this.textBox5.TabIndex = 29;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(91, 224);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(44, 13);
+            this.label24.TabIndex = 28;
+            this.label24.Text = "quantity";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox11.Enabled = false;
+            this.textBox11.Location = new System.Drawing.Point(136, 222);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(36, 20);
+            this.textBox11.TabIndex = 27;
+            // 
+            // cl_objectsPlaced
+            // 
+            this.cl_objectsPlaced.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsPlaced.Enabled = false;
+            this.cl_objectsPlaced.Location = new System.Drawing.Point(176, 18);
+            this.cl_objectsPlaced.Name = "cl_objectsPlaced";
+            this.cl_objectsPlaced.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsPlaced.TabIndex = 26;
+            // 
+            // cl_objectsLeft
+            // 
+            this.cl_objectsLeft.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsLeft.Enabled = false;
+            this.cl_objectsLeft.Location = new System.Drawing.Point(176, 41);
+            this.cl_objectsLeft.Name = "cl_objectsLeft";
+            this.cl_objectsLeft.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsLeft.TabIndex = 25;
+            // 
+            // cl_objectsTotal
+            // 
+            this.cl_objectsTotal.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_objectsTotal.Enabled = false;
+            this.cl_objectsTotal.Location = new System.Drawing.Point(79, 18);
+            this.cl_objectsTotal.Name = "cl_objectsTotal";
+            this.cl_objectsTotal.Size = new System.Drawing.Size(36, 20);
+            this.cl_objectsTotal.TabIndex = 24;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(133, 44);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(21, 13);
+            this.label25.TabIndex = 23;
+            this.label25.Text = "left";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(133, 21);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(39, 13);
+            this.label23.TabIndex = 21;
+            this.label23.Text = "placed";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(16, 21);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(66, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Objects total";
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -632,105 +740,6 @@
             this.buttonSelectView.TabIndex = 15;
             this.buttonSelectView.UseVisualStyleBackColor = true;
             this.buttonSelectView.Click += new System.EventHandler(this.buttonSelectView_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 21);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(66, 13);
-            this.label22.TabIndex = 20;
-            this.label22.Text = "Objects total";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(133, 21);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(39, 13);
-            this.label23.TabIndex = 21;
-            this.label23.Text = "placed";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(133, 44);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(21, 13);
-            this.label25.TabIndex = 23;
-            this.label25.Text = "left";
-            // 
-            // cl_objectsTotal
-            // 
-            this.cl_objectsTotal.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cl_objectsTotal.Enabled = false;
-            this.cl_objectsTotal.Location = new System.Drawing.Point(79, 18);
-            this.cl_objectsTotal.Name = "cl_objectsTotal";
-            this.cl_objectsTotal.Size = new System.Drawing.Size(36, 20);
-            this.cl_objectsTotal.TabIndex = 24;
-            // 
-            // cl_objectsLeft
-            // 
-            this.cl_objectsLeft.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cl_objectsLeft.Enabled = false;
-            this.cl_objectsLeft.Location = new System.Drawing.Point(176, 41);
-            this.cl_objectsLeft.Name = "cl_objectsLeft";
-            this.cl_objectsLeft.Size = new System.Drawing.Size(36, 20);
-            this.cl_objectsLeft.TabIndex = 25;
-            // 
-            // cl_objectsPlaced
-            // 
-            this.cl_objectsPlaced.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.cl_objectsPlaced.Enabled = false;
-            this.cl_objectsPlaced.Location = new System.Drawing.Point(176, 18);
-            this.cl_objectsPlaced.Name = "cl_objectsPlaced";
-            this.cl_objectsPlaced.Size = new System.Drawing.Size(36, 20);
-            this.cl_objectsPlaced.TabIndex = 26;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(218, 225);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(15, 13);
-            this.label19.TabIndex = 30;
-            this.label19.Text = "%";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(191, 222);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(21, 20);
-            this.textBox5.TabIndex = 29;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(91, 224);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(44, 13);
-            this.label24.TabIndex = 28;
-            this.label24.Text = "quantity";
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(136, 222);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(36, 20);
-            this.textBox11.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(120, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 13);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "%";
             // 
             // Verschnittoptimierung1
             // 

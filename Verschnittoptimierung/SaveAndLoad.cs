@@ -96,7 +96,6 @@ namespace Verschnittoptimierung
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.ShowDialog();
             string pathToLoad = dialog.FileName;
-            global.Verschnittoptimierung.Output.Text = pathToLoad;
 
             try
             {
@@ -213,8 +212,7 @@ namespace Verschnittoptimierung
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.ShowDialog();
             string pathToLoad = dialog.FileName;
-            global.Verschnittoptimierung.Output.Text = pathToLoad;
-
+            
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Solution));
@@ -332,7 +330,6 @@ namespace Verschnittoptimierung
             System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
             dialog.ShowDialog();
             string pathToLoad = dialog.FileName;
-            global.Verschnittoptimierung.Output.Text = pathToLoad;
 
             try
             {

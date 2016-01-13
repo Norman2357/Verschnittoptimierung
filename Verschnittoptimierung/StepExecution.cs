@@ -56,7 +56,8 @@ namespace Verschnittoptimierung
                     break;
                 case "Create Benchmark":
                     // 1. step: verify benchmark information
-                    if(global.Verschnittoptimierung.boardHeight.Value <= global.Verschnittoptimierung.boardWidth.Value)
+                    if(global.Verschnittoptimierung.boardHeight.Value <= global.Verschnittoptimierung.boardWidth.Value &&
+                        global.Verschnittoptimierung.objectsMinNumber.Value <= global.Verschnittoptimierung.objectsMaxNumber.Value)
                     {
                         // before creating benchmark clear the screen
                         // clear screen
@@ -168,7 +169,7 @@ namespace Verschnittoptimierung
                         // resize not used
                         // edgeLeftUp = Resize(edgeLeftUp);
                         // edgeRightDown = Resize(edgeRightDown);
-                        global.Verschnittoptimierung.Output.Text = Convert.ToString(global.BoardList[0].edgeRightDown.y);
+                        
                         //global.Verschnittoptimierung.Output.Text = Convert.ToString(global.Verschnittoptimierung.display.Height);
 
                         Brush brush = new SolidBrush(Color.AliceBlue);
