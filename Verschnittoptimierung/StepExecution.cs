@@ -28,6 +28,7 @@ namespace Verschnittoptimierung
 
             switch(global.Verschnittoptimierung.comboBox1.Text)
             {
+                // old, not existing anymore. Objects+board created when creating benchmark, including an empty solution
                 case "Create Board(s) + Objects":
                     
                     // get board values from user interface
@@ -95,6 +96,10 @@ namespace Verschnittoptimierung
                     }
                     break;
                 case "Fill":
+                    Show show = new Show(global);
+                    show.ShowSolution(global.solution);
+
+
                     break;
                 case "Local Optimization":
                     break;

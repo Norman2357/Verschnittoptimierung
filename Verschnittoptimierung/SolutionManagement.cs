@@ -75,6 +75,13 @@ namespace Verschnittoptimierung
                     collectionBoard.RectList.Add(rect);
                 }
             }
+
+            // sort the rects in rect list from largest size to smallest size (new version; old version below)
+            Tools tools = new Tools();
+            tools.QuickSortBySize(collectionBoard.RectList, 0, collectionBoard.RectList.Count);
+
+            // old version, new version = using quicksort
+            /*
             // sort the rect list
             List<Rect> rectList = new List<Rect>();
             // as long as rects exist
@@ -93,7 +100,7 @@ namespace Verschnittoptimierung
                 collectionBoard.RectList.Remove(largestRect);
             }
             collectionBoard.RectList = rectList;
-
+            */
 
             // add the remaining parameters to solution
             solution.numberOfRects = collectionBoard.RectList.Count;

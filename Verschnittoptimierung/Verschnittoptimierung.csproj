@@ -99,6 +99,7 @@
     <Compile Include="Solution.cs" />
     <Compile Include="SolutionManagement.cs" />
     <Compile Include="StepExecution.cs" />
+    <Compile Include="Tools.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
