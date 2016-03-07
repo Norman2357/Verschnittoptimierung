@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
 
 namespace Verschnittoptimierung
 {
@@ -19,6 +20,7 @@ namespace Verschnittoptimierung
         public void ExecuteStep(int stepType)
         {
             Base global = Base.GetInstance();
+            Show show = new Show(global);
 
             // for testing only
             if(global.Verschnittoptimierung.comboBox1.Text.Equals("Create Board(s) + Objects"))
@@ -79,7 +81,6 @@ namespace Verschnittoptimierung
                         SolutionManagement solutionManagement = new SolutionManagement();
                         solutionManagement.CreateBasicSolution(global, global.benchmark);
 
-                        Show show = new Show(global);
                         show.ShowBenchmark(global.benchmark);
                     }
                     else
@@ -96,9 +97,85 @@ namespace Verschnittoptimierung
                     }
                     break;
                 case "Fill":
-                    Show show = new Show(global);
-                    show.ShowSolution(global.solution);
 
+                    // get type from what was entered
+                    int type = 0;
+
+                    // check if no process exists, create one
+                    if(global.runningProcess.existing == false)
+                    {
+                        Fill fill = new Fill();
+                        Thread thread = new Thread(new ThreadStart(fill.Greedy1));
+                        global.runningProcess.type = 1;
+
+                        global.runningProcess.existing = true;
+                        global.runningProcess.state = 0;
+                        // 0 = single step, 1 = all remaining steps
+                        global.runningProcess.param = stepType;
+                        global.runningProcess.thread = thread;
+                        
+                        thread.Start();
+                    }
+                    // if a process exists, but of another process type
+                    if(global.runningProcess.existing == true && global.runningProcess.type != type)
+                    {
+                        global.Verschnittoptimierung.Output.Text = "Another process is already running. Please complete this process first.";
+                    }
+
+                    // if a process exists of the same type
+                    if(global.runningProcess.existing == true && global.runningProcess.type == type)
+                    {
+                        // check if the process is running or waiting
+                        // if waiting, do another step or all steps
+                        if(global.runningProcess.state == 0)
+                        {
+                            // set params and reactivate process
+                                // single step or all steps
+                            global.runningProcess.param = stepType;
+                                // process makes the next step or all remaining steps, depending on stepType
+                            global.runningProcess.autoResetEvent.Set();
+                        }
+                        // if running
+                        else if(global.runningProcess.state == 1)
+                        {
+                            global.Verschnittoptimierung.Output.Text = "The process is already running. Please wait.";
+                        }
+                    }
+
+
+
+
+
+
+
+
+
+
+
+                    // check if a valid solution + benchmark exist
+
+                    if(global.solution != null && global.benchmark != null && global.solution.benchmark != null
+                        && global.solution.BoardList != null && global.solution.BoardList.Count > 1)
+                    {
+                        show.ShowSolution(global.solution);
+
+
+                        int selection = 1;
+                        
+                        // for testing: greedy 1
+                        if(selection == 1)
+                        {
+                            Fill fill = new Fill();
+                            fill.Greedy1();
+                        }
+
+                    }
+                    else
+                    {
+                        global.Verschnittoptimierung.Output.Text = "At least one global element is null. Cannot fill.";
+                    }
+                    
+                    
 
                     break;
                 case "Local Optimization":

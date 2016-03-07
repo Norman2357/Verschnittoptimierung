@@ -176,8 +176,8 @@ namespace Verschnittoptimierung
 
         private void buttonQuickStep_Click(object sender, EventArgs e)
         {
-            // StepExecution stepExecution = new StepExecution();
-            // stepExecution.ExecuteStep(1);
+            StepExecution stepExecution = new StepExecution();
+            stepExecution.ExecuteStep(1);
             // stepExecution.DrawRects();
         }
 

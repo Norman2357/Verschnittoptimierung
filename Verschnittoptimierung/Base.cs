@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Threading;
 
 namespace Verschnittoptimierung
 {
@@ -28,6 +29,13 @@ namespace Verschnittoptimierung
         public Benchmark benchmark;
         public Solution solution;
 
+        public RunningProcess runningProcess;
+
+        // solutionStatus: 0 = default, 1 = benchmark/solution created, 2 = fill, 3 = local opt., 4 = ev. alg.
+        // reset to 0 when restarting, reset to 1 when a new benchmark/solution is created, reset to 2 when filled after
+        // loc. opt / ev. alg
+        public int solutionStatus;
+
         public string contentToShow;
         // displayWidth set in beginning, should be 1100. later changed if required (for scrolling horizontally)
         public int displayWidth;
@@ -37,6 +45,8 @@ namespace Verschnittoptimierung
             this.BoardList = new List<Board>();
             this.boardGap = 20;
             this.contentToShow = "";
+            this.runningProcess = new RunningProcess();
+            this.solutionStatus = 0;
         }
 
         public static Base GetInstance()
