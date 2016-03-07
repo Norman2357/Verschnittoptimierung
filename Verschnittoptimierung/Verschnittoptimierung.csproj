@@ -80,6 +80,7 @@
     <Compile Include="BenchmarkManagement.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="ClassificationNumbers.cs" />
+    <Compile Include="CollisionBundle.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Creation.cs" />
     <Compile Include="Fill.cs" />
@@ -91,6 +92,8 @@
     </Compile>
     <Compile Include="myObject.cs" />
     <Compile Include="MyPoint.cs" />
+    <Compile Include="Position.cs" />
+    <Compile Include="PositionValues.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rect.cs" />
