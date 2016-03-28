@@ -15,6 +15,7 @@ namespace Verschnittoptimierung
 {
     public partial class Verschnittoptimierung1 : Form
     {
+        private Object thislock = new Object();
 
         public Verschnittoptimierung1()
         {
@@ -297,7 +298,31 @@ namespace Verschnittoptimierung
 
         private void label14_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //this.Output.Text = "test1";
+            //test123();
+            Fill fill = new Fill();
+            fill.Greedy1();
+        }
+
+        private void test123()
+        {
+            try
+            {
+                lock (this.thislock)
+                {
+                    this.Output.Text = "test2";
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
         }
     }
 }

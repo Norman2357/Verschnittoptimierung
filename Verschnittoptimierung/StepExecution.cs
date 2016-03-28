@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Threading;
+using System.ComponentModel;
 
 namespace Verschnittoptimierung
 {
@@ -104,17 +105,15 @@ namespace Verschnittoptimierung
                     // check if no process exists, create one
                     if(global.runningProcess.existing == false)
                     {
-                        Fill fill = new Fill();
-                        Thread thread = new Thread(new ThreadStart(fill.Greedy1));
                         global.runningProcess.type = 1;
 
                         global.runningProcess.existing = true;
                         global.runningProcess.state = 0;
                         // 0 = single step, 1 = all remaining steps
-                        global.runningProcess.param = stepType;
-                        global.runningProcess.thread = thread;
-                        
-                        thread.Start();
+                        global.runningProcess.stepType = stepType;
+
+                        // background worker
+                        global.Verschnittoptimierung.backgroundWorker1.RunWorkerAsync();
                     }
                     // if a process exists, but of another process type
                     if(global.runningProcess.existing == true && global.runningProcess.type != type)
@@ -131,7 +130,7 @@ namespace Verschnittoptimierung
                         {
                             // set params and reactivate process
                                 // single step or all steps
-                            global.runningProcess.param = stepType;
+                            global.runningProcess.stepType = stepType;
                                 // process makes the next step or all remaining steps, depending on stepType
                             global.runningProcess.autoResetEvent.Set();
                         }

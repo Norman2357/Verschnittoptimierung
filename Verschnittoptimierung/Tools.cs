@@ -132,13 +132,14 @@ namespace Verschnittoptimierung
             {
                 remainingBoards.Add(i);
             }
-            boardsNrSorted.Remove(collectionBoardNr);
+            // boardsNrSorted.Remove(collectionBoardNr);
+            remainingBoards.Remove(collectionBoardNr);
             // > 1 because of collection board which remains in the list all the time
             while(remainingBoards.Count > 0)
             {
                 // find largest of the remaining
                 largest = 0;
-                for(int i = 1; i < remainingBoards.Count; i++)
+                for(int i = 0; i < remainingBoards.Count; i++)
                 {
                     int boardSizeLargest = boardList[largest].size;
                     for(int j = 0; j < boardList[largest].RectList.Count; j++)
@@ -156,8 +157,8 @@ namespace Verschnittoptimierung
                     }
                 }
                 // add largest to the sorted list
-                boardsNrSorted.Add(largest);
-                remainingBoards.Remove(largest);
+                boardsNrSorted.Add(remainingBoards[largest]);
+                remainingBoards.Remove(remainingBoards[largest]);
             }
             boardsNrSorted.Add(collectionBoardNr);
             return (boardsNrSorted);

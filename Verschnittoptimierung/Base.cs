@@ -24,8 +24,6 @@ namespace Verschnittoptimierung
         public float boardHeightInterface;
         public int boardGap;
 
-        public int executionRunning;
-
         public Benchmark benchmark;
         public Solution solution;
 
@@ -40,6 +38,15 @@ namespace Verschnittoptimierung
         // displayWidth set in beginning, should be 1100. later changed if required (for scrolling horizontally)
         public int displayWidth;
 
+
+        // two lists and a value for Fill
+            // positions already tried (for one rect)
+        public List<Position> positionsManaged = new List<Position>();
+            // positions valid (for one rect)
+        public List<Position> positionsValid = new List<Position>();
+        public Position bestPosition;
+        public Boolean bestPositionSet;
+
         private Base()
         {
             this.BoardList = new List<Board>();
@@ -47,6 +54,10 @@ namespace Verschnittoptimierung
             this.contentToShow = "";
             this.runningProcess = new RunningProcess();
             this.solutionStatus = 0;
+
+            this.positionsManaged = new List<Position>();
+            this.positionsValid = new List<Position>();
+            this.bestPositionSet = false;
         }
 
         public static Base GetInstance()

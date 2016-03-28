@@ -14,7 +14,7 @@ namespace Verschnittoptimierung
         // 0 = waiting, 1 = running
         public int state;
         // param 0 = do only one step, 1 = do all remaining steps
-        public int param;
+        public int stepType;
 
         public Thread thread;
 
@@ -31,7 +31,7 @@ namespace Verschnittoptimierung
             // basic configuration (no process existing)
             this.existing = false;
             this.state = 0;
-            this.param = 0;
+            this.stepType = 0;
             this.type = 0;
             this.autoResetEvent = new AutoResetEvent(false);
             this.firstStep = true;

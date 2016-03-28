@@ -15,5 +15,11 @@ namespace Verschnittoptimierung
         public int width;
         public int height;
         public int size;
+
+        public Rect()
+        {
+            this.edgeLeftUp = new MyPoint();
+            this.edgeRightDown = new MyPoint();
+        }
     }
 }

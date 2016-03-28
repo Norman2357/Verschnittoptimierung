@@ -85,6 +85,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.Output = new System.Windows.Forms.Label();
             this.buttonSelectView = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -741,6 +742,10 @@
             this.buttonSelectView.UseVisualStyleBackColor = true;
             this.buttonSelectView.Click += new System.EventHandler(this.buttonSelectView_Click);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -845,6 +850,7 @@
         public System.Windows.Forms.Label label23;
         public System.Windows.Forms.Label label22;
         public System.Windows.Forms.Label label3;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
