@@ -105,24 +105,28 @@ namespace Verschnittoptimierung
                     // check if no process exists, create one
                     if(global.runningProcess.existing == false)
                     {
-                        global.runningProcess.type = 1;
+                        global.runningProcess.type = 0;
 
                         global.runningProcess.existing = true;
                         global.runningProcess.state = 0;
                         // 0 = single step, 1 = all remaining steps
                         global.runningProcess.stepType = stepType;
+                        global.runningProcess.firstStep = true;
 
+                        /*
                         // background worker
                         global.Verschnittoptimierung.backgroundWorker1.RunWorkerAsync();
+                        */
                     }
                     // if a process exists, but of another process type
-                    if(global.runningProcess.existing == true && global.runningProcess.type != type)
+                    else if(global.runningProcess.existing == true && global.runningProcess.type != type)
                     {
                         global.Verschnittoptimierung.Output.Text = "Another process is already running. Please complete this process first.";
+                        break;
                     }
 
                     // if a process exists of the same type
-                    if(global.runningProcess.existing == true && global.runningProcess.type == type)
+                    else if(global.runningProcess.existing == true && global.runningProcess.type == type)
                     {
                         // check if the process is running or waiting
                         // if waiting, do another step or all steps
@@ -131,13 +135,16 @@ namespace Verschnittoptimierung
                             // set params and reactivate process
                                 // single step or all steps
                             global.runningProcess.stepType = stepType;
+                            /*
                                 // process makes the next step or all remaining steps, depending on stepType
                             global.runningProcess.autoResetEvent.Set();
+                            */
                         }
                         // if running
                         else if(global.runningProcess.state == 1)
                         {
                             global.Verschnittoptimierung.Output.Text = "The process is already running. Please wait.";
+                            break;
                         }
                     }
 

@@ -164,6 +164,28 @@ namespace Verschnittoptimierung
             return (boardsNrSorted);
         }
 
+        public void Reset()
+        {
+            Base global = Base.GetInstance();
+
+            // reset all rects
+            for(int i=0; i<global.solution.BoardList.Count -1; i++)
+            {
+                while(global.solution.BoardList[i].RectList.Count != 0)
+                {
+                    global.solution.BoardList[global.solution.BoardList.Count - 1].RectList.Add(global.solution.BoardList[i].RectList[0]);
+                    global.solution.BoardList[i].RectList.RemoveAt(0);
+                }
+            }
+            // reset running process/fill values
+            global.runningProcess.existing = false;
+            global.positionsManaged = new List<Position>();
+            global.positionsValid = new List<Position>();
+            global.bestPositionSet = false;
+
+            Show show = new Show(global);
+            show.ShowSolution(global.solution);
+        }
 
     }
 }

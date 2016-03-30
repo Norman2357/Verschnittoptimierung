@@ -20,14 +20,27 @@ namespace Verschnittoptimierung
 
             // preparations
             global.runningProcess.state = 1;
-            
-            // sort rects from max size to min size
             Tools tools = new Tools();
-            tools.QuickSortBySizeRect(solution.BoardList[solution.BoardList.Count - 1].RectList, 0,
-                solution.BoardList[solution.BoardList.Count - 1].RectList.Count);
+
+            // START one time:
+            if (global.runningProcess.firstStep)
+            {
+                // next rect to pick of the list: the first one (default)
+                global.runningProcess.nextStep = 0;
+
+                global.positionsManaged = new List<Position>();
+                global.positionsValid = new List<Position>();
+
+                // sort rects from max size to min size
+                tools.QuickSortBySizeRect(solution.BoardList[solution.BoardList.Count - 1].RectList, 0,
+                    solution.BoardList[solution.BoardList.Count - 1].RectList.Count);
+
+                global.runningProcess.firstStep = false;
+            }
+            // END one time
 
             // for each rect on collectionBoard
-            for (int i = 0; i < solution.BoardList[solution.BoardList.Count - 1].RectList.Count; i++)
+            for (int i = global.runningProcess.nextStep; i < solution.BoardList[solution.BoardList.Count - 1].RectList.Count;)
             {
                 global.runningProcess.state = 1;
 
@@ -131,8 +144,9 @@ namespace Verschnittoptimierung
                         rect.edgeRightDown.x = global.bestPosition.edgeRightDown.x;
                         rect.edgeRightDown.y = global.bestPosition.edgeRightDown.y;
 
-                        solution.BoardList[j].RectList.Add(rect);
-                        solution.BoardList[solution.BoardList.Count - 1].RectList.Remove(rect);
+                        solution.BoardList[boardNrSorted[j]].RectList.Add(rect);
+                        //solution.BoardList[solution.BoardList.Count - 1].RectList.Remove(rect);
+                        solution.BoardList[solution.BoardList.Count - 1].RectList.RemoveAt(i);
 
                         // ....
                         rectPlaced = true;
@@ -142,25 +156,48 @@ namespace Verschnittoptimierung
                         show.ShowSolution(global.solution);
 
                     }
-                    
-                    // important
+
+                    // last rect tried?
+                    if (solution.BoardList[solution.BoardList.Count - 1].RectList.Count == 0 ||
+                        (solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < global.runningProcess.nextStep)
+                    {
+                        global.runningProcess.existing = false;
+                        global.runningProcess.state = 0;
+                        break;
+                    }
+
+
                     if (rectPlaced)
                     {
-                        // so that the new rect one on the same i is not forgotten
-                        i--;
+                        global.runningProcess.state = 0;
                         break;
+                    }
+                    if (!rectPlaced)
+                    {
+                        global.runningProcess.nextStep++;
+                        i++;
+
+                        if ((solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < global.runningProcess.nextStep)
+                        {
+                            global.runningProcess.existing = false;
+                            global.runningProcess.state = 0;
+                            break;
+                        }
                     }
                 }
 
                 if(global.runningProcess.stepType == 0)
                 {
+                    global.runningProcess.state = 0;
+                    break;
+                    /*
                     // auto reset event
                     global.runningProcess.state = 0;
                     global.runningProcess.autoResetEvent.WaitOne();
+                    */
                 }
             }
             global.runningProcess.state = 0;
-            global.runningProcess.existing = false;
         }
 
 

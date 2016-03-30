@@ -324,5 +324,25 @@ namespace Verschnittoptimierung
             }
             
         }
+
+        private void Output_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            Base global = Base.GetInstance();
+
+            Tools tools = new Tools();
+            try
+            {
+                tools.Reset();
+            }
+            catch(Exception ex)
+            {
+                this.Output.Text = "Nothing to reset.";
+            }
+        }
     }
 }

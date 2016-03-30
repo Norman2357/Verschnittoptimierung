@@ -16,6 +16,9 @@ namespace Verschnittoptimierung
         // param 0 = do only one step, 1 = do all remaining steps
         public int stepType;
 
+        // the next rect to pick from the rectList of the collectionBoard
+        public int nextStep;
+
         public Thread thread;
 
         // type of thread (Greedy1, Greedy2, ..)

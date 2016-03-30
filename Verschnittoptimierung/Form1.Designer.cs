@@ -86,6 +86,7 @@
             this.Output = new System.Windows.Forms.Label();
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -726,11 +727,12 @@
             // Output
             // 
             this.Output.AutoSize = true;
-            this.Output.Location = new System.Drawing.Point(299, 624);
+            this.Output.Location = new System.Drawing.Point(324, 624);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(39, 13);
             this.Output.TabIndex = 14;
             this.Output.Text = "Output";
+            this.Output.Click += new System.EventHandler(this.Output_Click);
             // 
             // buttonSelectView
             // 
@@ -746,12 +748,24 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
+            // buttonReset
+            // 
+            this.buttonReset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonReset.BackgroundImage")));
+            this.buttonReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonReset.Location = new System.Drawing.Point(281, 635);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(32, 23);
+            this.buttonReset.TabIndex = 16;
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonSelectView);
             this.Controls.Add(this.Output);
             this.Controls.Add(this.groupBox5);
@@ -851,6 +865,7 @@
         public System.Windows.Forms.Label label22;
         public System.Windows.Forms.Label label3;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.Button buttonReset;
     }
 }
 

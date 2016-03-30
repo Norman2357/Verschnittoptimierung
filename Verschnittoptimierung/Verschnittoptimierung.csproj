@@ -141,6 +141,7 @@
     <Content Include="images\buttonFill.JPG" />
     <Content Include="images\buttonGeneralSettings.JPG" />
     <Content Include="images\buttonLocalOptimization.JPG" />
+    <Content Include="images\buttonReset.JPG" />
     <Content Include="images\buttonSingleStep.JPG" />
     <Content Include="images\menu.JPG" />
     <Content Include="Resources\BenchmarkNr.txt" />
