@@ -49,12 +49,14 @@ namespace Verschnittoptimierung
                    (u1 < x1 && x1 < u2) ||
                    (u1 < x2 && x2 < u2) ||
                    (x1 < u1 && u1 < x2) ||
-                   (x1 < u2 && u2 < x2)) &&
+                   (x1 < u2 && u2 < x2) ||
+                   (x1 == u1 && x2 == u2)) &&
                    (
                    (v1 < y1 && y1 < v2) ||
                    (v1 < y2 && y2 < v2) ||
                    (y1 < v1 && v1 < y2) ||
-                   (y1 < v2 && v2 < y2))
+                   (y1 < v2 && v2 < y2) ||
+                   (y1 == v1 && y2 == v2))
                    )
                 {
                     collisionList.Add(i);

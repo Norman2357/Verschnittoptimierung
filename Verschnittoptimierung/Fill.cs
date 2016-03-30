@@ -281,7 +281,7 @@ namespace Verschnittoptimierung
                     // 1. move right
                     Position positionRight = new Position();
                     positionRight.SetToPosition(position);
-                    positionRight.edgeLeftUp.x = position.edgeRightDown.x;
+                    positionRight.edgeLeftUp.x = rectList[collisionListNr[i]].edgeRightDown.x;
                     float width = position.edgeRightDown.x - position.edgeLeftUp.x;
                     positionRight.edgeRightDown.x = positionRight.edgeLeftUp.x + width;
                     // 2. try again
