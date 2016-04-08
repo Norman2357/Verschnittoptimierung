@@ -35,7 +35,7 @@ namespace Verschnittoptimierung
                 tools.QuickSortBySizeRect(solution.BoardList[solution.BoardList.Count - 1].RectList, 0,
                     solution.BoardList[solution.BoardList.Count - 1].RectList.Count);
 
-                global.runningProcess.firstStep = false;
+                global.runningProcess.firstStep = false; 
             }
             // END one time
 
