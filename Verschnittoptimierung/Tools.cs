@@ -497,6 +497,7 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_BoardStrategy.Enabled = false;
             global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = false;
             global.Verschnittoptimierung.groupBox_sortedBy.Enabled = false;
+            global.Verschnittoptimierung.groupBox_Priority.Enabled = false;
         }
 
         public void UnlockFillButtons()
@@ -514,6 +515,7 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_BoardStrategy.Enabled = true;
             global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = true;
             global.Verschnittoptimierung.groupBox_sortedBy.Enabled = true;
+            global.Verschnittoptimierung.groupBox_Priority.Enabled = true;
         }
 
 

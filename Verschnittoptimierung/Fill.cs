@@ -334,37 +334,41 @@ namespace Verschnittoptimierung
                 
                 for (int i = 0; i < global.positionsValid.Count; i++)
                 {
-                    /*
-                    // 1. smallest x-value left
-                    if(global.positionsValid[i].edgeLeftUp.x < bestPosition.edgeLeftUp.x)
+                    if(global.Verschnittoptimierung.radioButton_min_xl_y.Checked)
                     {
-                        bestPosition = global.positionsValid[i];
+                        // 1. smallest x-value left
+                        if (global.positionsValid[i].edgeLeftUp.x < bestPosition.edgeLeftUp.x)
+                        {
+                            bestPosition = global.positionsValid[i];
+                        }
+                        // 1.2 if equal and x-value right smaller
+                        if (global.positionsValid[i].edgeLeftUp.x == bestPosition.edgeLeftUp.x &&
+                            global.positionsValid[i].edgeRightDown.x < bestPosition.edgeRightDown.x)
+                        {
+                            bestPosition = global.positionsValid[i];
+                        }
+                        // 1.3 if equal both x and y-value smaller
+                        if (global.positionsValid[i].edgeLeftUp.x == bestPosition.edgeLeftUp.x &&
+                           global.positionsValid[i].edgeRightDown.x == bestPosition.edgeRightDown.x &&
+                           global.positionsValid[i].edgeLeftUp.y < bestPosition.edgeLeftUp.y)
+                        {
+                            bestPosition = global.positionsValid[i];
+                        }
                     }
-                    // 1.2 if equal and x-value right smaller
-                    if (global.positionsValid[i].edgeLeftUp.x == bestPosition.edgeLeftUp.x &&
-                        global.positionsValid[i].edgeRightDown.x < bestPosition.edgeRightDown.x)
+                    
+                    if(global.Verschnittoptimierung.radioButton_min_xr_y.Checked)
                     {
-                        bestPosition = global.positionsValid[i];
-                    }
-                    // 1.3 if equal both x and y-value smaller
-                    if(global.positionsValid[i].edgeLeftUp.x == bestPosition.edgeLeftUp.x &&
-                       global.positionsValid[i].edgeRightDown.x == bestPosition.edgeRightDown.x &&
-                       global.positionsValid[i].edgeLeftUp.y < bestPosition.edgeLeftUp.y)
-                    {
-                        bestPosition = global.positionsValid[i];
-                    }
-                    */
-
-                    // 2. smallest x-value right
-                    if (global.positionsValid[i].edgeRightDown.x < bestPosition.edgeRightDown.x)
-                    {
-                        bestPosition = global.positionsValid[i];
-                    }
-                    // 2.1 if x right equal and y-value smaller
-                    if (global.positionsValid[i].edgeRightDown.x == bestPosition.edgeRightDown.x &&
-                        global.positionsValid[i].edgeLeftUp.y < bestPosition.edgeLeftUp.y)
-                    {
-                        bestPosition = global.positionsValid[i];
+                        // 2. smallest x-value right
+                        if (global.positionsValid[i].edgeRightDown.x < bestPosition.edgeRightDown.x)
+                        {
+                            bestPosition = global.positionsValid[i];
+                        }
+                        // 2.1 if x right equal and y-value smaller
+                        if (global.positionsValid[i].edgeRightDown.x == bestPosition.edgeRightDown.x &&
+                            global.positionsValid[i].edgeLeftUp.y < bestPosition.edgeLeftUp.y)
+                        {
+                            bestPosition = global.positionsValid[i];
+                        }
                     }
                 }
                 global.bestPosition = bestPosition;

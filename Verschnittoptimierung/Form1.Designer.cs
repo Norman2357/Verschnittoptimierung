@@ -98,6 +98,9 @@
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.radioButton_min_xr_y = new System.Windows.Forms.RadioButton();
+            this.radioButton_min_xl_y = new System.Windows.Forms.RadioButton();
+            this.groupBox_Priority = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -111,6 +114,7 @@
             this.display.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox_Priority.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -365,12 +369,14 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Thistle;
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.groupBox_Priority);
             this.groupBox2.Controls.Add(this.groupBox_sortedBy);
             this.groupBox2.Controls.Add(this.groupBox_PlacingStrategy);
             this.groupBox2.Controls.Add(this.groupBox_BoardStrategy);
             this.groupBox2.Location = new System.Drawing.Point(31, 209);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(239, 185);
+            this.groupBox2.Size = new System.Drawing.Size(239, 230);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fill";
@@ -384,7 +390,7 @@
             this.groupBox_sortedBy.Controls.Add(this.radioButton_largestSideInc);
             this.groupBox_sortedBy.Location = new System.Drawing.Point(6, 103);
             this.groupBox_sortedBy.Name = "groupBox_sortedBy";
-            this.groupBox_sortedBy.Size = new System.Drawing.Size(225, 76);
+            this.groupBox_sortedBy.Size = new System.Drawing.Size(225, 63);
             this.groupBox_sortedBy.TabIndex = 3;
             this.groupBox_sortedBy.TabStop = false;
             this.groupBox_sortedBy.Text = "sorted by";
@@ -501,9 +507,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.groupBox3.Location = new System.Drawing.Point(31, 319);
+            this.groupBox3.Location = new System.Drawing.Point(0, 106);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(239, 114);
+            this.groupBox3.Size = new System.Drawing.Size(239, 118);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Local Optimization";
@@ -900,6 +906,39 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // radioButton_min_xr_y
+            // 
+            this.radioButton_min_xr_y.AutoSize = true;
+            this.radioButton_min_xr_y.Location = new System.Drawing.Point(77, 19);
+            this.radioButton_min_xr_y.Name = "radioButton_min_xr_y";
+            this.radioButton_min_xr_y.Size = new System.Drawing.Size(63, 17);
+            this.radioButton_min_xr_y.TabIndex = 1;
+            this.radioButton_min_xr_y.Text = "min xr, y";
+            this.radioButton_min_xr_y.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_min_xl_y
+            // 
+            this.radioButton_min_xl_y.AutoSize = true;
+            this.radioButton_min_xl_y.Checked = true;
+            this.radioButton_min_xl_y.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_min_xl_y.Name = "radioButton_min_xl_y";
+            this.radioButton_min_xl_y.Size = new System.Drawing.Size(62, 17);
+            this.radioButton_min_xl_y.TabIndex = 0;
+            this.radioButton_min_xl_y.TabStop = true;
+            this.radioButton_min_xl_y.Text = "min xl, y";
+            this.radioButton_min_xl_y.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_Priority
+            // 
+            this.groupBox_Priority.Controls.Add(this.radioButton_min_xr_y);
+            this.groupBox_Priority.Controls.Add(this.radioButton_min_xl_y);
+            this.groupBox_Priority.Location = new System.Drawing.Point(6, 168);
+            this.groupBox_Priority.Name = "groupBox_Priority";
+            this.groupBox_Priority.Size = new System.Drawing.Size(225, 43);
+            this.groupBox_Priority.TabIndex = 3;
+            this.groupBox_Priority.TabStop = false;
+            this.groupBox_Priority.Text = "Priority";
+            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -915,7 +954,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox2);
@@ -950,6 +988,8 @@
             this.toolStrip1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox_Priority.ResumeLayout(false);
+            this.groupBox_Priority.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1025,6 +1065,9 @@
         public System.Windows.Forms.RadioButton radioButton_BottomLeftFilling;
         public System.Windows.Forms.RadioButton radioButton_FirstFitFilling;
         public System.Windows.Forms.GroupBox groupBox_BoardStrategy;
+        public System.Windows.Forms.GroupBox groupBox_Priority;
+        public System.Windows.Forms.RadioButton radioButton_min_xr_y;
+        public System.Windows.Forms.RadioButton radioButton_min_xl_y;
     }
 }
 
