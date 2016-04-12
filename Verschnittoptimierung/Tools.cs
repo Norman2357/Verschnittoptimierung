@@ -8,40 +8,42 @@ namespace Verschnittoptimierung
 {
     public class Tools
     {
+        // old version dec
+        /*
         // sorts rects in a rectlist
         // call: QuickSortBySize(rectList, 0, rectList.count)
-        public void QuickSortBySizeRect(List<Rect> rectList, int left, int right)
+        public void QuickSortRectBySizeDec(List<Rect> rectList, int left, int right)
         {
             int pivotIndex = 0;
 
             if(left < right)
             {
-                pivotIndex = PartitionRect(rectList, left, right);
-                QuickSortBySizeRect(rectList, left, pivotIndex - 1);
-                QuickSortBySizeRect(rectList, pivotIndex + 1, right);
+                pivotIndex = PartitionRectDec(rectList, left, right);
+                QuickSortRectBySizeDec(rectList, left, pivotIndex - 1);
+                QuickSortRectBySizeDec(rectList, pivotIndex + 1, right);
             }
         }
 
-        // helper for QuickSortBySizeRect
-        public int PartitionRect(List<Rect> rectList, int left, int right)
+        // helper for QuickSortRectBySizeDec
+        public int PartitionRectDec(List<Rect> rectList, int left, int right)
         {
             int start = left;
             Rect pivot = rectList[start];
             left++;
             right--;
 
-            while(true)
+            while (true)
             {
-                while(left <= right && rectList[left].size >= pivot.size)
+                while (left <= right && rectList[left].size >= pivot.size)
                 {
                     left++;
                 }
-                while(left <= right && rectList[right].size < pivot.size)
+                while (left <= right && rectList[right].size < pivot.size)
                 {
                     right--;
                 }
 
-                if(left > right)
+                if (left > right)
                 {
                     rectList[start] = rectList[left - 1];
                     rectList[left - 1] = pivot;
@@ -54,6 +56,296 @@ namespace Verschnittoptimierung
                 rectList[right] = temp;
             }
         }
+        */
+
+        public void QuickSortRectBySizeInc(int left, int right, List<Rect> rectList)
+        {
+            if (left < right)
+            {
+                int partition = PartitionRectInc(left, right, rectList);
+                QuickSortRectBySizeInc(left, partition - 1, rectList);
+                QuickSortRectBySizeInc(partition + 1, right, rectList);
+            }
+        }
+
+        // helper for QuickSortRectBySizeInc
+        public int PartitionRectInc(int left, int right, List<Rect> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = rectList[right].size;
+
+            do
+            {
+                while (rectList[i].size <= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (rectList[j].size >= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    Rect z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if (rectList[i].size > pivot)
+            {
+                Rect z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+
+        // sorts rects in a rectlist
+        // call: QuickSortBySize(0, rectList.count, rectList)
+        public void QuickSortRectBySizeDec(int left, int right, List<Rect> rectList)
+        {
+            if (left < right)
+            {
+                int partition = PartitionRectDec(left, right, rectList);
+                QuickSortRectBySizeDec(left, partition - 1, rectList);
+                QuickSortRectBySizeDec(partition + 1, right, rectList);
+            }
+        }
+
+        // helper for QuickSortRectBySizeDec
+        public int PartitionRectDec(int left, int right, List<Rect> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = rectList[right].size;
+
+            do
+            {
+                while (rectList[i].size >= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (rectList[j].size <= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    Rect z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if (rectList[i].size < pivot)
+            {
+                Rect z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+
+
+        // sorts rects in a rectlist
+        // call: QuickSortBySize(0, rectList.count, rectList)
+        public void QuickSortRectByLargestSideDec(int left, int right, List<Rect> rectList)
+        {
+            if (left < right)
+            {
+                int partition = PartitionRectLargestSideDec(left, right, rectList);
+                QuickSortRectByLargestSideDec(left, partition - 1, rectList);
+                QuickSortRectByLargestSideDec(partition + 1, right, rectList);
+            }
+        }
+
+        // helper for QuickSortRectBySizeDec
+        public int PartitionRectLargestSideDec(int left, int right, List<Rect> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = (rectList[right].height > rectList[right].width) ? rectList[right].height : rectList[right].width;
+
+            do
+            {
+                while (((rectList[i].height > rectList[i].width) ? rectList[i].height : rectList[i].width) >= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (((rectList[j].height > rectList[j].width) ? rectList[j].height : rectList[j].width) <= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    Rect z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if (((rectList[i].height > rectList[i].width) ? rectList[i].height : rectList[i].width) < pivot)
+            {
+                Rect z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+
+        public void QuickSortRectByLargestSizeInc(int left, int right, List<Rect> rectList)
+        {
+            if (left < right)
+            {
+                int partition = PartitionRectLargestSideInc(left, right, rectList);
+                QuickSortRectByLargestSizeInc(left, partition - 1, rectList);
+                QuickSortRectByLargestSizeInc(partition + 1, right, rectList);
+            }
+        }
+
+        // helper for QuickSortRectBySizeInc
+        public int PartitionRectLargestSideInc(int left, int right, List<Rect> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = (rectList[right].height > rectList[right].width) ? rectList[right].height : rectList[right].width;
+
+            do
+            {
+                while (((rectList[i].height > rectList[i].width) ? rectList[i].height : rectList[i].width) <= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (((rectList[j].height > rectList[j].width) ? rectList[j].height : rectList[j].width) >= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    Rect z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if (((rectList[i].height > rectList[i].width) ? rectList[i].height : rectList[i].width) > pivot)
+            {
+                Rect z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+
+
+
+
+
+
+
+        public void QuickSortTest(int left, int right, List<int> rectList)
+        {
+            if(left < right)
+            {
+                int partition = PartitionTest(left, right, rectList);
+                QuickSortTest(left, partition - 1, rectList);
+                QuickSortTest(partition + 1, right, rectList);
+            }
+        }
+        public void QuickSortTestDec(int left, int right, List<int> rectList)
+        {
+            if (left < right)
+            {
+                int partition = PartitionTestDec(left, right, rectList);
+                QuickSortTestDec(left, partition - 1, rectList);
+                QuickSortTestDec(partition + 1, right, rectList);
+            }
+        }
+
+
+        public int PartitionTest(int left, int right, List<int> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = rectList[right];
+
+            do
+            {
+                while (rectList[i] <= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (rectList[j] >= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    int z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if(rectList[i] > pivot)
+            {
+                int z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+        public int PartitionTestDec(int left, int right, List<int> rectList)
+        {
+            int i = left;
+            int j = right - 1;
+            int pivot = rectList[right];
+
+            do
+            {
+                while (rectList[i] >= pivot && i < right)
+                {
+                    i += 1;
+                }
+                while (rectList[j] <= pivot && j > left)
+                {
+                    j -= 1;
+                }
+                if (i < j)
+                {
+                    int z = rectList[i];
+                    rectList[i] = rectList[j];
+                    rectList[j] = z;
+                }
+            }
+            while (i < j);
+
+            if (rectList[i] < pivot)
+            {
+                int z = rectList[i];
+                rectList[i] = rectList[right];
+                rectList[right] = z;
+            }
+            return i;
+        }
+
+
+
+        
+
+        
 
 
         // sorts boards in a boardlist (except the last board which should stay the collection board)
@@ -185,7 +477,45 @@ namespace Verschnittoptimierung
 
             Show show = new Show(global);
             show.ShowSolution(global.solution);
+            ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
+            classificationNumbers.GetAndShowAllClassificationNumbers();
+            UnlockFillButtons();
         }
+
+        public void LockFillButtons()
+        {
+            Base global = Base.GetInstance();
+            global.Verschnittoptimierung.radioButton_BestFit.Enabled = false;
+            global.Verschnittoptimierung.radioButton_BottomLeftFilling.Enabled = false;
+            global.Verschnittoptimierung.radioButton_FirstFit.Enabled = false;
+            global.Verschnittoptimierung.radioButton_FirstFitFilling.Enabled = false;
+            global.Verschnittoptimierung.radioButton_largestSideDec.Enabled = false;
+            global.Verschnittoptimierung.radioButton_largestSideInc.Enabled = false;
+            global.Verschnittoptimierung.radioButton_sizeDec.Enabled = false;
+            global.Verschnittoptimierung.radioButton_sizeInc.Enabled = false;
+
+            global.Verschnittoptimierung.groupBox_BoardStrategy.Enabled = false;
+            global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = false;
+            global.Verschnittoptimierung.groupBox_sortedBy.Enabled = false;
+        }
+
+        public void UnlockFillButtons()
+        {
+            Base global = Base.GetInstance();
+            global.Verschnittoptimierung.radioButton_BestFit.Enabled = true;
+            global.Verschnittoptimierung.radioButton_BottomLeftFilling.Enabled = true;
+            global.Verschnittoptimierung.radioButton_FirstFit.Enabled = true;
+            global.Verschnittoptimierung.radioButton_FirstFitFilling.Enabled = true;
+            global.Verschnittoptimierung.radioButton_largestSideDec.Enabled = true;
+            global.Verschnittoptimierung.radioButton_largestSideInc.Enabled = true;
+            global.Verschnittoptimierung.radioButton_sizeDec.Enabled = true;
+            global.Verschnittoptimierung.radioButton_sizeInc.Enabled = true;
+
+            global.Verschnittoptimierung.groupBox_BoardStrategy.Enabled = true;
+            global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = true;
+            global.Verschnittoptimierung.groupBox_sortedBy.Enabled = true;
+        }
+
 
     }
 }

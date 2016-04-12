@@ -47,6 +47,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox_sortedBy = new System.Windows.Forms.GroupBox();
+            this.radioButton_sizeDec = new System.Windows.Forms.RadioButton();
+            this.radioButton_largestSideDec = new System.Windows.Forms.RadioButton();
+            this.radioButton_sizeInc = new System.Windows.Forms.RadioButton();
+            this.radioButton_largestSideInc = new System.Windows.Forms.RadioButton();
+            this.groupBox_PlacingStrategy = new System.Windows.Forms.GroupBox();
+            this.radioButton_BottomLeftFilling = new System.Windows.Forms.RadioButton();
+            this.radioButton_FirstFitFilling = new System.Windows.Forms.RadioButton();
+            this.groupBox_BoardStrategy = new System.Windows.Forms.GroupBox();
+            this.radioButton_BestFit = new System.Windows.Forms.RadioButton();
+            this.radioButton_FirstFit = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -93,6 +104,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            this.groupBox_sortedBy.SuspendLayout();
+            this.groupBox_PlacingStrategy.SuspendLayout();
+            this.groupBox_BoardStrategy.SuspendLayout();
             this.display.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -350,20 +365,145 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Thistle;
+            this.groupBox2.Controls.Add(this.groupBox_sortedBy);
+            this.groupBox2.Controls.Add(this.groupBox_PlacingStrategy);
+            this.groupBox2.Controls.Add(this.groupBox_BoardStrategy);
             this.groupBox2.Location = new System.Drawing.Point(31, 209);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(239, 100);
+            this.groupBox2.Size = new System.Drawing.Size(239, 185);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fill";
             this.groupBox2.Visible = false;
             // 
+            // groupBox_sortedBy
+            // 
+            this.groupBox_sortedBy.Controls.Add(this.radioButton_sizeDec);
+            this.groupBox_sortedBy.Controls.Add(this.radioButton_largestSideDec);
+            this.groupBox_sortedBy.Controls.Add(this.radioButton_sizeInc);
+            this.groupBox_sortedBy.Controls.Add(this.radioButton_largestSideInc);
+            this.groupBox_sortedBy.Location = new System.Drawing.Point(6, 103);
+            this.groupBox_sortedBy.Name = "groupBox_sortedBy";
+            this.groupBox_sortedBy.Size = new System.Drawing.Size(225, 76);
+            this.groupBox_sortedBy.TabIndex = 3;
+            this.groupBox_sortedBy.TabStop = false;
+            this.groupBox_sortedBy.Text = "sorted by";
+            // 
+            // radioButton_sizeDec
+            // 
+            this.radioButton_sizeDec.AutoSize = true;
+            this.radioButton_sizeDec.Location = new System.Drawing.Point(128, 42);
+            this.radioButton_sizeDec.Name = "radioButton_sizeDec";
+            this.radioButton_sizeDec.Size = new System.Drawing.Size(67, 17);
+            this.radioButton_sizeDec.TabIndex = 3;
+            this.radioButton_sizeDec.Text = "size dec.";
+            this.radioButton_sizeDec.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_largestSideDec
+            // 
+            this.radioButton_largestSideDec.AutoSize = true;
+            this.radioButton_largestSideDec.Location = new System.Drawing.Point(7, 42);
+            this.radioButton_largestSideDec.Name = "radioButton_largestSideDec";
+            this.radioButton_largestSideDec.Size = new System.Drawing.Size(102, 17);
+            this.radioButton_largestSideDec.TabIndex = 2;
+            this.radioButton_largestSideDec.Text = "largest side dec.";
+            this.radioButton_largestSideDec.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_sizeInc
+            // 
+            this.radioButton_sizeInc.AutoSize = true;
+            this.radioButton_sizeInc.Location = new System.Drawing.Point(128, 19);
+            this.radioButton_sizeInc.Name = "radioButton_sizeInc";
+            this.radioButton_sizeInc.Size = new System.Drawing.Size(63, 17);
+            this.radioButton_sizeInc.TabIndex = 1;
+            this.radioButton_sizeInc.Text = "size inc.";
+            this.radioButton_sizeInc.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_largestSideInc
+            // 
+            this.radioButton_largestSideInc.AutoSize = true;
+            this.radioButton_largestSideInc.Checked = true;
+            this.radioButton_largestSideInc.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_largestSideInc.Name = "radioButton_largestSideInc";
+            this.radioButton_largestSideInc.Size = new System.Drawing.Size(98, 17);
+            this.radioButton_largestSideInc.TabIndex = 0;
+            this.radioButton_largestSideInc.TabStop = true;
+            this.radioButton_largestSideInc.Text = "largest side inc.";
+            this.radioButton_largestSideInc.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_PlacingStrategy
+            // 
+            this.groupBox_PlacingStrategy.Controls.Add(this.radioButton_BottomLeftFilling);
+            this.groupBox_PlacingStrategy.Controls.Add(this.radioButton_FirstFitFilling);
+            this.groupBox_PlacingStrategy.Location = new System.Drawing.Point(6, 61);
+            this.groupBox_PlacingStrategy.Name = "groupBox_PlacingStrategy";
+            this.groupBox_PlacingStrategy.Size = new System.Drawing.Size(225, 43);
+            this.groupBox_PlacingStrategy.TabIndex = 2;
+            this.groupBox_PlacingStrategy.TabStop = false;
+            this.groupBox_PlacingStrategy.Text = "Placing Strategy";
+            // 
+            // radioButton_BottomLeftFilling
+            // 
+            this.radioButton_BottomLeftFilling.AutoSize = true;
+            this.radioButton_BottomLeftFilling.Location = new System.Drawing.Point(102, 19);
+            this.radioButton_BottomLeftFilling.Name = "radioButton_BottomLeftFilling";
+            this.radioButton_BottomLeftFilling.Size = new System.Drawing.Size(44, 17);
+            this.radioButton_BottomLeftFilling.TabIndex = 1;
+            this.radioButton_BottomLeftFilling.Text = "BLF";
+            this.radioButton_BottomLeftFilling.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_FirstFitFilling
+            // 
+            this.radioButton_FirstFitFilling.AutoSize = true;
+            this.radioButton_FirstFitFilling.Checked = true;
+            this.radioButton_FirstFitFilling.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_FirstFitFilling.Name = "radioButton_FirstFitFilling";
+            this.radioButton_FirstFitFilling.Size = new System.Drawing.Size(43, 17);
+            this.radioButton_FirstFitFilling.TabIndex = 0;
+            this.radioButton_FirstFitFilling.TabStop = true;
+            this.radioButton_FirstFitFilling.Text = "FFF";
+            this.radioButton_FirstFitFilling.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_BoardStrategy
+            // 
+            this.groupBox_BoardStrategy.Controls.Add(this.radioButton_BestFit);
+            this.groupBox_BoardStrategy.Controls.Add(this.radioButton_FirstFit);
+            this.groupBox_BoardStrategy.Location = new System.Drawing.Point(6, 19);
+            this.groupBox_BoardStrategy.Name = "groupBox_BoardStrategy";
+            this.groupBox_BoardStrategy.Size = new System.Drawing.Size(225, 43);
+            this.groupBox_BoardStrategy.TabIndex = 1;
+            this.groupBox_BoardStrategy.TabStop = false;
+            this.groupBox_BoardStrategy.Text = "Board Strategy";
+            // 
+            // radioButton_BestFit
+            // 
+            this.radioButton_BestFit.AutoSize = true;
+            this.radioButton_BestFit.Location = new System.Drawing.Point(102, 19);
+            this.radioButton_BestFit.Name = "radioButton_BestFit";
+            this.radioButton_BestFit.Size = new System.Drawing.Size(38, 17);
+            this.radioButton_BestFit.TabIndex = 1;
+            this.radioButton_BestFit.Text = "BF";
+            this.radioButton_BestFit.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_FirstFit
+            // 
+            this.radioButton_FirstFit.AutoSize = true;
+            this.radioButton_FirstFit.Checked = true;
+            this.radioButton_FirstFit.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_FirstFit.Name = "radioButton_FirstFit";
+            this.radioButton_FirstFit.Size = new System.Drawing.Size(37, 17);
+            this.radioButton_FirstFit.TabIndex = 0;
+            this.radioButton_FirstFit.TabStop = true;
+            this.radioButton_FirstFit.Text = "FF";
+            this.radioButton_FirstFit.UseVisualStyleBackColor = true;
+            this.radioButton_FirstFit.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.groupBox3.Location = new System.Drawing.Point(31, 315);
+            this.groupBox3.Location = new System.Drawing.Point(31, 319);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(239, 118);
+            this.groupBox3.Size = new System.Drawing.Size(239, 114);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Local Optimization";
@@ -392,6 +532,7 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Evolutionary Algorithm";
             this.groupBox4.Visible = false;
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
             // display
             // 
@@ -797,6 +938,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox_sortedBy.ResumeLayout(false);
+            this.groupBox_sortedBy.PerformLayout();
+            this.groupBox_PlacingStrategy.ResumeLayout(false);
+            this.groupBox_PlacingStrategy.PerformLayout();
+            this.groupBox_BoardStrategy.ResumeLayout(false);
+            this.groupBox_BoardStrategy.PerformLayout();
             this.display.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -866,6 +1014,17 @@
         public System.Windows.Forms.Label label3;
         public System.ComponentModel.BackgroundWorker backgroundWorker1;
         public System.Windows.Forms.Button buttonReset;
+        public System.Windows.Forms.RadioButton radioButton_FirstFit;
+        public System.Windows.Forms.RadioButton radioButton_BestFit;
+        public System.Windows.Forms.GroupBox groupBox_sortedBy;
+        public System.Windows.Forms.RadioButton radioButton_sizeDec;
+        public System.Windows.Forms.RadioButton radioButton_largestSideDec;
+        public System.Windows.Forms.RadioButton radioButton_sizeInc;
+        public System.Windows.Forms.RadioButton radioButton_largestSideInc;
+        public System.Windows.Forms.GroupBox groupBox_PlacingStrategy;
+        public System.Windows.Forms.RadioButton radioButton_BottomLeftFilling;
+        public System.Windows.Forms.RadioButton radioButton_FirstFitFilling;
+        public System.Windows.Forms.GroupBox groupBox_BoardStrategy;
     }
 }
 

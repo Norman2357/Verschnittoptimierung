@@ -23,8 +23,10 @@ namespace Verschnittoptimierung
             Base global = Base.GetInstance();
             Show show = new Show(global);
 
+            global.Verschnittoptimierung.Output.Text = "";
+
             // for testing only
-            if(global.Verschnittoptimierung.comboBox1.Text.Equals("Create Board(s) + Objects"))
+            if (global.Verschnittoptimierung.comboBox1.Text.Equals("Create Board(s) + Objects"))
             {
 
             }
@@ -98,6 +100,9 @@ namespace Verschnittoptimierung
                     }
                     break;
                 case "Fill":
+                    // lock fill radio buttons
+                    Tools tools = new Tools();
+                    tools.LockFillButtons();
 
                     // get type from what was entered
                     int type = 0;
@@ -172,7 +177,16 @@ namespace Verschnittoptimierung
                         if(selection == 1)
                         {
                             Fill fill = new Fill();
-                            fill.Greedy1();
+                            if(global.Verschnittoptimierung.radioButton_BestFit.Checked)
+                            {
+                                fill.Greedy1();
+                            }
+                            if(global.Verschnittoptimierung.radioButton_FirstFit.Checked)
+                            {
+                                global.Verschnittoptimierung.Output.Text = "@info: \"First Fit\" not yet implemented";
+                                global.runningProcess.existing = false;
+                            }
+
                         }
 
                     }
@@ -180,8 +194,12 @@ namespace Verschnittoptimierung
                     {
                         global.Verschnittoptimierung.Output.Text = "At least one global element is null. Cannot fill.";
                     }
-                    
-                    
+
+                    // unlock fill radio buttons
+                    if(global.runningProcess.existing == false)
+                    {
+                        tools.UnlockFillButtons();
+                    }
 
                     break;
                 case "Local Optimization":

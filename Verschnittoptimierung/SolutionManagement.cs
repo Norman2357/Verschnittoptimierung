@@ -78,7 +78,7 @@ namespace Verschnittoptimierung
 
             // sort the rects in rect list from largest size to smallest size (new version; old version below)
             Tools tools = new Tools();
-            tools.QuickSortBySizeRect(collectionBoard.RectList, 0, collectionBoard.RectList.Count);
+            tools.QuickSortRectBySizeDec(0, collectionBoard.RectList.Count - 1, collectionBoard.RectList);
 
             // old version, new version = using quicksort
             /*
