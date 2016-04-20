@@ -355,7 +355,7 @@ namespace Verschnittoptimierung
                             bestPosition = global.positionsValid[i];
                         }
                     }
-                    
+                     
                     if(global.Verschnittoptimierung.radioButton_min_xr_y.Checked)
                     {
                         // 2. smallest x-value right
