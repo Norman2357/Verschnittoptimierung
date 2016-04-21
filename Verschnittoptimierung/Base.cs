@@ -58,6 +58,10 @@ namespace Verschnittoptimierung
         public List<PopulationElement> populationSmall;
         public List<PopulationElement> populationLarge;
 
+        public int nextStepGreedyEvo;
+        // nr similar to the displayed checkbox description
+        public int selectedGreedy;
+
         private Base()
         {
             this.BoardList = new List<Board>();

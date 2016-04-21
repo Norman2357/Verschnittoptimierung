@@ -177,7 +177,7 @@ namespace Verschnittoptimierung
                             Fill fill = new Fill();
                             if(global.Verschnittoptimierung.radioButton_BestFit.Checked)
                             {
-                                fill.Greedy();
+                                fill.Greedy(false, new Solution());
                             }
                             if(global.Verschnittoptimierung.radioButton_FirstFit.Checked)
                             {

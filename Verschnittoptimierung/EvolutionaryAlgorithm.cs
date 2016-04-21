@@ -36,7 +36,10 @@ namespace Verschnittoptimierung
 
                         Solution solution = tools.CloneSolution(global.solution);
 
-                        
+                        // select random greedy from the selectedGreedies and set its identifier, i.e. "1" for greedy1, in global
+
+                        // execute the greedy
+
                     }
                 }
 

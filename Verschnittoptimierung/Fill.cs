@@ -13,59 +13,103 @@ namespace Verschnittoptimierung
 
         }
 
-        public void Greedy()
+        public Solution Greedy(Boolean evolution, Solution solutionEvo)
         {
             Base global = Base.GetInstance();
-            Solution solution = global.solution;
+            Solution solution;
+            if(evolution)
+            {
+                solution = solutionEvo;
+            }
+            else
+            {
+                solution = global.solution;
+            }
 
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
 
             // preparations
-            global.runningProcess.state = 1;
+            if(!evolution)
+            {
+                global.runningProcess.state = 1;
+            }
             Tools tools = new Tools();
 
             // START one time:
-            if (global.runningProcess.firstStep)
+            if (evolution || global.runningProcess.firstStep)
             {
                 // next rect to pick of the list: the first one (default)
-                global.runningProcess.nextStep = 0;
+                if(!evolution)
+                {
+                    global.runningProcess.nextStep = 0;
+                }
+                else
+                {
+                    global.nextStepGreedyEvo = 0;
+                }
 
                 global.positionsManaged = new List<Position>();
                 global.positionsValid = new List<Position>();
 
-                if(global.Verschnittoptimierung.radioButton_largestSideInc.Checked)
+                if((global.Verschnittoptimierung.radioButton_largestSideInc.Checked && !evolution) ||
+                    (evolution && global.selectedGreedy == 1) ||
+                    (evolution && global.selectedGreedy == 2) ||
+                    (evolution && global.selectedGreedy == 9) ||
+                    (evolution && global.selectedGreedy == 10)
+                    )
                 {
                     // sort rects from min largest side to max largest side
                     tools.QuickSortRectByLargestSizeInc(0,
                         solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1, solution.BoardList[solution.BoardList.Count - 1].RectList);
                 }
-                else if(global.Verschnittoptimierung.radioButton_largestSideDec.Checked)
+                else if((global.Verschnittoptimierung.radioButton_largestSideDec.Checked && !evolution) ||
+                    (evolution && global.selectedGreedy == 3) ||
+                    (evolution && global.selectedGreedy == 4) ||
+                    (evolution && global.selectedGreedy == 11) ||
+                    (evolution && global.selectedGreedy == 12)
+                    )
                 {
                     // sort rects from min largest side to max largest side
                     tools.QuickSortRectByLargestSideDec(0,
                         solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1, solution.BoardList[solution.BoardList.Count - 1].RectList);
                 }
-                else if(global.Verschnittoptimierung.radioButton_sizeInc.Checked)
+                else if((global.Verschnittoptimierung.radioButton_sizeInc.Checked) ||
+                    (evolution && global.selectedGreedy == 5) ||
+                    (evolution && global.selectedGreedy == 6) ||
+                    (evolution && global.selectedGreedy == 13) ||
+                    (evolution && global.selectedGreedy == 14)
+                    )
                 {
                     // sort rects from min size to max size
                     tools.QuickSortRectBySizeInc(0,
                         solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1, solution.BoardList[solution.BoardList.Count - 1].RectList);
                 }
-                else if(global.Verschnittoptimierung.radioButton_sizeDec.Checked)
+                else if((global.Verschnittoptimierung.radioButton_sizeDec.Checked) ||
+                    (evolution && global.selectedGreedy == 7) ||
+                    (evolution && global.selectedGreedy == 8) ||
+                    (evolution && global.selectedGreedy == 15) ||
+                    (evolution && global.selectedGreedy == 16)
+                    )
                 {
                     // sort rects from max size to min size
                     tools.QuickSortRectBySizeDec(0,
                         solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1, solution.BoardList[solution.BoardList.Count - 1].RectList);
                 }
-                
-                global.runningProcess.firstStep = false; 
+                if(!evolution)
+                {
+                    global.runningProcess.firstStep = false;
+                }
             }
             // END one time
 
             // for each rect on collectionBoard
-            for (int i = global.runningProcess.nextStep; i < solution.BoardList[solution.BoardList.Count - 1].RectList.Count;)
+            for (int i = (evolution ? global.nextStepGreedyEvo : global.runningProcess.nextStep);
+                i < solution.BoardList[solution.BoardList.Count - 1].RectList.Count;)
             {
-                global.runningProcess.state = 1;
+                if(!evolution)
+                {
+                    global.runningProcess.state = 1;
+                }
 
                 // sort boards from max free space to least free space
                 List<int> boardNrSorted = tools.SortBoardsBySize(solution.BoardList);
@@ -85,7 +129,10 @@ namespace Verschnittoptimierung
                     {
                         // rect is too large, cannot be placed on any of the boards.
                         // has to remain on the collectionBoard
-                        classificationNumbers.GetAndShowAllClassificationNumbers();
+                        if(!evolution)
+                        {
+                            classificationNumbers.GetAndShowAllClassificationNumbers();
+                        }
                         break;
                     }
 
@@ -119,7 +166,7 @@ namespace Verschnittoptimierung
                         rect.edgeRightDown.x = rect.width;
                         rect.edgeRightDown.y = 0;
 
-                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect);
+                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect, evolution);
                     }
                     else
                     {
@@ -135,7 +182,7 @@ namespace Verschnittoptimierung
                         rect.edgeRightDown.x = rect.width;
                         rect.edgeRightDown.y = 0;
 
-                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect);
+                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect, evolution);
                         // 2. horizontal
                         if (rect.height > rect.width)
                         {
@@ -148,11 +195,11 @@ namespace Verschnittoptimierung
                         rect.edgeRightDown.x = rect.width;
                         rect.edgeRightDown.y = 0;
 
-                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect);
+                        GetValidPositions(solution.BoardList[boardNrSorted[j]].RectList, rect, evolution);
                     }
                     
                     // select the best position of the valid ones
-                    SelectBestPosition();
+                    SelectBestPosition(evolution);
 
                     Boolean rectPlaced = false;
 
@@ -176,52 +223,74 @@ namespace Verschnittoptimierung
                         rectPlaced = true;
                         // show can't be called from here
 
-                        Show show = new Show(global);
-                        show.ShowSolution(global.solution);
-
+                        if(!evolution)
+                        {
+                            Show show = new Show(global);
+                            show.ShowSolution(global.solution);
+                        }
                     }
 
                     // last rect tried?
                     if (solution.BoardList[solution.BoardList.Count - 1].RectList.Count == 0 ||
-                        (solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < global.runningProcess.nextStep)
+                        (solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < (evolution ? global.nextStepGreedyEvo : global.runningProcess.nextStep))
                     {
-                        global.runningProcess.existing = false;
-                        global.runningProcess.state = 0;
-                        classificationNumbers.GetAndShowAllClassificationNumbers();
+                        if(!evolution)
+                        {
+                            global.runningProcess.existing = false;
+                            global.runningProcess.state = 0;
+                            classificationNumbers.GetAndShowAllClassificationNumbers();
+                        }
                         break;
                     }
 
 
                     if (rectPlaced)
                     {
-                        global.runningProcess.state = 0;
-                        classificationNumbers.GetAndShowAllClassificationNumbers();
+                        if(!evolution)
+                        {
+                            global.runningProcess.state = 0;
+                            classificationNumbers.GetAndShowAllClassificationNumbers();
+                        }
                         break;
                     }
                     if (!rectPlaced)
                     {
-                        global.runningProcess.nextStep++;
+                        if(!evolution)
+                        {
+                            global.runningProcess.nextStep++;
+                        }
+                        else
+                        {
+                            global.nextStepGreedyEvo++;
+                        }
                         i++;
 
-                        if ((solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < global.runningProcess.nextStep)
+                        if ((solution.BoardList[solution.BoardList.Count - 1].RectList.Count - 1) < (evolution ? global.nextStepGreedyEvo : global.runningProcess.nextStep))
                         {
-                            global.runningProcess.existing = false;
-                            global.runningProcess.state = 0;
-                            classificationNumbers.GetAndShowAllClassificationNumbers();
+                            if(!evolution)
+                            {
+                                global.runningProcess.existing = false;
+                                global.runningProcess.state = 0;
+                                classificationNumbers.GetAndShowAllClassificationNumbers();
+                            }
                             break;
                         }
                     }
                 }
 
-                if(global.runningProcess.stepType == 0)
+                if(!evolution && global.runningProcess.stepType == 0)
                 {
                     global.runningProcess.state = 0;
                     classificationNumbers.GetAndShowAllClassificationNumbers();
                     break;
                 }
             }
-            global.runningProcess.state = 0;
-            classificationNumbers.GetAndShowAllClassificationNumbers();
+            if(!evolution)
+            {
+                global.runningProcess.state = 0;
+                classificationNumbers.GetAndShowAllClassificationNumbers();
+            }
+            return solution;
         }
 
 
@@ -236,7 +305,7 @@ namespace Verschnittoptimierung
 
         // gets the best position for the rect on the board
         // the rect given to this method does not have to be initialized on 0/0
-        public void GetValidPositions(List<Rect> rectList, Rect rect)
+        public void GetValidPositions(List<Rect> rectList, Rect rect, Boolean evolution)
         {
             // position = position of rect 0/0
             Position position = new Position();
@@ -246,11 +315,11 @@ namespace Verschnittoptimierung
             position.edgeRightDown.y = 0;
             
             // largest part of this method, recursive
-            ManagePosition(rectList, rect, position);
+            ManagePosition(rectList, rect, position, evolution);
         }
 
         // one step for a single position
-        public void ManagePosition(List<Rect> rectList, Rect rect, Position position)
+        public void ManagePosition(List<Rect> rectList, Rect rect, Position position, Boolean evolution)
         {
             Base global = Base.GetInstance();
             // 1.1 position out of borders? (boardHeight<rectY etc.)
@@ -288,7 +357,9 @@ namespace Verschnittoptimierung
             {
                 // 3. add to valid positions
                 global.positionsValid.Add(position);
-                if(global.Verschnittoptimierung.radioButton_FirstFitFilling.Checked)
+                if(!evolution && global.Verschnittoptimierung.radioButton_FirstFitFilling.Checked ||
+                    global.selectedGreedy <= 8
+                    )
                 {
                     return;
                 }
@@ -306,7 +377,7 @@ namespace Verschnittoptimierung
                     float height = position.edgeLeftUp.y - position.edgeRightDown.y;
                     positionUp.edgeLeftUp.y = positionUp.edgeRightDown.y + height;
                     // 2. try again
-                    this.ManagePosition(rectList, rect, positionUp);
+                    this.ManagePosition(rectList, rect, positionUp, evolution);
 
                     // move right and try again
                     // 1. move right
@@ -316,13 +387,13 @@ namespace Verschnittoptimierung
                     float width = position.edgeRightDown.x - position.edgeLeftUp.x;
                     positionRight.edgeRightDown.x = positionRight.edgeLeftUp.x + width;
                     // 2. try again
-                    this.ManagePosition(rectList, rect, positionRight);
+                    this.ManagePosition(rectList, rect, positionRight, evolution);
                 }
             }
         }
 
         // selects the best position out of the ones found
-        public void SelectBestPosition()
+        public void SelectBestPosition(Boolean evolution)
         {
             Position bestPosition;
             Base global = Base.GetInstance();
@@ -332,7 +403,16 @@ namespace Verschnittoptimierung
                 
                 for (int i = 0; i < global.positionsValid.Count; i++)
                 {
-                    if(global.Verschnittoptimierung.radioButton_min_xl_y.Checked)
+                    if(!evolution && global.Verschnittoptimierung.radioButton_min_xl_y.Checked ||
+                    (evolution && global.selectedGreedy == 1) ||
+                    (evolution && global.selectedGreedy == 3) ||
+                    (evolution && global.selectedGreedy == 5) ||
+                    (evolution && global.selectedGreedy == 7) ||
+                    (evolution && global.selectedGreedy == 9) ||
+                    (evolution && global.selectedGreedy == 11) ||
+                    (evolution && global.selectedGreedy == 13) ||
+                    (evolution && global.selectedGreedy == 15)
+                    )
                     {
                         // 1. smallest x-value left
                         if (global.positionsValid[i].edgeLeftUp.x < bestPosition.edgeLeftUp.x)
@@ -354,7 +434,16 @@ namespace Verschnittoptimierung
                         }
                     }
                      
-                    if(global.Verschnittoptimierung.radioButton_min_xr_y.Checked)
+                    if(!evolution && global.Verschnittoptimierung.radioButton_min_xr_y.Checked ||
+                        (evolution && global.selectedGreedy == 2) ||
+                        (evolution && global.selectedGreedy == 4) ||
+                        (evolution && global.selectedGreedy == 6) ||
+                        (evolution && global.selectedGreedy == 8) ||
+                        (evolution && global.selectedGreedy == 10) ||
+                        (evolution && global.selectedGreedy == 12) ||
+                        (evolution && global.selectedGreedy == 14) ||
+                        (evolution && global.selectedGreedy == 16)
+                        )
                     {
                         // 2. smallest x-value right
                         if (global.positionsValid[i].edgeRightDown.x < bestPosition.edgeRightDown.x)

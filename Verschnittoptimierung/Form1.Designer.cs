@@ -541,22 +541,22 @@
             // radioButton_BestFit
             // 
             this.radioButton_BestFit.AutoSize = true;
+            this.radioButton_BestFit.Checked = true;
             this.radioButton_BestFit.Location = new System.Drawing.Point(102, 19);
             this.radioButton_BestFit.Name = "radioButton_BestFit";
             this.radioButton_BestFit.Size = new System.Drawing.Size(38, 17);
             this.radioButton_BestFit.TabIndex = 1;
+            this.radioButton_BestFit.TabStop = true;
             this.radioButton_BestFit.Text = "BF";
             this.radioButton_BestFit.UseVisualStyleBackColor = true;
             // 
             // radioButton_FirstFit
             // 
             this.radioButton_FirstFit.AutoSize = true;
-            this.radioButton_FirstFit.Checked = true;
             this.radioButton_FirstFit.Location = new System.Drawing.Point(7, 19);
             this.radioButton_FirstFit.Name = "radioButton_FirstFit";
             this.radioButton_FirstFit.Size = new System.Drawing.Size(37, 17);
             this.radioButton_FirstFit.TabIndex = 0;
-            this.radioButton_FirstFit.TabStop = true;
             this.radioButton_FirstFit.Text = "FF";
             this.radioButton_FirstFit.UseVisualStyleBackColor = true;
             this.radioButton_FirstFit.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);

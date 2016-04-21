@@ -565,11 +565,11 @@ namespace Verschnittoptimierung
                 board.isCollectionBoard = solution.BoardList[i].isCollectionBoard;
 
                 board.edgeLeftUp = new MyPoint();
-                board.edgeLeftUp.x = solution.BoardList[i].edgeLeftUp.x;
-                board.edgeLeftUp.y = solution.BoardList[i].edgeLeftUp.y;
+                board.edgeLeftUp.x = (solution.BoardList[i].edgeLeftUp != null)? solution.BoardList[i].edgeLeftUp.x : 0;
+                board.edgeLeftUp.y = (solution.BoardList[i].edgeLeftUp != null)? solution.BoardList[i].edgeLeftUp.y : 0;
                 board.edgeRightDown = new MyPoint();
-                board.edgeRightDown.x = solution.BoardList[i].edgeRightDown.x;
-                board.edgeRightDown.y = solution.BoardList[i].edgeRightDown.y;
+                board.edgeRightDown.x = (solution.BoardList[i].edgeRightDown != null) ? solution.BoardList[i].edgeRightDown.x : 0;
+                board.edgeRightDown.y = (solution.BoardList[i].edgeRightDown != null) ? solution.BoardList[i].edgeRightDown.y : 0;
 
                 for (int j = 0; j < solution.BoardList[i].RectList.Count; j++)
                 {
@@ -580,15 +580,14 @@ namespace Verschnittoptimierung
                     rect.size = solution.BoardList[i].RectList[j].size;
 
                     rect.edgeLeftUp = new MyPoint();
-                    rect.edgeLeftUp.x = solution.BoardList[i].RectList[j].edgeLeftUp.x;
-                    rect.edgeLeftUp.y = solution.BoardList[i].RectList[j].edgeLeftUp.y;
+                    rect.edgeLeftUp.x = (solution.BoardList[i].RectList[j].edgeLeftUp != null)? solution.BoardList[i].RectList[j].edgeLeftUp.x : 0;
+                    rect.edgeLeftUp.y = (solution.BoardList[i].RectList[j].edgeLeftUp != null)? solution.BoardList[i].RectList[j].edgeLeftUp.y : 0;
                     rect.edgeRightDown = new MyPoint();
-                    rect.edgeRightDown.x = solution.BoardList[i].RectList[j].edgeRightDown.x;
-                    rect.edgeRightDown.y = solution.BoardList[i].RectList[j].edgeRightDown.y;
+                    rect.edgeRightDown.x = (solution.BoardList[i].RectList[j].edgeRightDown != null)? solution.BoardList[i].RectList[j].edgeRightDown.x : 0;
+                    rect.edgeRightDown.y = (solution.BoardList[i].RectList[j].edgeRightDown != null)? solution.BoardList[i].RectList[j].edgeRightDown.y : 0;
                 }
             }
-
-
+            
             return solutionClone;
         }
 

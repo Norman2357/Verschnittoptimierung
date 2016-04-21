@@ -290,7 +290,7 @@ namespace Verschnittoptimierung
             //this.Output.Text = "test1";
             //test123();
             Fill fill = new Fill();
-            fill.Greedy();
+            fill.Greedy(false, new Solution());
         }
 
         private void test123()
