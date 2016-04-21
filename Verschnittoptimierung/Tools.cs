@@ -480,6 +480,7 @@ namespace Verschnittoptimierung
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
             classificationNumbers.GetAndShowAllClassificationNumbers();
             UnlockFillButtons();
+            UnlockEvAlgButtons();
         }
 
         public void LockFillButtons()
@@ -498,6 +499,8 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = false;
             global.Verschnittoptimierung.groupBox_sortedBy.Enabled = false;
             global.Verschnittoptimierung.groupBox_Priority.Enabled = false;
+
+            global.Verschnittoptimierung.comboBox1.Enabled = false;
         }
 
         public void UnlockFillButtons()
@@ -516,6 +519,221 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_PlacingStrategy.Enabled = true;
             global.Verschnittoptimierung.groupBox_sortedBy.Enabled = true;
             global.Verschnittoptimierung.groupBox_Priority.Enabled = true;
+
+            global.Verschnittoptimierung.comboBox1.Enabled = true;
+        }
+
+        public void LockEvAlgButtons()
+        {
+            Base global = Base.GetInstance();
+
+            global.Verschnittoptimierung.groupBox_EvolAlg_general.Enabled = false;
+            global.Verschnittoptimierung.comboBox1.Enabled = false;
+        }
+
+        public void UnlockEvAlgButtons()
+        {
+            Base global = Base.GetInstance();
+
+            global.Verschnittoptimierung.groupBox_EvolAlg_general.Enabled = true;
+            global.Verschnittoptimierung.comboBox1.Enabled = true;
+        }
+
+
+        public Solution CloneSolution(Solution solution)
+        {
+            Solution solutionClone = new Solution();
+            solutionClone.SolutionID = solution.SolutionID;
+            solutionClone.usedBenchmarkID = solution.usedBenchmarkID;
+            solutionClone.numberOfBoards = solution.numberOfBoards;
+            solutionClone.numberOfRects = solution.numberOfRects;
+            solutionClone.creationTime = solution.creationTime;
+            solutionClone.percentageFilledArea = solution.percentageFilledArea;
+            solutionClone.numberRectsPlaced = solution.numberRectsPlaced;
+            solutionClone.numberRectsLeft = solution.numberRectsLeft;
+            solutionClone.benchmark = solution.benchmark;
+
+            solutionClone.BoardList = new List<Board>();
+
+            for (int i = 0; i < solution.BoardList.Count; i++)
+            {
+                Board board = new Board();
+                board.boardID = solution.BoardList[i].boardID;
+                board.height = solution.BoardList[i].height;
+                board.width = solution.BoardList[i].width;
+                board.size = solution.BoardList[i].size;
+                board.isCollectionBoard = solution.BoardList[i].isCollectionBoard;
+
+                board.edgeLeftUp = new MyPoint();
+                board.edgeLeftUp.x = solution.BoardList[i].edgeLeftUp.x;
+                board.edgeLeftUp.y = solution.BoardList[i].edgeLeftUp.y;
+                board.edgeRightDown = new MyPoint();
+                board.edgeRightDown.x = solution.BoardList[i].edgeRightDown.x;
+                board.edgeRightDown.y = solution.BoardList[i].edgeRightDown.y;
+
+                for (int j = 0; j < solution.BoardList[i].RectList.Count; j++)
+                {
+                    Rect rect = new Rect();
+                    rect.rectID = solution.BoardList[i].RectList[j].rectID;
+                    rect.width = solution.BoardList[i].RectList[j].width;
+                    rect.height = solution.BoardList[i].RectList[j].height;
+                    rect.size = solution.BoardList[i].RectList[j].size;
+
+                    rect.edgeLeftUp = new MyPoint();
+                    rect.edgeLeftUp.x = solution.BoardList[i].RectList[j].edgeLeftUp.x;
+                    rect.edgeLeftUp.y = solution.BoardList[i].RectList[j].edgeLeftUp.y;
+                    rect.edgeRightDown = new MyPoint();
+                    rect.edgeRightDown.x = solution.BoardList[i].RectList[j].edgeRightDown.x;
+                    rect.edgeRightDown.y = solution.BoardList[i].RectList[j].edgeRightDown.y;
+                }
+            }
+
+
+            return solutionClone;
+        }
+
+
+        public int GetNumberSelectedGreedies()
+        {
+            Base global = Base.GetInstance();
+
+            int numberGreedies = 0;
+            if (global.Verschnittoptimierung.checkBox_greedy1.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy2.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy3.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy4.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy5.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy6.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy7.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy8.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy9.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy10.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy11.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy12.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy13.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy14.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy15.Checked == true)
+            {
+                numberGreedies++;
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy16.Checked == true)
+            {
+                numberGreedies++;
+            }
+            return numberGreedies;
+        }
+
+        
+        public void SaveSelectedGreedies()
+        {
+            Base global = Base.GetInstance();
+            
+            if (global.Verschnittoptimierung.checkBox_greedy1.Checked == true)
+            {
+                global.chosenGreedies.Add(1);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy2.Checked == true)
+            {
+                global.chosenGreedies.Add(2);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy3.Checked == true)
+            {
+                global.chosenGreedies.Add(3);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy4.Checked == true)
+            {
+                global.chosenGreedies.Add(4);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy5.Checked == true)
+            {
+                global.chosenGreedies.Add(5);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy6.Checked == true)
+            {
+                global.chosenGreedies.Add(6);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy7.Checked == true)
+            {
+                global.chosenGreedies.Add(7);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy8.Checked == true)
+            {
+                global.chosenGreedies.Add(8);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy9.Checked == true)
+            {
+                global.chosenGreedies.Add(9);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy10.Checked == true)
+            {
+                global.chosenGreedies.Add(10);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy11.Checked == true)
+            {
+                global.chosenGreedies.Add(11);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy12.Checked == true)
+            {
+                global.chosenGreedies.Add(12);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy13.Checked == true)
+            {
+                global.chosenGreedies.Add(13);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy14.Checked == true)
+            {
+                global.chosenGreedies.Add(14);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy15.Checked == true)
+            {
+                global.chosenGreedies.Add(15);
+            }
+            if (global.Verschnittoptimierung.checkBox_greedy16.Checked == true)
+            {
+                global.chosenGreedies.Add(16);
+            }
         }
 
 

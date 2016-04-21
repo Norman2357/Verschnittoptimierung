@@ -107,6 +107,7 @@ namespace Verschnittoptimierung
             solution.percentageFilledArea = 0;
 
             global.solution = solution;
+            global.emptySolution = tools.CloneSolution(solution);
 
             // cl values
             ClassificationNumbers clNumbers = new ClassificationNumbers(global);

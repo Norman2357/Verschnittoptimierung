@@ -47,6 +47,17 @@ namespace Verschnittoptimierung
         public Position bestPosition;
         public Boolean bestPositionSet;
 
+        // for Ev.Alg
+        public Solution emptySolution;
+        public List<int> chosenGreedies;
+        public int mue;
+        public int multForLambda;
+        public int lambda;
+        public int mutationRate;
+
+        public List<PopulationElement> populationSmall;
+        public List<PopulationElement> populationLarge;
+
         private Base()
         {
             this.BoardList = new List<Board>();
@@ -58,6 +69,10 @@ namespace Verschnittoptimierung
             this.positionsManaged = new List<Position>();
             this.positionsValid = new List<Position>();
             this.bestPositionSet = false;
+
+            this.chosenGreedies = new List<int>();
+            this.populationSmall = new List<PopulationElement>();
+            this.populationLarge = new List<PopulationElement>();
         }
 
         public static Base GetInstance()

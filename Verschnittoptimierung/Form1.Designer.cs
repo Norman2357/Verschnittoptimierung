@@ -45,8 +45,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.boardWidth = new System.Windows.Forms.NumericUpDown();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox_Priority = new System.Windows.Forms.GroupBox();
+            this.radioButton_min_xr_y = new System.Windows.Forms.RadioButton();
+            this.radioButton_min_xl_y = new System.Windows.Forms.RadioButton();
             this.groupBox_sortedBy = new System.Windows.Forms.GroupBox();
             this.radioButton_sizeDec = new System.Windows.Forms.RadioButton();
             this.radioButton_largestSideDec = new System.Windows.Forms.RadioButton();
@@ -58,9 +60,35 @@
             this.groupBox_BoardStrategy = new System.Windows.Forms.GroupBox();
             this.radioButton_BestFit = new System.Windows.Forms.RadioButton();
             this.radioButton_FirstFit = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox_EvolAlg_general = new System.Windows.Forms.GroupBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.evAlg_mue = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.evAlg_mult = new System.Windows.Forms.NumericUpDown();
+            this.label30 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.checkBox_greedy16 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy15 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy14 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy13 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy12 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy11 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy10 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy9 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy8 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy7 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy6 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy5 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy4 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy3 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedy1 = new System.Windows.Forms.CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.evAlg_mutationRate = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
             this.display = new System.Windows.Forms.Panel();
             this.buttonInDisplay = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -80,6 +108,11 @@
             this.fitnessValue = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -98,9 +131,6 @@
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.radioButton_min_xr_y = new System.Windows.Forms.RadioButton();
-            this.radioButton_min_xl_y = new System.Windows.Forms.RadioButton();
-            this.groupBox_Priority = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -108,13 +138,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox_Priority.SuspendLayout();
             this.groupBox_sortedBy.SuspendLayout();
             this.groupBox_PlacingStrategy.SuspendLayout();
             this.groupBox_BoardStrategy.SuspendLayout();
+            this.groupBox_EvolAlg_general.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mult)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mutationRate)).BeginInit();
             this.display.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox_Priority.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -134,7 +172,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.boardWidth);
-            this.groupBox1.Location = new System.Drawing.Point(31, 62);
+            this.groupBox1.Location = new System.Drawing.Point(31, 50);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(282, 140);
             this.groupBox1.TabIndex = 1;
@@ -346,41 +384,60 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button2.Location = new System.Drawing.Point(0, 208);
+            this.button2.Location = new System.Drawing.Point(0, 187);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 71);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
-            // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button3.Location = new System.Drawing.Point(0, 315);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(31, 118);
-            this.button3.TabIndex = 3;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Thistle;
-            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.groupBox_Priority);
             this.groupBox2.Controls.Add(this.groupBox_sortedBy);
             this.groupBox2.Controls.Add(this.groupBox_PlacingStrategy);
             this.groupBox2.Controls.Add(this.groupBox_BoardStrategy);
-            this.groupBox2.Location = new System.Drawing.Point(31, 209);
+            this.groupBox2.Location = new System.Drawing.Point(31, 188);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(239, 230);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fill";
             this.groupBox2.Visible = false;
+            // 
+            // groupBox_Priority
+            // 
+            this.groupBox_Priority.Controls.Add(this.radioButton_min_xr_y);
+            this.groupBox_Priority.Controls.Add(this.radioButton_min_xl_y);
+            this.groupBox_Priority.Location = new System.Drawing.Point(6, 168);
+            this.groupBox_Priority.Name = "groupBox_Priority";
+            this.groupBox_Priority.Size = new System.Drawing.Size(225, 43);
+            this.groupBox_Priority.TabIndex = 3;
+            this.groupBox_Priority.TabStop = false;
+            this.groupBox_Priority.Text = "Priority";
+            // 
+            // radioButton_min_xr_y
+            // 
+            this.radioButton_min_xr_y.AutoSize = true;
+            this.radioButton_min_xr_y.Location = new System.Drawing.Point(77, 19);
+            this.radioButton_min_xr_y.Name = "radioButton_min_xr_y";
+            this.radioButton_min_xr_y.Size = new System.Drawing.Size(63, 17);
+            this.radioButton_min_xr_y.TabIndex = 1;
+            this.radioButton_min_xr_y.Text = "min xr, y";
+            this.radioButton_min_xr_y.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_min_xl_y
+            // 
+            this.radioButton_min_xl_y.AutoSize = true;
+            this.radioButton_min_xl_y.Checked = true;
+            this.radioButton_min_xl_y.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_min_xl_y.Name = "radioButton_min_xl_y";
+            this.radioButton_min_xl_y.Size = new System.Drawing.Size(62, 17);
+            this.radioButton_min_xl_y.TabIndex = 0;
+            this.radioButton_min_xl_y.TabStop = true;
+            this.radioButton_min_xl_y.Text = "min xl, y";
+            this.radioButton_min_xl_y.UseVisualStyleBackColor = true;
             // 
             // groupBox_sortedBy
             // 
@@ -504,41 +561,345 @@
             this.radioButton_FirstFit.UseVisualStyleBackColor = true;
             this.radioButton_FirstFit.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.groupBox3.Location = new System.Drawing.Point(0, 106);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(239, 118);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Local Optimization";
-            this.groupBox3.Visible = false;
-            // 
             // button4
             // 
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button4.Location = new System.Drawing.Point(0, 445);
+            this.button4.Location = new System.Drawing.Point(0, 268);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(31, 146);
             this.button4.TabIndex = 4;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // groupBox4
+            // groupBox_EvolAlg_general
             // 
-            this.groupBox4.BackColor = System.Drawing.Color.PaleGreen;
-            this.groupBox4.Location = new System.Drawing.Point(31, 445);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(239, 128);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Evolutionary Algorithm";
-            this.groupBox4.Visible = false;
-            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            this.groupBox_EvolAlg_general.BackColor = System.Drawing.Color.PaleGreen;
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox9);
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox8);
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox7);
+            this.groupBox_EvolAlg_general.Location = new System.Drawing.Point(31, 268);
+            this.groupBox_EvolAlg_general.Name = "groupBox_EvolAlg_general";
+            this.groupBox_EvolAlg_general.Size = new System.Drawing.Size(305, 320);
+            this.groupBox_EvolAlg_general.TabIndex = 5;
+            this.groupBox_EvolAlg_general.TabStop = false;
+            this.groupBox_EvolAlg_general.Text = "Evolutionary Algorithm - Bombing Algorithm";
+            this.groupBox_EvolAlg_general.Visible = false;
+            this.groupBox_EvolAlg_general.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label29);
+            this.groupBox9.Controls.Add(this.evAlg_mue);
+            this.groupBox9.Controls.Add(this.label31);
+            this.groupBox9.Controls.Add(this.evAlg_mult);
+            this.groupBox9.Controls.Add(this.label30);
+            this.groupBox9.Location = new System.Drawing.Point(10, 23);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(224, 48);
+            this.groupBox9.TabIndex = 33;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "(µ+λ)-selection";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(150, 24);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(65, 13);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "(µ * mult = λ)";
+            // 
+            // evAlg_mue
+            // 
+            this.evAlg_mue.Location = new System.Drawing.Point(22, 22);
+            this.evAlg_mue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.evAlg_mue.Name = "evAlg_mue";
+            this.evAlg_mue.Size = new System.Drawing.Size(43, 20);
+            this.evAlg_mue.TabIndex = 6;
+            this.evAlg_mue.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 22);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(13, 13);
+            this.label31.TabIndex = 5;
+            this.label31.Text = "µ";
+            // 
+            // evAlg_mult
+            // 
+            this.evAlg_mult.Location = new System.Drawing.Point(104, 22);
+            this.evAlg_mult.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.evAlg_mult.Name = "evAlg_mult";
+            this.evAlg_mult.Size = new System.Drawing.Size(43, 20);
+            this.evAlg_mult.TabIndex = 8;
+            this.evAlg_mult.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(75, 24);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(26, 13);
+            this.label30.TabIndex = 7;
+            this.label30.Text = "mult";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.checkBox_greedy16);
+            this.groupBox8.Controls.Add(this.checkBox_greedy15);
+            this.groupBox8.Controls.Add(this.checkBox_greedy14);
+            this.groupBox8.Controls.Add(this.checkBox_greedy13);
+            this.groupBox8.Controls.Add(this.checkBox_greedy12);
+            this.groupBox8.Controls.Add(this.checkBox_greedy11);
+            this.groupBox8.Controls.Add(this.checkBox_greedy10);
+            this.groupBox8.Controls.Add(this.checkBox_greedy9);
+            this.groupBox8.Controls.Add(this.checkBox_greedy8);
+            this.groupBox8.Controls.Add(this.checkBox_greedy7);
+            this.groupBox8.Controls.Add(this.checkBox_greedy6);
+            this.groupBox8.Controls.Add(this.checkBox_greedy5);
+            this.groupBox8.Controls.Add(this.checkBox_greedy4);
+            this.groupBox8.Controls.Add(this.checkBox_greedy3);
+            this.groupBox8.Controls.Add(this.checkBox_greedy2);
+            this.groupBox8.Controls.Add(this.checkBox_greedy1);
+            this.groupBox8.Location = new System.Drawing.Point(9, 124);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(290, 189);
+            this.groupBox8.TabIndex = 33;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Greedy Processes";
+            // 
+            // checkBox_greedy16
+            // 
+            this.checkBox_greedy16.AutoSize = true;
+            this.checkBox_greedy16.Location = new System.Drawing.Point(152, 170);
+            this.checkBox_greedy16.Name = "checkBox_greedy16";
+            this.checkBox_greedy16.Size = new System.Drawing.Size(131, 17);
+            this.checkBox_greedy16.TabIndex = 25;
+            this.checkBox_greedy16.Text = "16 BF-BLF-sd-min xr, y";
+            this.checkBox_greedy16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy15
+            // 
+            this.checkBox_greedy15.AutoSize = true;
+            this.checkBox_greedy15.Location = new System.Drawing.Point(152, 150);
+            this.checkBox_greedy15.Name = "checkBox_greedy15";
+            this.checkBox_greedy15.Size = new System.Drawing.Size(130, 17);
+            this.checkBox_greedy15.TabIndex = 24;
+            this.checkBox_greedy15.Text = "15 BF-BLF-sd-min xl, y";
+            this.checkBox_greedy15.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy14
+            // 
+            this.checkBox_greedy14.AutoSize = true;
+            this.checkBox_greedy14.Location = new System.Drawing.Point(152, 127);
+            this.checkBox_greedy14.Name = "checkBox_greedy14";
+            this.checkBox_greedy14.Size = new System.Drawing.Size(127, 17);
+            this.checkBox_greedy14.TabIndex = 23;
+            this.checkBox_greedy14.Text = "14 BF-BLF-si-min xr, y";
+            this.checkBox_greedy14.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy13
+            // 
+            this.checkBox_greedy13.AutoSize = true;
+            this.checkBox_greedy13.Location = new System.Drawing.Point(152, 105);
+            this.checkBox_greedy13.Name = "checkBox_greedy13";
+            this.checkBox_greedy13.Size = new System.Drawing.Size(126, 17);
+            this.checkBox_greedy13.TabIndex = 22;
+            this.checkBox_greedy13.Text = "13 BF-BLF-si-min xl, y";
+            this.checkBox_greedy13.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy12
+            // 
+            this.checkBox_greedy12.AutoSize = true;
+            this.checkBox_greedy12.Location = new System.Drawing.Point(152, 82);
+            this.checkBox_greedy12.Name = "checkBox_greedy12";
+            this.checkBox_greedy12.Size = new System.Drawing.Size(133, 17);
+            this.checkBox_greedy12.TabIndex = 21;
+            this.checkBox_greedy12.Text = "12 BF-BLF-lsd-min xr, y";
+            this.checkBox_greedy12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy11
+            // 
+            this.checkBox_greedy11.AutoSize = true;
+            this.checkBox_greedy11.Location = new System.Drawing.Point(152, 62);
+            this.checkBox_greedy11.Name = "checkBox_greedy11";
+            this.checkBox_greedy11.Size = new System.Drawing.Size(132, 17);
+            this.checkBox_greedy11.TabIndex = 20;
+            this.checkBox_greedy11.Text = "11 BF-BLF-lsd-min xl, y";
+            this.checkBox_greedy11.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy10
+            // 
+            this.checkBox_greedy10.AutoSize = true;
+            this.checkBox_greedy10.Location = new System.Drawing.Point(152, 39);
+            this.checkBox_greedy10.Name = "checkBox_greedy10";
+            this.checkBox_greedy10.Size = new System.Drawing.Size(129, 17);
+            this.checkBox_greedy10.TabIndex = 19;
+            this.checkBox_greedy10.Text = "10 BF-BLF-lsi-min xr, y";
+            this.checkBox_greedy10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy9
+            // 
+            this.checkBox_greedy9.AutoSize = true;
+            this.checkBox_greedy9.Location = new System.Drawing.Point(152, 17);
+            this.checkBox_greedy9.Name = "checkBox_greedy9";
+            this.checkBox_greedy9.Size = new System.Drawing.Size(128, 17);
+            this.checkBox_greedy9.TabIndex = 18;
+            this.checkBox_greedy9.Text = "  9 BF-BLF-lsi-min xl, y";
+            this.checkBox_greedy9.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy8
+            // 
+            this.checkBox_greedy8.AutoSize = true;
+            this.checkBox_greedy8.Location = new System.Drawing.Point(3, 170);
+            this.checkBox_greedy8.Name = "checkBox_greedy8";
+            this.checkBox_greedy8.Size = new System.Drawing.Size(124, 17);
+            this.checkBox_greedy8.TabIndex = 17;
+            this.checkBox_greedy8.Text = "8 BF-FFF-sd-min xr, y";
+            this.checkBox_greedy8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy7
+            // 
+            this.checkBox_greedy7.AutoSize = true;
+            this.checkBox_greedy7.Location = new System.Drawing.Point(3, 150);
+            this.checkBox_greedy7.Name = "checkBox_greedy7";
+            this.checkBox_greedy7.Size = new System.Drawing.Size(123, 17);
+            this.checkBox_greedy7.TabIndex = 16;
+            this.checkBox_greedy7.Text = "7 BF-FFF-sd-min xl, y";
+            this.checkBox_greedy7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy6
+            // 
+            this.checkBox_greedy6.AutoSize = true;
+            this.checkBox_greedy6.Location = new System.Drawing.Point(3, 127);
+            this.checkBox_greedy6.Name = "checkBox_greedy6";
+            this.checkBox_greedy6.Size = new System.Drawing.Size(120, 17);
+            this.checkBox_greedy6.TabIndex = 15;
+            this.checkBox_greedy6.Text = "6 BF-FFF-si-min xr, y";
+            this.checkBox_greedy6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy5
+            // 
+            this.checkBox_greedy5.AutoSize = true;
+            this.checkBox_greedy5.Location = new System.Drawing.Point(3, 105);
+            this.checkBox_greedy5.Name = "checkBox_greedy5";
+            this.checkBox_greedy5.Size = new System.Drawing.Size(119, 17);
+            this.checkBox_greedy5.TabIndex = 14;
+            this.checkBox_greedy5.Text = "5 BF-FFF-si-min xl, y";
+            this.checkBox_greedy5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy4
+            // 
+            this.checkBox_greedy4.AutoSize = true;
+            this.checkBox_greedy4.Location = new System.Drawing.Point(3, 82);
+            this.checkBox_greedy4.Name = "checkBox_greedy4";
+            this.checkBox_greedy4.Size = new System.Drawing.Size(126, 17);
+            this.checkBox_greedy4.TabIndex = 13;
+            this.checkBox_greedy4.Text = "4 BF-FFF-lsd-min xr, y";
+            this.checkBox_greedy4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy3
+            // 
+            this.checkBox_greedy3.AutoSize = true;
+            this.checkBox_greedy3.Location = new System.Drawing.Point(3, 62);
+            this.checkBox_greedy3.Name = "checkBox_greedy3";
+            this.checkBox_greedy3.Size = new System.Drawing.Size(125, 17);
+            this.checkBox_greedy3.TabIndex = 12;
+            this.checkBox_greedy3.Text = "3 BF-FFF-lsd-min xl, y";
+            this.checkBox_greedy3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy2
+            // 
+            this.checkBox_greedy2.AutoSize = true;
+            this.checkBox_greedy2.Location = new System.Drawing.Point(3, 39);
+            this.checkBox_greedy2.Name = "checkBox_greedy2";
+            this.checkBox_greedy2.Size = new System.Drawing.Size(122, 17);
+            this.checkBox_greedy2.TabIndex = 11;
+            this.checkBox_greedy2.Text = "2 BF-FFF-lsi-min xr, y";
+            this.checkBox_greedy2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedy1
+            // 
+            this.checkBox_greedy1.AutoSize = true;
+            this.checkBox_greedy1.Location = new System.Drawing.Point(3, 17);
+            this.checkBox_greedy1.Name = "checkBox_greedy1";
+            this.checkBox_greedy1.Size = new System.Drawing.Size(121, 17);
+            this.checkBox_greedy1.TabIndex = 10;
+            this.checkBox_greedy1.Text = "1 BF-FFF-lsi-min xl, y";
+            this.checkBox_greedy1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.evAlg_mutationRate);
+            this.groupBox7.Controls.Add(this.label26);
+            this.groupBox7.Location = new System.Drawing.Point(9, 73);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(224, 48);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Mutation";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(204, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(15, 13);
+            this.label21.TabIndex = 32;
+            this.label21.Text = "%";
+            // 
+            // evAlg_mutationRate
+            // 
+            this.evAlg_mutationRate.Location = new System.Drawing.Point(160, 19);
+            this.evAlg_mutationRate.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.evAlg_mutationRate.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.evAlg_mutationRate.Name = "evAlg_mutationRate";
+            this.evAlg_mutationRate.Size = new System.Drawing.Size(43, 20);
+            this.evAlg_mutationRate.TabIndex = 3;
+            this.evAlg_mutationRate.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(7, 21);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(155, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "mutation rate (for each solution)";
             // 
             // display
             // 
@@ -568,7 +929,7 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button1.Location = new System.Drawing.Point(0, 62);
+            this.button1.Location = new System.Drawing.Point(0, 50);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(31, 127);
             this.button1.TabIndex = 0;
@@ -581,7 +942,6 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Create Benchmark",
             "Fill",
-            "Local Optimization",
             "Evolutionary Algorithm"});
             this.comboBox1.Location = new System.Drawing.Point(44, 635);
             this.comboBox1.Name = "comboBox1";
@@ -723,6 +1083,7 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox5.Controls.Add(this.groupBox6);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.textBox5);
@@ -745,6 +1106,55 @@
             this.groupBox5.Text = "Results Details";
             this.groupBox5.Visible = false;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.label16);
+            this.groupBox6.Location = new System.Drawing.Point(11, 206);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(225, 338);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Evolution";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(103, 23);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(21, 20);
+            this.textBox2.TabIndex = 35;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(23, 23);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(13, 13);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "µ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(42, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(21, 20);
+            this.textBox1.TabIndex = 34;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(85, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(12, 13);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "λ";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -757,7 +1167,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(218, 225);
+            this.label19.Location = new System.Drawing.Point(218, 136);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(15, 13);
             this.label19.TabIndex = 30;
@@ -767,7 +1177,7 @@
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(191, 222);
+            this.textBox5.Location = new System.Drawing.Point(191, 133);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(21, 20);
             this.textBox5.TabIndex = 29;
@@ -775,7 +1185,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(91, 224);
+            this.label24.Location = new System.Drawing.Point(91, 135);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(44, 13);
             this.label24.TabIndex = 28;
@@ -785,9 +1195,9 @@
             // 
             this.textBox11.BackColor = System.Drawing.SystemColors.ControlLight;
             this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(136, 222);
+            this.textBox11.Location = new System.Drawing.Point(136, 133);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(36, 20);
+            this.textBox11.Size = new System.Drawing.Size(49, 20);
             this.textBox11.TabIndex = 27;
             // 
             // cl_objectsPlaced
@@ -847,7 +1257,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 225);
+            this.label20.Location = new System.Drawing.Point(16, 136);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 13);
             this.label20.TabIndex = 12;
@@ -906,45 +1316,14 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // radioButton_min_xr_y
-            // 
-            this.radioButton_min_xr_y.AutoSize = true;
-            this.radioButton_min_xr_y.Location = new System.Drawing.Point(77, 19);
-            this.radioButton_min_xr_y.Name = "radioButton_min_xr_y";
-            this.radioButton_min_xr_y.Size = new System.Drawing.Size(63, 17);
-            this.radioButton_min_xr_y.TabIndex = 1;
-            this.radioButton_min_xr_y.Text = "min xr, y";
-            this.radioButton_min_xr_y.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_min_xl_y
-            // 
-            this.radioButton_min_xl_y.AutoSize = true;
-            this.radioButton_min_xl_y.Checked = true;
-            this.radioButton_min_xl_y.Location = new System.Drawing.Point(7, 19);
-            this.radioButton_min_xl_y.Name = "radioButton_min_xl_y";
-            this.radioButton_min_xl_y.Size = new System.Drawing.Size(62, 17);
-            this.radioButton_min_xl_y.TabIndex = 0;
-            this.radioButton_min_xl_y.TabStop = true;
-            this.radioButton_min_xl_y.Text = "min xl, y";
-            this.radioButton_min_xl_y.UseVisualStyleBackColor = true;
-            // 
-            // groupBox_Priority
-            // 
-            this.groupBox_Priority.Controls.Add(this.radioButton_min_xr_y);
-            this.groupBox_Priority.Controls.Add(this.radioButton_min_xl_y);
-            this.groupBox_Priority.Location = new System.Drawing.Point(6, 168);
-            this.groupBox_Priority.Name = "groupBox_Priority";
-            this.groupBox_Priority.Size = new System.Drawing.Size(225, 43);
-            this.groupBox_Priority.TabIndex = 3;
-            this.groupBox_Priority.TabStop = false;
-            this.groupBox_Priority.Text = "Priority";
-            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.groupBox_EvolAlg_general);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonSelectView);
             this.Controls.Add(this.Output);
@@ -955,10 +1334,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonQuickStep);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.ButtonSingleStep);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button4);
@@ -977,19 +1353,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.boardHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardWidth)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox_Priority.ResumeLayout(false);
+            this.groupBox_Priority.PerformLayout();
             this.groupBox_sortedBy.ResumeLayout(false);
             this.groupBox_sortedBy.PerformLayout();
             this.groupBox_PlacingStrategy.ResumeLayout(false);
             this.groupBox_PlacingStrategy.PerformLayout();
             this.groupBox_BoardStrategy.ResumeLayout(false);
             this.groupBox_BoardStrategy.PerformLayout();
+            this.groupBox_EvolAlg_general.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mult)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_mutationRate)).EndInit();
             this.display.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox_Priority.ResumeLayout(false);
-            this.groupBox_Priority.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -998,11 +1386,9 @@
         #endregion
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button3;
         public System.Windows.Forms.GroupBox groupBox2;
-        public System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.Button button4;
-        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.GroupBox groupBox_EvolAlg_general;
         public System.Windows.Forms.Panel display;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.ComboBox comboBox1;
@@ -1068,6 +1454,38 @@
         public System.Windows.Forms.GroupBox groupBox_Priority;
         public System.Windows.Forms.RadioButton radioButton_min_xr_y;
         public System.Windows.Forms.RadioButton radioButton_min_xl_y;
+        public System.Windows.Forms.GroupBox groupBox6;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.Label label17;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label label16;
+        public System.Windows.Forms.GroupBox groupBox8;
+        public System.Windows.Forms.CheckBox checkBox_greedy16;
+        public System.Windows.Forms.CheckBox checkBox_greedy15;
+        public System.Windows.Forms.CheckBox checkBox_greedy14;
+        public System.Windows.Forms.CheckBox checkBox_greedy13;
+        public System.Windows.Forms.CheckBox checkBox_greedy12;
+        public System.Windows.Forms.CheckBox checkBox_greedy11;
+        public System.Windows.Forms.CheckBox checkBox_greedy10;
+        public System.Windows.Forms.CheckBox checkBox_greedy9;
+        public System.Windows.Forms.CheckBox checkBox_greedy8;
+        public System.Windows.Forms.CheckBox checkBox_greedy7;
+        public System.Windows.Forms.CheckBox checkBox_greedy6;
+        public System.Windows.Forms.CheckBox checkBox_greedy5;
+        public System.Windows.Forms.CheckBox checkBox_greedy4;
+        public System.Windows.Forms.CheckBox checkBox_greedy3;
+        public System.Windows.Forms.CheckBox checkBox_greedy2;
+        public System.Windows.Forms.CheckBox checkBox_greedy1;
+        public System.Windows.Forms.GroupBox groupBox7;
+        public System.Windows.Forms.Label label21;
+        public System.Windows.Forms.NumericUpDown evAlg_mutationRate;
+        public System.Windows.Forms.Label label26;
+        public System.Windows.Forms.GroupBox groupBox9;
+        public System.Windows.Forms.Label label29;
+        public System.Windows.Forms.NumericUpDown evAlg_mue;
+        public System.Windows.Forms.Label label31;
+        public System.Windows.Forms.NumericUpDown evAlg_mult;
+        public System.Windows.Forms.Label label30;
     }
 }
 

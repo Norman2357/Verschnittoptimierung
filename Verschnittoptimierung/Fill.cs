@@ -13,7 +13,7 @@ namespace Verschnittoptimierung
 
         }
 
-        public void Greedy1()
+        public void Greedy()
         {
             Base global = Base.GetInstance();
             Solution solution = global.solution;
@@ -218,16 +218,14 @@ namespace Verschnittoptimierung
                     global.runningProcess.state = 0;
                     classificationNumbers.GetAndShowAllClassificationNumbers();
                     break;
-                    /*
-                    // auto reset event
-                    global.runningProcess.state = 0;
-                    global.runningProcess.autoResetEvent.WaitOne();
-                    */
                 }
             }
             global.runningProcess.state = 0;
             classificationNumbers.GetAndShowAllClassificationNumbers();
         }
+
+
+
 
 
 

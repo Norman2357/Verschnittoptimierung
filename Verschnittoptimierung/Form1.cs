@@ -85,8 +85,7 @@ namespace Verschnittoptimierung
             else
             {
                 groupBox2.Hide();
-                groupBox3.Hide();
-                groupBox4.Hide();
+                groupBox_EvolAlg_general.Hide();
                 groupBox1.Show();
             }
         }
@@ -105,39 +104,24 @@ namespace Verschnittoptimierung
             else
             {
                 groupBox1.Hide();
-                groupBox3.Hide();
-                groupBox4.Hide();
+                groupBox_EvolAlg_general.Hide();
                 groupBox2.Show();
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (groupBox3.Visible == true)
-            {
-                groupBox3.Hide();
-            }
-            else
-            {
-                groupBox1.Hide();
-                groupBox2.Hide();
-                groupBox4.Hide();
-                groupBox3.Show();
-            }
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (groupBox4.Visible == true)
+            if (groupBox_EvolAlg_general.Visible == true)
             {
-                groupBox4.Hide();
+                groupBox_EvolAlg_general.Hide();
             }
             else
             {
                 groupBox1.Hide();
                 groupBox2.Hide();
-                groupBox3.Hide();
-                groupBox4.Show();
+                groupBox_EvolAlg_general.Show();
             }
         }
 
@@ -306,7 +290,7 @@ namespace Verschnittoptimierung
             //this.Output.Text = "test1";
             //test123();
             Fill fill = new Fill();
-            fill.Greedy1();
+            fill.Greedy();
         }
 
         private void test123()
@@ -351,6 +335,11 @@ namespace Verschnittoptimierung
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click_1(object sender, EventArgs e)
         {
 
         }

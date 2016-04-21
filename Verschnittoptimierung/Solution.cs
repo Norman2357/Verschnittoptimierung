@@ -30,5 +30,7 @@ namespace Verschnittoptimierung
             BoardList = new List<Board>();
             percentageFilledArea = 0;
         }
+
+        
     }
 }
