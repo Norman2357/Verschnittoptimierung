@@ -209,48 +209,9 @@ namespace Verschnittoptimierung
                     global.mue = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mue.Value);
                     global.multForLambda = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mult.Value);
                     global.lambda = global.mue * global.multForLambda;
-                    global.mutationRate = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mutationRate.Value);
+                    global.mutationRate = (float)global.Verschnittoptimierung.evAlg_mutationRate.Value;
                     tools.SaveSelectedGreedies();
-
                     
-                    // check if no process exists, create one
-                    if (global.runningProcess.existing == false)
-                    {
-                        global.runningProcess.type = 1;
-
-                        global.runningProcess.existing = true;
-                        global.runningProcess.state = 0;
-                        // 0 = single step, 1 = all remaining steps
-                        global.runningProcess.stepType = stepType;
-                        global.runningProcess.firstStep = true;
-                        
-                    }
-                    // if a process exists, but of another process type
-                    else if (global.runningProcess.existing == true && global.runningProcess.type != 1)
-                    {
-                        global.Verschnittoptimierung.Output.Text = "Another process is already running. Please complete this process first.";
-                        break;
-                    }
-
-                    // if a process exists of the same type
-                    else if (global.runningProcess.existing == true && global.runningProcess.type == 1)
-                    {
-                        // check if the process is running or waiting
-                        // if waiting, do another step or all steps
-                        if (global.runningProcess.state == 0)
-                        {
-                            // set params and reactivate process
-                            // single step or all steps
-                            global.runningProcess.stepType = stepType;
-                        }
-                        // if running
-                        else if (global.runningProcess.state == 1)
-                        {
-                            global.Verschnittoptimierung.Output.Text = "The process is already running. Please wait.";
-                            break;
-                        }
-                    }
-
                     
 
                     // 1. verification
@@ -267,21 +228,62 @@ namespace Verschnittoptimierung
                         }
                         // check parameters entered at evolutionary algorithm
                         int numberGreedies = tools.GetNumberSelectedGreedies();
-                        if (!(numberGreedies > 2))
+                        if (!(numberGreedies > 2) || (numberGreedies < global.mue) || numberGreedies < global.multForLambda)
                         {
                             global.Verschnittoptimierung.Output.Text = "You need to select more greedy procedures.";
                             tools.UnlockEvAlgButtons();
                             break;
                         }
+                        if (global.mutationRate > (global.emptySolution.BoardList.Count - 1))
+                        {
+                            global.Verschnittoptimierung.Output.Text = "The mutation rate cannot be larger than the number of boards.";
+                            tools.UnlockEvAlgButtons();
+                            break;
+                        }
 
-                        show.ShowSolution(global.solution);
+                        // check if no process exists, create one
+                        if (global.runningProcess.existing == false)
+                        {
+                            global.runningProcess.type = 1;
+
+                            global.runningProcess.existing = true;
+                            global.runningProcess.state = 0;
+                            // 0 = single step, 1 = all remaining steps
+                            global.runningProcess.stepType = stepType;
+                            global.runningProcess.firstStep = true;
+
+                        }
+                        // if a process exists, but of another process type
+                        else if (global.runningProcess.existing == true && global.runningProcess.type != 1)
+                        {
+                            global.Verschnittoptimierung.Output.Text = "Another process is already running. Please complete this process first.";
+                            break;
+                        }
+
+                        // if a process exists of the same type
+                        else if (global.runningProcess.existing == true && global.runningProcess.type == 1)
+                        {
+                            // check if the process is running or waiting
+                            // if waiting, do another step or all steps
+                            if (global.runningProcess.state == 0)
+                            {
+                                // set params and reactivate process
+                                // single step or all steps
+                                global.runningProcess.stepType = stepType;
+                            }
+                            // if running
+                            else if (global.runningProcess.state == 1)
+                            {
+                                global.Verschnittoptimierung.Output.Text = "The process is already running. Please wait.";
+                                break;
+                            }
+                        }
+
                         
+
                         // 2. execute
-
-                        
-
-                        
-
+                        EvolutionaryAlgorithm evolutionaryAlgorithm = new EvolutionaryAlgorithm();
+                        evolutionaryAlgorithm.BombingAlgorithm();
                     }
                     else
                     {

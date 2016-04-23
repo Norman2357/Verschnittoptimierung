@@ -86,7 +86,6 @@
             this.checkBox_greedy2 = new System.Windows.Forms.CheckBox();
             this.checkBox_greedy1 = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.evAlg_mutationRate = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
             this.display = new System.Windows.Forms.Panel();
@@ -851,7 +850,6 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.label21);
             this.groupBox7.Controls.Add(this.evAlg_mutationRate);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Location = new System.Drawing.Point(9, 73);
@@ -861,36 +859,28 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Mutation";
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(204, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(15, 13);
-            this.label21.TabIndex = 32;
-            this.label21.Text = "%";
-            // 
             // evAlg_mutationRate
             // 
+            this.evAlg_mutationRate.DecimalPlaces = 2;
+            this.evAlg_mutationRate.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
             this.evAlg_mutationRate.Location = new System.Drawing.Point(160, 19);
             this.evAlg_mutationRate.Maximum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.evAlg_mutationRate.Minimum = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
             this.evAlg_mutationRate.Name = "evAlg_mutationRate";
-            this.evAlg_mutationRate.Size = new System.Drawing.Size(43, 20);
+            this.evAlg_mutationRate.Size = new System.Drawing.Size(53, 20);
             this.evAlg_mutationRate.TabIndex = 3;
             this.evAlg_mutationRate.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
-            0});
+            65536});
             // 
             // label26
             // 
@@ -1477,7 +1467,6 @@
         public System.Windows.Forms.CheckBox checkBox_greedy2;
         public System.Windows.Forms.CheckBox checkBox_greedy1;
         public System.Windows.Forms.GroupBox groupBox7;
-        public System.Windows.Forms.Label label21;
         public System.Windows.Forms.NumericUpDown evAlg_mutationRate;
         public System.Windows.Forms.Label label26;
         public System.Windows.Forms.GroupBox groupBox9;

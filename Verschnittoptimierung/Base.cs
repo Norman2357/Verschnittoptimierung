@@ -53,10 +53,11 @@ namespace Verschnittoptimierung
         public int mue;
         public int multForLambda;
         public int lambda;
-        public int mutationRate;
+        public float mutationRate;
 
         public List<PopulationElement> populationSmall;
         public List<PopulationElement> populationLarge;
+        public PopulationElement bestPopulationElement;
 
         public int nextStepGreedyEvo;
         // nr similar to the displayed checkbox description

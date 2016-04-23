@@ -585,7 +585,10 @@ namespace Verschnittoptimierung
                     rect.edgeRightDown = new MyPoint();
                     rect.edgeRightDown.x = (solution.BoardList[i].RectList[j].edgeRightDown != null)? solution.BoardList[i].RectList[j].edgeRightDown.x : 0;
                     rect.edgeRightDown.y = (solution.BoardList[i].RectList[j].edgeRightDown != null)? solution.BoardList[i].RectList[j].edgeRightDown.y : 0;
+
+                    board.RectList.Add(rect);
                 }
+                solutionClone.BoardList.Add(board);
             }
             
             return solutionClone;
@@ -668,6 +671,7 @@ namespace Verschnittoptimierung
         public void SaveSelectedGreedies()
         {
             Base global = Base.GetInstance();
+            global.chosenGreedies = new List<int>();
             
             if (global.Verschnittoptimierung.checkBox_greedy1.Checked == true)
             {
@@ -733,6 +737,27 @@ namespace Verschnittoptimierung
             {
                 global.chosenGreedies.Add(16);
             }
+        }
+
+
+        public int CalculateFitness(Solution solution)
+        {
+            int fitness = 0;
+            for (int i = 0; i < solution.BoardList[solution.BoardList.Count - 1].RectList.Count; i++)
+            {
+                fitness += solution.BoardList[solution.BoardList.Count - 1].RectList[i].size;
+            }
+            return fitness;
+        }
+
+        public List<int> CloneList(List<int> inputList)
+        {
+            List<int> outputList = new List<int>();
+            for(int i = 0; i < inputList.Count; i++)
+            {
+                outputList.Add(inputList[i]);
+            }
+            return outputList;
         }
 
 

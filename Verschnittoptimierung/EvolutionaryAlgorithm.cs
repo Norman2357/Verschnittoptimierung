@@ -23,32 +23,233 @@ namespace Verschnittoptimierung
 
             // change "true" to an abort requirement, for example "best solution better than 95%"
             // best solution = global.solution (is set after each step/evolutionary step)
-            while (true)
+            int rim = 100;
+            while (rim > 0)
             {
+                Random rand = new Random();
                 // creating a basic population
-                if(global.runningProcess.firstStep)
+                if (global.runningProcess.firstStep)
                 {
                     global.populationSmall = new List<PopulationElement>();
+                    List<int> greediesForRand = tools.CloneList(global.chosenGreedies);
                     
                     for(int i = 0; i < global.mue; i++)
                     {
                         PopulationElement element = new PopulationElement();
 
-                        Solution solution = tools.CloneSolution(global.solution);
+                        Solution solution = tools.CloneSolution(global.emptySolution);
 
                         // select random greedy from the selectedGreedies and set its identifier, i.e. "1" for greedy1, in global
-
+                        int selectedGreedyPosition = rand.Next(0, greediesForRand.Count);
+                        int selectedGreedy = greediesForRand[selectedGreedyPosition];
+                        greediesForRand.RemoveAt(selectedGreedyPosition);
+                        global.selectedGreedy = selectedGreedy;
+                        
                         // execute the greedy
+                        Fill fill = new Fill();
+                        element.solution = fill.Greedy(true, solution);
+                        element.fitnessValue = tools.CalculateFitness(element.solution);
+                        global.populationSmall.Add(element);
+                    }
+                    EndStepBombingAlgorithm();
+                    global.runningProcess.firstStep = false;
 
+                    if (global.runningProcess.stepType == 0)
+                    {
+                        global.runningProcess.state = 0;
+                        break;
                     }
                 }
 
+                // creating a new population (lambda)
+                for(int i = 0; i < global.populationSmall.Count; i ++)
+                {
+                    // clone the population element's solution
+                    Solution newSolutionBase = tools.CloneSolution(global.populationSmall[i].solution);
 
+                    // create a ranking of the boards of this solution
+                    List<int> rankedBoards = CreateBoardRanking(newSolutionBase);
 
+                    // remove rects according to the mutation rate
+                    float mutationRate = global.mutationRate;
+                    while(mutationRate >= 1)
+                    {
+                        // remove all rects from the worst board and add to collectionBoard
+                            // while worst board isn't empty
+                        while(newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.Count > 0)
+                        {
+                            Rect rectToRemove = newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList[0];
+                            newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.RemoveAt(0);
+                            newSolutionBase.BoardList[newSolutionBase.BoardList.Count - 1].RectList.Add(rectToRemove);
+                        }
+                        // remove board which was emptied from the ranked boards (so that the new last element is the weakest board again)
+                        rankedBoards.RemoveAt(rankedBoards.Count - 1);
+                        mutationRate -= 1;
+                    }
+                    if(mutationRate > 0)
+                    {
+                        // calculate how many have to be removed
+                        int nrRectsOnBoard = newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.Count;
+                        int numbersToRemove = Convert.ToInt32(Math.Floor(nrRectsOnBoard * mutationRate));
+                        // remove the rects left to remove (starting from the last added rect)
+                        while(numbersToRemove > 0)
+                        {
+                            Rect rectToRemove = newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList[
+                            newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.Count - 1];
+                            newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.RemoveAt(
+                                newSolutionBase.BoardList[rankedBoards[rankedBoards.Count - 1]].RectList.Count - 1);
+                            newSolutionBase.BoardList[newSolutionBase.BoardList.Count - 1].RectList.Add(rectToRemove);
+                            numbersToRemove--;
+                        }
+                    }
+                    
+                    // fill with a random greedy from the selectedGreedies list
+                    // and add to large population
 
+                    for (int j = 0; j < global.multForLambda; j++)
+                    {
+                        Solution newSolution = tools.CloneSolution(newSolutionBase);
 
+                        List<int> greediesForRand = tools.CloneList(global.chosenGreedies);
 
+                        // select random greedy from the selectedGreedies and set its identifier, i.e. "1" for greedy1, in global
+                        int selectedGreedyPosition = rand.Next(0, greediesForRand.Count);
+                        int selectedGreedy = greediesForRand[selectedGreedyPosition];
+                        greediesForRand.RemoveAt(selectedGreedyPosition);
+                        global.selectedGreedy = selectedGreedy;
+
+                        // execute the greedy
+                        PopulationElement element = new PopulationElement();
+                        Fill fill = new Fill();
+                        element.solution = fill.Greedy(true, newSolution);
+                        element.fitnessValue = tools.CalculateFitness(element.solution);
+                        global.populationLarge.Add(element);
+                    }
+                }
+                // old (small) population still existing, new (large) population (lambda) created
+                // -> end step if singleStep
+                EndStepBombingAlgorithm();
+
+                if(global.runningProcess.stepType == 0)
+                {
+                    global.runningProcess.state = 0;
+                    rim--;
+                    break;
+                }
+
+                rim--;
+                global.runningProcess.state = 0;
+                global.solutionStatus = 4;
+                global.runningProcess.existing = false;
             }
         }
+
+        
+        // selects the best element of the small and the big population together and sets global.solution to it's solution
+        // then removes the best element
+        public PopulationElement SelectBestElement(Boolean delete)
+        {
+            Base global = Base.GetInstance();
+            PopulationElement bestElement = global.populationSmall[0];
+            Boolean bestFoundInSmall = true;
+            int positionBestFound = 0;
+
+            for(int i = 0; i < global.populationSmall.Count; i++)
+            {
+                if(global.populationSmall[i].fitnessValue < bestElement.fitnessValue)
+                {
+                    bestElement = global.populationSmall[i];
+                    bestFoundInSmall = true;
+                    positionBestFound = i;
+                }
+            }
+            for(int i = 0; i < global.populationLarge.Count; i++)
+            {
+                if(global.populationLarge[i].fitnessValue < bestElement.fitnessValue)
+                {
+                    bestElement = global.populationLarge[i];
+                    bestFoundInSmall = false;
+                    positionBestFound = i;
+                }
+            }
+            if(delete && bestFoundInSmall)
+            {
+                global.populationSmall.RemoveAt(positionBestFound);
+            }
+            if(delete && !bestFoundInSmall)
+            {
+                global.populationLarge.RemoveAt(positionBestFound);
+            }
+            return (bestElement);
+        }
+
+        // selects best mue elements for the new population
+        public List<PopulationElement> SelectBestXElements()
+        {
+            Base global = Base.GetInstance();
+            List<PopulationElement> bestList = new List<PopulationElement>();
+            for(int i = 0; i < global.mue; i++)
+            {
+                bestList.Add(SelectBestElement(true));
+            }
+            return bestList;
+        }
+
+        // used after the first step and after each regular step
+        public void EndStepBombingAlgorithm()
+        {
+            Base global = Base.GetInstance();
+            // set new population and delete the rest
+            global.populationSmall = SelectBestXElements();
+            global.populationLarge = new List<PopulationElement>();
+            // set best population element of the new population
+            global.bestPopulationElement = SelectBestElement(false);
+            global.solution = global.bestPopulationElement.solution;
+            ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
+            classificationNumbers.GetAndShowAllClassificationNumbers();
+            Show show = new Show(global);
+            show.ShowSolution(global.solution);
+        }
+
+        public double CalculateFilledPercentageBoard(Board board)
+        {
+            int filledArea = 0;
+            for(int i = 0; i < board.RectList.Count; i++)
+            {
+                filledArea += board.RectList[i].size;
+            }
+            return (Convert.ToDouble(filledArea) / Convert.ToDouble(board.size));
+        }
+
+        public List<int> CreateBoardRanking(Solution solution)
+        {
+            // list to be sorted from best to worst filled percentage
+            List<int> rankedList = new List<int>();
+            // list with index of each board
+            List<int> listAllBoards = new List<int>();
+            for(int i = 0; i < solution.BoardList.Count - 1; i++)
+            {
+                listAllBoards.Add(i);
+            }
+            while(listAllBoards.Count > 0)
+            {
+                int bestIndex = 0;
+                int bestIndexSolution = listAllBoards[bestIndex];
+                double bestValue = CalculateFilledPercentageBoard(solution.BoardList[0]);
+                for (int i = 0; i < listAllBoards.Count; i++)
+                {
+                    if(CalculateFilledPercentageBoard(solution.BoardList[listAllBoards[i]]) > bestValue)
+                    {
+                        bestIndex = i;
+                        bestIndexSolution = listAllBoards[bestIndex];
+                        bestValue = CalculateFilledPercentageBoard(solution.BoardList[listAllBoards[i]]);
+                    }
+                }
+                rankedList.Add(bestIndexSolution);
+                listAllBoards.RemoveAt(bestIndex);
+            }
+            return (rankedList);
+        }
+
     }
 }
