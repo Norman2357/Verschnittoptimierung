@@ -62,6 +62,10 @@
             this.radioButton_FirstFit = new System.Windows.Forms.RadioButton();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox_EvolAlg_general = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkBox_greedyTournamentProceduresOnly = new System.Windows.Forms.CheckBox();
+            this.checkBox_greedyTournamentPopulation = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label29 = new System.Windows.Forms.Label();
             this.evAlg_mue = new System.Windows.Forms.NumericUpDown();
@@ -69,6 +73,7 @@
             this.evAlg_mult = new System.Windows.Forms.NumericUpDown();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.button_greedySelectAll = new System.Windows.Forms.Button();
             this.checkBox_greedy16 = new System.Windows.Forms.CheckBox();
             this.checkBox_greedy15 = new System.Windows.Forms.CheckBox();
             this.checkBox_greedy14 = new System.Windows.Forms.CheckBox();
@@ -142,6 +147,7 @@
             this.groupBox_PlacingStrategy.SuspendLayout();
             this.groupBox_BoardStrategy.SuspendLayout();
             this.groupBox_EvolAlg_general.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.evAlg_mue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.evAlg_mult)).BeginInit();
@@ -576,17 +582,59 @@
             // groupBox_EvolAlg_general
             // 
             this.groupBox_EvolAlg_general.BackColor = System.Drawing.Color.PaleGreen;
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox3);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox9);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox8);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox7);
             this.groupBox_EvolAlg_general.Location = new System.Drawing.Point(31, 268);
             this.groupBox_EvolAlg_general.Name = "groupBox_EvolAlg_general";
-            this.groupBox_EvolAlg_general.Size = new System.Drawing.Size(305, 320);
+            this.groupBox_EvolAlg_general.Size = new System.Drawing.Size(396, 320);
             this.groupBox_EvolAlg_general.TabIndex = 5;
             this.groupBox_EvolAlg_general.TabStop = false;
             this.groupBox_EvolAlg_general.Text = "Evolutionary Algorithm - Bombing Algorithm";
             this.groupBox_EvolAlg_general.Visible = false;
             this.groupBox_EvolAlg_general.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.checkBox_greedyTournamentProceduresOnly);
+            this.groupBox3.Controls.Add(this.checkBox_greedyTournamentPopulation);
+            this.groupBox3.Location = new System.Drawing.Point(237, 23);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(153, 98);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tournament";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(30, 65);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 13);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "procedures only";
+            // 
+            // checkBox_greedyTournamentProceduresOnly
+            // 
+            this.checkBox_greedyTournamentProceduresOnly.AutoSize = true;
+            this.checkBox_greedyTournamentProceduresOnly.Location = new System.Drawing.Point(13, 46);
+            this.checkBox_greedyTournamentProceduresOnly.Name = "checkBox_greedyTournamentProceduresOnly";
+            this.checkBox_greedyTournamentProceduresOnly.Size = new System.Drawing.Size(114, 17);
+            this.checkBox_greedyTournamentProceduresOnly.TabIndex = 1;
+            this.checkBox_greedyTournamentProceduresOnly.Text = "tournament greedy";
+            this.checkBox_greedyTournamentProceduresOnly.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_greedyTournamentPopulation
+            // 
+            this.checkBox_greedyTournamentPopulation.AutoSize = true;
+            this.checkBox_greedyTournamentPopulation.Location = new System.Drawing.Point(13, 22);
+            this.checkBox_greedyTournamentPopulation.Name = "checkBox_greedyTournamentPopulation";
+            this.checkBox_greedyTournamentPopulation.Size = new System.Drawing.Size(131, 17);
+            this.checkBox_greedyTournamentPopulation.TabIndex = 0;
+            this.checkBox_greedyTournamentPopulation.Text = "tournament population";
+            this.checkBox_greedyTournamentPopulation.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -597,7 +645,7 @@
             this.groupBox9.Controls.Add(this.label30);
             this.groupBox9.Location = new System.Drawing.Point(10, 23);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(224, 48);
+            this.groupBox9.Size = new System.Drawing.Size(223, 48);
             this.groupBox9.TabIndex = 33;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "(µ+λ)-selection";
@@ -665,6 +713,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.button_greedySelectAll);
             this.groupBox8.Controls.Add(this.checkBox_greedy16);
             this.groupBox8.Controls.Add(this.checkBox_greedy15);
             this.groupBox8.Controls.Add(this.checkBox_greedy14);
@@ -683,10 +732,20 @@
             this.groupBox8.Controls.Add(this.checkBox_greedy1);
             this.groupBox8.Location = new System.Drawing.Point(9, 124);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(290, 189);
+            this.groupBox8.Size = new System.Drawing.Size(381, 189);
             this.groupBox8.TabIndex = 33;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Greedy Processes";
+            // 
+            // button_greedySelectAll
+            // 
+            this.button_greedySelectAll.Location = new System.Drawing.Point(297, 17);
+            this.button_greedySelectAll.Name = "button_greedySelectAll";
+            this.button_greedySelectAll.Size = new System.Drawing.Size(75, 23);
+            this.button_greedySelectAll.TabIndex = 26;
+            this.button_greedySelectAll.Text = "select all";
+            this.button_greedySelectAll.UseVisualStyleBackColor = true;
+            this.button_greedySelectAll.Click += new System.EventHandler(this.button_greedySelectAll_Click);
             // 
             // checkBox_greedy16
             // 
@@ -1352,6 +1411,8 @@
             this.groupBox_BoardStrategy.ResumeLayout(false);
             this.groupBox_BoardStrategy.PerformLayout();
             this.groupBox_EvolAlg_general.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.evAlg_mue)).EndInit();
@@ -1475,6 +1536,11 @@
         public System.Windows.Forms.Label label31;
         public System.Windows.Forms.NumericUpDown evAlg_mult;
         public System.Windows.Forms.Label label30;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.Label label14;
+        public System.Windows.Forms.CheckBox checkBox_greedyTournamentProceduresOnly;
+        public System.Windows.Forms.CheckBox checkBox_greedyTournamentPopulation;
+        public System.Windows.Forms.Button button_greedySelectAll;
     }
 }
 

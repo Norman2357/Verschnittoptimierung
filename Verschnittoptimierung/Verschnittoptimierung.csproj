@@ -105,6 +105,7 @@
     <Compile Include="SerializableBenchmark.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Show.cs" />
+    <Compile Include="SingleTournamentResult.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="SolutionManagement.cs" />
     <Compile Include="StepExecution.cs" />

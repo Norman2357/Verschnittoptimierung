@@ -211,7 +211,8 @@ namespace Verschnittoptimierung
                     global.lambda = global.mue * global.multForLambda;
                     global.mutationRate = (float)global.Verschnittoptimierung.evAlg_mutationRate.Value;
                     tools.SaveSelectedGreedies();
-                    
+                    global.tournamentPopulation = global.Verschnittoptimierung.checkBox_greedyTournamentPopulation.Checked;
+                    global.tournamentGreediesOnly = global.Verschnittoptimierung.checkBox_greedyTournamentProceduresOnly.Checked;
                     
 
                     // 1. verification

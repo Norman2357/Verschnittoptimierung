@@ -343,5 +343,49 @@ namespace Verschnittoptimierung
         {
 
         }
+
+        private void button_greedySelectAll_Click(object sender, EventArgs e)
+        {
+            if(button_greedySelectAll.Text.Equals("select all"))
+            {
+                checkBox_greedy1.Checked = true;
+                checkBox_greedy2.Checked = true;
+                checkBox_greedy3.Checked = true;
+                checkBox_greedy4.Checked = true;
+                checkBox_greedy5.Checked = true;
+                checkBox_greedy6.Checked = true;
+                checkBox_greedy7.Checked = true;
+                checkBox_greedy8.Checked = true;
+                checkBox_greedy9.Checked = true;
+                checkBox_greedy10.Checked = true;
+                checkBox_greedy11.Checked = true;
+                checkBox_greedy12.Checked = true;
+                checkBox_greedy13.Checked = true;
+                checkBox_greedy14.Checked = true;
+                checkBox_greedy15.Checked = true;
+                checkBox_greedy16.Checked = true;
+                button_greedySelectAll.Text = "unselect all";
+            }
+            else
+            {
+                checkBox_greedy1.Checked = false;
+                checkBox_greedy2.Checked = false;
+                checkBox_greedy3.Checked = false;
+                checkBox_greedy4.Checked = false;
+                checkBox_greedy5.Checked = false;
+                checkBox_greedy6.Checked = false;
+                checkBox_greedy7.Checked = false;
+                checkBox_greedy8.Checked = false;
+                checkBox_greedy9.Checked = false;
+                checkBox_greedy10.Checked = false;
+                checkBox_greedy11.Checked = false;
+                checkBox_greedy12.Checked = false;
+                checkBox_greedy13.Checked = false;
+                checkBox_greedy14.Checked = false;
+                checkBox_greedy15.Checked = false;
+                checkBox_greedy16.Checked = false;
+                button_greedySelectAll.Text = "select all";
+            }
+        }
     }
 }

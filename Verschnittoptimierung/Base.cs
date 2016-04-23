@@ -66,6 +66,13 @@ namespace Verschnittoptimierung
         // bonus
         public int changeCounter;
 
+        public Random random;
+
+        public Boolean tournamentPopulation;
+        public Boolean tournamentGreediesOnly;
+
+        public List<int> tournamentGreedyMethods;
+
         private Base()
         {
             this.BoardList = new List<Board>();
@@ -83,6 +90,10 @@ namespace Verschnittoptimierung
             this.populationLarge = new List<PopulationElement>();
             
             this.changeCounter = 0;
+            this.random = new Random();
+            this.tournamentPopulation = false;
+            this.tournamentGreediesOnly = false;
+            this.tournamentGreedyMethods = new List<int>();
         }
 
         public static Base GetInstance()

@@ -27,13 +27,28 @@ namespace Verschnittoptimierung
             int rim = 100;
             while (rim > 0 && global.changeCounter < 10)
             {
-                Random rand = new Random();
                 // creating a basic population
                 if (global.runningProcess.firstStep)
                 {
                     global.changeCounter = 0;
                     global.populationSmall = new List<PopulationElement>();
-                    List<int> greediesForRand = tools.CloneList(global.chosenGreedies);
+                    List<int> greediesForRand = new List<int>();
+                    if (!global.tournamentPopulation)
+                    {
+                        greediesForRand = tools.CloneList(global.chosenGreedies);
+                    }
+                    else
+                    {
+                        greediesForRand = GetTournamentGreedies(global.mue);
+                    }
+
+                    // set tournament methods too
+                    if(global.tournamentGreediesOnly)
+                    {
+                        global.tournamentGreedyMethods = new List<int>();
+                        int number = (global.mue > global.multForLambda) ? global.multForLambda : global.multForLambda;
+                        global.tournamentGreedyMethods = GetTournamentGreedies(number);
+                    }
                     
                     for(int i = 0; i < global.mue; i++)
                     {
@@ -42,7 +57,7 @@ namespace Verschnittoptimierung
                         Solution solution = tools.CloneSolution(global.emptySolution);
 
                         // select random greedy from the selectedGreedies and set its identifier, i.e. "1" for greedy1, in global
-                        int selectedGreedyPosition = rand.Next(0, greediesForRand.Count);
+                        int selectedGreedyPosition = global.random.Next(0, greediesForRand.Count);
                         int selectedGreedy = greediesForRand[selectedGreedyPosition];
                         greediesForRand.RemoveAt(selectedGreedyPosition);
                         global.selectedGreedy = selectedGreedy;
@@ -112,10 +127,19 @@ namespace Verschnittoptimierung
                     {
                         Solution newSolution = tools.CloneSolution(newSolutionBase);
 
-                        List<int> greediesForRand = tools.CloneList(global.chosenGreedies);
+                        List<int> greediesForRand = new List<int>();
+
+                        if (!global.tournamentGreediesOnly)
+                        {
+                            greediesForRand = tools.CloneList(global.chosenGreedies);
+                        }
+                        else
+                        {
+                            greediesForRand = tools.CloneList(global.tournamentGreedyMethods);
+                        }
 
                         // select random greedy from the selectedGreedies and set its identifier, i.e. "1" for greedy1, in global
-                        int selectedGreedyPosition = rand.Next(0, greediesForRand.Count);
+                        int selectedGreedyPosition = global.random.Next(0, greediesForRand.Count);
                         int selectedGreedy = greediesForRand[selectedGreedyPosition];
                         greediesForRand.RemoveAt(selectedGreedyPosition);
                         global.selectedGreedy = selectedGreedy;
@@ -142,6 +166,8 @@ namespace Verschnittoptimierung
                 rim--;
                 global.runningProcess.state = 0;
                 global.solutionStatus = 4;
+                global.tournamentGreediesOnly = false;
+                global.tournamentPopulation = false;
                 global.runningProcess.existing = false;
             }
         }
@@ -264,6 +290,53 @@ namespace Verschnittoptimierung
             }
             return (rankedList);
         }
+
+        // gets the best 'number's of tournament greedies
+        // number has to be smaller than 16 or 16 (no effect)
+        public List<int> GetTournamentGreedies(int number)
+        {
+            Base global = Base.GetInstance();
+            List <SingleTournamentResult> singleTournamentResults = new List<SingleTournamentResult>();
+            Tools tools = new Tools();
+
+            for(int i = 1; i <= 16; i++)
+            {
+                global.selectedGreedy = i;
+                SingleTournamentResult singleTournamentResult = new SingleTournamentResult();
+                singleTournamentResult.greedyNr = i;
+
+                Fill fill = new Fill();
+                Solution solutionEmpty = tools.CloneSolution(global.emptySolution);
+                Solution solution = fill.Greedy(true, solutionEmpty);
+                int fitnessValue = tools.CalculateFitness(solution);
+                singleTournamentResult.fitnessValue = fitnessValue;
+
+                singleTournamentResults.Add(singleTournamentResult);
+            }
+            global.selectedGreedy = 0;
+
+            List<int> winners = new List<int>();
+
+            for(int i = 0; i < number; i++)
+            {
+                int bestIndex = 0;
+                int bestGreedyNr = singleTournamentResults[0].greedyNr;
+                int bestFitnessValue = singleTournamentResults[0].fitnessValue;
+                for(int j = 0; j < singleTournamentResults.Count; j++)
+                {
+                    if(singleTournamentResults[j].fitnessValue < bestFitnessValue)
+                    {
+                        bestIndex = j;
+                        bestGreedyNr = singleTournamentResults[j].greedyNr;
+                        bestFitnessValue = singleTournamentResults[j].fitnessValue;
+                    }
+                }
+                winners.Add(bestGreedyNr);
+                singleTournamentResults.RemoveAt(bestIndex);
+            }
+            return winners;
+        }
+
 
     }
 }
