@@ -63,6 +63,9 @@ namespace Verschnittoptimierung
         // nr similar to the displayed checkbox description
         public int selectedGreedy;
 
+        // bonus
+        public int changeCounter;
+
         private Base()
         {
             this.BoardList = new List<Board>();
@@ -78,6 +81,8 @@ namespace Verschnittoptimierung
             this.chosenGreedies = new List<int>();
             this.populationSmall = new List<PopulationElement>();
             this.populationLarge = new List<PopulationElement>();
+            
+            this.changeCounter = 0;
         }
 
         public static Base GetInstance()

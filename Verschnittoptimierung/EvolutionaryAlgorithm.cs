@@ -16,6 +16,7 @@ namespace Verschnittoptimierung
         {
             Base global = Base.GetInstance();
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
+            global.changeCounter = 0;
 
             // preparations
             global.runningProcess.state = 1;
@@ -24,12 +25,13 @@ namespace Verschnittoptimierung
             // change "true" to an abort requirement, for example "best solution better than 95%"
             // best solution = global.solution (is set after each step/evolutionary step)
             int rim = 100;
-            while (rim > 0)
+            while (rim > 0 && global.changeCounter < 10)
             {
                 Random rand = new Random();
                 // creating a basic population
                 if (global.runningProcess.firstStep)
                 {
+                    global.changeCounter = 0;
                     global.populationSmall = new List<PopulationElement>();
                     List<int> greediesForRand = tools.CloneList(global.chosenGreedies);
                     
@@ -204,6 +206,18 @@ namespace Verschnittoptimierung
             global.populationLarge = new List<PopulationElement>();
             // set best population element of the new population
             global.bestPopulationElement = SelectBestElement(false);
+            if(!global.runningProcess.firstStep)
+            {
+                if (global.solution != global.bestPopulationElement.solution)
+                {
+                    global.changeCounter = 0;
+                }
+                else
+                {
+                    global.changeCounter++;
+                }
+            }
+            
             global.solution = global.bestPopulationElement.solution;
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
             classificationNumbers.GetAndShowAllClassificationNumbers();
