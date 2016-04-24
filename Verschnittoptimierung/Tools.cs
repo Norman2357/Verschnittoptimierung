@@ -481,6 +481,8 @@ namespace Verschnittoptimierung
             classificationNumbers.GetAndShowAllClassificationNumbers();
             UnlockFillButtons();
             UnlockEvAlgButtons();
+
+            global.Verschnittoptimierung.button_useBestSolution.Enabled = true;
         }
 
         public void LockFillButtons()
@@ -758,6 +760,31 @@ namespace Verschnittoptimierung
                 outputList.Add(inputList[i]);
             }
             return outputList;
+        }
+
+        public void CheckForBestSolution()
+        {
+            Base global = Base.GetInstance();
+            if(global.solution != null && global.bestSolution == null)
+            {
+                global.bestSolution = CloneSolution(global.solution);
+            }
+            if (global.solution != null && global.bestSolution != null)
+            {
+                if(CalculateFitness(global.solution) < CalculateFitness(global.bestSolution))
+                {
+                    global.bestSolution = CloneSolution(global.solution);
+                    global.Verschnittoptimierung.button_useBestSolution.Enabled = false;
+                }
+                if (CalculateFitness(global.solution) == CalculateFitness(global.bestSolution))
+                {
+                    global.Verschnittoptimierung.button_useBestSolution.Enabled = false;
+                }
+                if (CalculateFitness(global.solution) > CalculateFitness(global.bestSolution))
+                {
+                    global.Verschnittoptimierung.button_useBestSolution.Enabled = true;
+                }
+            }
         }
 
 

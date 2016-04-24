@@ -135,6 +135,7 @@
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.button_useBestSolution = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -1333,7 +1334,7 @@
             // Output
             // 
             this.Output.AutoSize = true;
-            this.Output.Location = new System.Drawing.Point(324, 624);
+            this.Output.Location = new System.Drawing.Point(334, 635);
             this.Output.Name = "Output";
             this.Output.Size = new System.Drawing.Size(39, 13);
             this.Output.TabIndex = 14;
@@ -1365,12 +1366,25 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // button_useBestSolution
+            // 
+            this.button_useBestSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button_useBestSolution.Enabled = false;
+            this.button_useBestSolution.Location = new System.Drawing.Point(192, 600);
+            this.button_useBestSolution.Name = "button_useBestSolution";
+            this.button_useBestSolution.Size = new System.Drawing.Size(97, 23);
+            this.button_useBestSolution.TabIndex = 17;
+            this.button_useBestSolution.Text = "use best solution";
+            this.button_useBestSolution.UseVisualStyleBackColor = false;
+            this.button_useBestSolution.Click += new System.EventHandler(this.button_useBestSolution_Click);
+            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.button_useBestSolution);
             this.Controls.Add(this.groupBox_EvolAlg_general);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonReset);
@@ -1541,6 +1555,7 @@
         public System.Windows.Forms.CheckBox checkBox_greedyTournamentProceduresOnly;
         public System.Windows.Forms.CheckBox checkBox_greedyTournamentPopulation;
         public System.Windows.Forms.Button button_greedySelectAll;
+        public System.Windows.Forms.Button button_useBestSolution;
     }
 }
 

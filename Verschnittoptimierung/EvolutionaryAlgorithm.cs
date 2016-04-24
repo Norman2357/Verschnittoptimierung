@@ -16,7 +16,11 @@ namespace Verschnittoptimierung
         {
             Base global = Base.GetInstance();
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
-            global.changeCounter = 0;
+
+            if(global.runningProcess.firstStep)
+            {
+                global.changeCounter = 0;
+            }
 
             // preparations
             global.runningProcess.state = 1;
@@ -164,10 +168,10 @@ namespace Verschnittoptimierung
                 }
 
                 rim--;
-                global.runningProcess.state = 0;
-                global.solutionStatus = 4;
-                global.tournamentGreediesOnly = false;
-                global.tournamentPopulation = false;
+                
+            }
+            if (global.changeCounter == 10 || rim == 0)
+            {
                 global.runningProcess.existing = false;
             }
         }
@@ -232,19 +236,22 @@ namespace Verschnittoptimierung
             global.populationLarge = new List<PopulationElement>();
             // set best population element of the new population
             global.bestPopulationElement = SelectBestElement(false);
-            if(!global.runningProcess.firstStep)
+
+            if (global.solution != global.bestPopulationElement.solution)
             {
-                if (global.solution != global.bestPopulationElement.solution)
-                {
-                    global.changeCounter = 0;
-                }
-                else
-                {
-                    global.changeCounter++;
-                }
+                global.changeCounter = 0;
+            }
+            else
+            {
+                global.changeCounter++;
             }
             
             global.solution = global.bestPopulationElement.solution;
+
+            // check for best solution and set if necessary
+            Tools tools = new Tools();
+            tools.CheckForBestSolution();
+            
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
             classificationNumbers.GetAndShowAllClassificationNumbers();
             Show show = new Show(global);

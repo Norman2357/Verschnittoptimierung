@@ -229,7 +229,8 @@ namespace Verschnittoptimierung
                         }
                         // check parameters entered at evolutionary algorithm
                         int numberGreedies = tools.GetNumberSelectedGreedies();
-                        if (!(numberGreedies > 2) || (numberGreedies < global.mue) || numberGreedies < global.multForLambda)
+                        if ((!(numberGreedies > 2) || (numberGreedies < global.mue) || numberGreedies < global.multForLambda) &&
+                            !(global.tournamentPopulation && global.tournamentGreediesOnly))
                         {
                             global.Verschnittoptimierung.Output.Text = "You need to select more greedy procedures.";
                             tools.UnlockEvAlgButtons();

@@ -73,6 +73,8 @@ namespace Verschnittoptimierung
 
         public List<int> tournamentGreedyMethods;
 
+        public Solution bestSolution;
+
         private Base()
         {
             this.BoardList = new List<Board>();
@@ -94,6 +96,8 @@ namespace Verschnittoptimierung
             this.tournamentPopulation = false;
             this.tournamentGreediesOnly = false;
             this.tournamentGreedyMethods = new List<int>();
+
+            this.bestSolution = null;
         }
 
         public static Base GetInstance()

@@ -387,5 +387,24 @@ namespace Verschnittoptimierung
                 button_greedySelectAll.Text = "select all";
             }
         }
+
+        private void button_useBestSolution_Click(object sender, EventArgs e)
+        {
+            Base global = Base.GetInstance();
+            if(global.runningProcess.existing == true)
+            {
+                global.Verschnittoptimierung.Output.Text = "Process running. Please finish this process first.";
+            }
+            else if(global.solution != null && global.bestSolution != null)
+            {
+                Show show = new Show(global);
+                Tools tools = new Tools();
+                global.solution = tools.CloneSolution(global.bestSolution);
+                show.ShowSolution(global.solution);
+                ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
+                classificationNumbers.GetAndShowAllClassificationNumbers();
+                button_useBestSolution.Enabled = false;
+            }
+        }
     }
 }
