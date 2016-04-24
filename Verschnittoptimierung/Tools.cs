@@ -477,6 +477,10 @@ namespace Verschnittoptimierung
 
             Show show = new Show(global);
             show.ShowSolution(global.solution);
+
+            global.mue = 0;
+            global.lambda = 0;
+            global.Verschnittoptimierung.fitnessValue.Text = "";
             ClassificationNumbers classificationNumbers = new ClassificationNumbers(global);
             classificationNumbers.GetAndShowAllClassificationNumbers();
             UnlockFillButtons();

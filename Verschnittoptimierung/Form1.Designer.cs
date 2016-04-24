@@ -113,15 +113,13 @@
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cl_evolutionLambda = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cl_evolutionMue = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.cl_wasteMaterialPercentage = new System.Windows.Forms.TextBox();
             this.cl_objectsPlaced = new System.Windows.Forms.TextBox();
             this.cl_objectsLeft = new System.Windows.Forms.TextBox();
             this.cl_objectsTotal = new System.Windows.Forms.TextBox();
@@ -1115,9 +1113,8 @@
             this.fitnessValue.AutoSize = true;
             this.fitnessValue.Location = new System.Drawing.Point(1070, 12);
             this.fitnessValue.Name = "fitnessValue";
-            this.fitnessValue.Size = new System.Drawing.Size(13, 13);
+            this.fitnessValue.Size = new System.Drawing.Size(0, 13);
             this.fitnessValue.TabIndex = 12;
-            this.fitnessValue.Text = "0";
             // 
             // button7
             // 
@@ -1136,9 +1133,7 @@
             this.groupBox5.Controls.Add(this.groupBox6);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.label24);
-            this.groupBox5.Controls.Add(this.textBox11);
+            this.groupBox5.Controls.Add(this.cl_wasteMaterialPercentage);
             this.groupBox5.Controls.Add(this.cl_objectsPlaced);
             this.groupBox5.Controls.Add(this.cl_objectsLeft);
             this.groupBox5.Controls.Add(this.cl_objectsTotal);
@@ -1158,9 +1153,9 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBox2);
+            this.groupBox6.Controls.Add(this.cl_evolutionLambda);
             this.groupBox6.Controls.Add(this.label17);
-            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.cl_evolutionMue);
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Location = new System.Drawing.Point(11, 206);
             this.groupBox6.Name = "groupBox6";
@@ -1169,14 +1164,14 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Evolution";
             // 
-            // textBox2
+            // cl_evolutionLambda
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(103, 23);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(21, 20);
-            this.textBox2.TabIndex = 35;
+            this.cl_evolutionLambda.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_evolutionLambda.Enabled = false;
+            this.cl_evolutionLambda.Location = new System.Drawing.Point(103, 23);
+            this.cl_evolutionLambda.Name = "cl_evolutionLambda";
+            this.cl_evolutionLambda.Size = new System.Drawing.Size(21, 20);
+            this.cl_evolutionLambda.TabIndex = 35;
             // 
             // label17
             // 
@@ -1187,14 +1182,14 @@
             this.label17.TabIndex = 32;
             this.label17.Text = "µ";
             // 
-            // textBox1
+            // cl_evolutionMue
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(42, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(21, 20);
-            this.textBox1.TabIndex = 34;
+            this.cl_evolutionMue.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_evolutionMue.Enabled = false;
+            this.cl_evolutionMue.Location = new System.Drawing.Point(42, 23);
+            this.cl_evolutionMue.Name = "cl_evolutionMue";
+            this.cl_evolutionMue.Size = new System.Drawing.Size(21, 20);
+            this.cl_evolutionMue.TabIndex = 34;
             // 
             // label16
             // 
@@ -1217,38 +1212,20 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(218, 136);
+            this.label19.Location = new System.Drawing.Point(133, 136);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(15, 13);
             this.label19.TabIndex = 30;
             this.label19.Text = "%";
             // 
-            // textBox5
+            // cl_wasteMaterialPercentage
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(191, 133);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(21, 20);
-            this.textBox5.TabIndex = 29;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(91, 135);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(44, 13);
-            this.label24.TabIndex = 28;
-            this.label24.Text = "quantity";
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox11.Enabled = false;
-            this.textBox11.Location = new System.Drawing.Point(136, 133);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(49, 20);
-            this.textBox11.TabIndex = 27;
+            this.cl_wasteMaterialPercentage.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.cl_wasteMaterialPercentage.Enabled = false;
+            this.cl_wasteMaterialPercentage.Location = new System.Drawing.Point(94, 133);
+            this.cl_wasteMaterialPercentage.Name = "cl_wasteMaterialPercentage";
+            this.cl_wasteMaterialPercentage.Size = new System.Drawing.Size(33, 20);
+            this.cl_wasteMaterialPercentage.TabIndex = 29;
             // 
             // cl_objectsPlaced
             // 
@@ -1493,9 +1470,7 @@
         public System.Windows.Forms.ToolStripMenuItem LoadSolution;
         public System.Windows.Forms.Button buttonSelectView;
         public System.Windows.Forms.Label label19;
-        public System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.Label label24;
-        public System.Windows.Forms.TextBox textBox11;
+        public System.Windows.Forms.TextBox cl_wasteMaterialPercentage;
         public System.Windows.Forms.TextBox cl_objectsPlaced;
         public System.Windows.Forms.TextBox cl_objectsLeft;
         public System.Windows.Forms.TextBox cl_objectsTotal;
@@ -1520,9 +1495,9 @@
         public System.Windows.Forms.RadioButton radioButton_min_xr_y;
         public System.Windows.Forms.RadioButton radioButton_min_xl_y;
         public System.Windows.Forms.GroupBox groupBox6;
-        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox cl_evolutionLambda;
         public System.Windows.Forms.Label label17;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox cl_evolutionMue;
         public System.Windows.Forms.Label label16;
         public System.Windows.Forms.GroupBox groupBox8;
         public System.Windows.Forms.CheckBox checkBox_greedy16;

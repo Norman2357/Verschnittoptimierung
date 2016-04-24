@@ -32,6 +32,12 @@ namespace Verschnittoptimierung
 
             }
 
+            // reset displayed values
+            if(global.runningProcess.existing == false)
+            {
+                global.Verschnittoptimierung.cl_evolutionMue.Text = "";
+                global.Verschnittoptimierung.cl_evolutionLambda.Text = "";
+            }
             
 
             switch (global.Verschnittoptimierung.comboBox1.Text)
@@ -254,6 +260,11 @@ namespace Verschnittoptimierung
                             global.runningProcess.stepType = stepType;
                             global.runningProcess.firstStep = true;
 
+                            // set display values
+                            global.Verschnittoptimierung.cl_evolutionMue.Text = global.mue.ToString();
+                            global.Verschnittoptimierung.cl_evolutionLambda.Text = global.lambda.ToString();
+
+
                         }
                         // if a process exists, but of another process type
                         else if (global.runningProcess.existing == true && global.runningProcess.type != 1)
@@ -280,9 +291,7 @@ namespace Verschnittoptimierung
                                 break;
                             }
                         }
-
                         
-
                         // 2. execute
                         EvolutionaryAlgorithm evolutionaryAlgorithm = new EvolutionaryAlgorithm();
                         evolutionaryAlgorithm.BombingAlgorithm();

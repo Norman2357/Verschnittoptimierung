@@ -27,9 +27,25 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.cl_objectsPlaced.Text = Convert.ToString(global.solution.numberRectsPlaced);
             global.Verschnittoptimierung.cl_objectsLeft.Text = Convert.ToString(global.solution.numberRectsLeft);
             global.Verschnittoptimierung.cl_percentageAreaFilled.Text = Convert.ToString(global.solution.percentageFilledArea);
+            global.Verschnittoptimierung.cl_wasteMaterialPercentage.Text = Convert.ToString(100 - global.solution.percentageFilledArea);
 
+            if (global.lambda != 0 && global.mue != 0)
+            {
+                global.Verschnittoptimierung.cl_evolutionMue.Text = Convert.ToString(global.mue);
+                global.Verschnittoptimierung.cl_evolutionLambda.Text = Convert.ToString(global.lambda);
+            }
+            else
+            {
+                global.Verschnittoptimierung.cl_evolutionMue.Text = "";
+                global.Verschnittoptimierung.cl_evolutionLambda.Text = "";
+            }
 
-
+            Tools tools = new Tools();
+            if(global.solution != null)
+            {
+                global.Verschnittoptimierung.fitnessValue.Text = Convert.ToString(tools.CalculateFitness(global.solution));
+            }
+            
         }
 
         // calculate the percentage of board area being filled (if 100%, all rects are placed)

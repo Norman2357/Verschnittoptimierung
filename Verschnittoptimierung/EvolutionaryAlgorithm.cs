@@ -173,6 +173,8 @@ namespace Verschnittoptimierung
             if (global.changeCounter == 10 || rim == 0)
             {
                 global.runningProcess.existing = false;
+                global.mue = 0;
+                global.lambda = 0;
             }
         }
 
