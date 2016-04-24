@@ -42,7 +42,7 @@ namespace Verschnittoptimierung
 
             switch (global.Verschnittoptimierung.comboBox1.Text)
             {
-
+                 
                 // old, not existing anymore. Objects+board created when creating benchmark, including an empty solution
                 case "Create Board(s) + Objects":
                     
