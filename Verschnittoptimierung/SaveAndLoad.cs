@@ -252,13 +252,47 @@ namespace Verschnittoptimierung
             {
                 // 0. create settings
                 Settings settings = new Settings();
+                // general settings
                 settings.numberOfBoards = Convert.ToInt32(global.Verschnittoptimierung.numberBoards.Value);
                 settings.boardHeight = Convert.ToInt32(global.Verschnittoptimierung.boardHeight.Value);
                 settings.boardWidth = Convert.ToInt32(global.Verschnittoptimierung.boardWidth.Value);
                 settings.objectsBoardMin = Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value);
                 settings.objectsBoardMax = Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value);
 
+                // fill
+                settings.bestFit = global.Verschnittoptimierung.radioButton_BestFit.Checked;
+                settings.bottomLeftFilling = global.Verschnittoptimierung.radioButton_BottomLeftFilling.Checked;
+                settings.largestSideInc = global.Verschnittoptimierung.radioButton_largestSideInc.Checked;
+                settings.largestSideDec = global.Verschnittoptimierung.radioButton_largestSideDec.Checked;
+                settings.sizeInc = global.Verschnittoptimierung.radioButton_sizeInc.Checked;
+                settings.sizeDec = global.Verschnittoptimierung.radioButton_sizeDec.Checked;
+                settings.min_xl_y = global.Verschnittoptimierung.radioButton_min_xl_y.Checked;
+
+                // evolutionary
+                settings.mue = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mue.Value);
+                settings.mult = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mult.Value);
+                settings.mutationRate = (float)global.Verschnittoptimierung.evAlg_mutationRate.Value;
+                settings.tournamentPopulation = global.Verschnittoptimierung.checkBox_greedyTournamentPopulation.Checked;
+                settings.tournamentGreedyProcOnly = global.Verschnittoptimierung.checkBox_greedyTournamentProceduresOnly.Checked;
+                settings.greedy1 = global.Verschnittoptimierung.checkBox_greedy1.Checked;
+                settings.greedy2 = global.Verschnittoptimierung.checkBox_greedy2.Checked;
+                settings.greedy3 = global.Verschnittoptimierung.checkBox_greedy3.Checked;
+                settings.greedy4 = global.Verschnittoptimierung.checkBox_greedy4.Checked;
+                settings.greedy5 = global.Verschnittoptimierung.checkBox_greedy5.Checked;
+                settings.greedy6 = global.Verschnittoptimierung.checkBox_greedy6.Checked;
+                settings.greedy7 = global.Verschnittoptimierung.checkBox_greedy7.Checked;
+                settings.greedy8 = global.Verschnittoptimierung.checkBox_greedy8.Checked;
+                settings.greedy9 = global.Verschnittoptimierung.checkBox_greedy9.Checked;
+                settings.greedy10 = global.Verschnittoptimierung.checkBox_greedy10.Checked;
+                settings.greedy11 = global.Verschnittoptimierung.checkBox_greedy11.Checked;
+                settings.greedy12 = global.Verschnittoptimierung.checkBox_greedy12.Checked;
+                settings.greedy13 = global.Verschnittoptimierung.checkBox_greedy13.Checked;
+                settings.greedy14 = global.Verschnittoptimierung.checkBox_greedy14.Checked;
+                settings.greedy15 = global.Verschnittoptimierung.checkBox_greedy15.Checked;
+                settings.greedy16 = global.Verschnittoptimierung.checkBox_greedy16.Checked;
                 
+
+
                 // I. get paths and prepare content
                 // get folder path
                 string path = Environment.CurrentDirectory;
@@ -340,11 +374,82 @@ namespace Verschnittoptimierung
                 filestream.Close();
 
                 // set the settings
+                    // general settings (benchmark)
                 global.Verschnittoptimierung.numberBoards.Value = settings.numberOfBoards;
                 global.Verschnittoptimierung.boardHeight.Value = settings.boardHeight;
                 global.Verschnittoptimierung.boardWidth.Value = settings.boardWidth;
                 global.Verschnittoptimierung.objectsMinNumber.Value = settings.objectsBoardMin;
                 global.Verschnittoptimierung.objectsMaxNumber.Value = settings.objectsBoardMax;
+
+                    // fill settings
+                if(settings.bestFit)
+                {
+                    global.Verschnittoptimierung.radioButton_BestFit.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_FirstFit.Checked = true;
+                }
+
+                if(settings.bottomLeftFilling)
+                {
+                    global.Verschnittoptimierung.radioButton_BottomLeftFilling.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_FirstFitFilling.Checked = true;
+                }
+
+                if(settings.largestSideInc)
+                {
+                    global.Verschnittoptimierung.radioButton_largestSideInc.Checked = true;
+                }
+                else if(settings.largestSideDec)
+                {
+                    global.Verschnittoptimierung.radioButton_largestSideDec.Checked = true;
+                }
+                else if(settings.sizeInc)
+                {
+                    global.Verschnittoptimierung.radioButton_sizeInc.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_sizeDec.Checked = true;
+                }
+
+                if(settings.min_xl_y)
+                {
+                    global.Verschnittoptimierung.radioButton_min_xl_y.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_min_xr_y.Checked = true;
+                }
+
+                // evolutionary settings
+                global.Verschnittoptimierung.evAlg_mue.Value = settings.mue;
+                global.Verschnittoptimierung.evAlg_mult.Value = settings.mult;
+                global.Verschnittoptimierung.evAlg_mutationRate.Value = Convert.ToDecimal(settings.mutationRate);
+                global.Verschnittoptimierung.checkBox_greedyTournamentPopulation.Checked = settings.tournamentPopulation;
+                global.Verschnittoptimierung.checkBox_greedyTournamentProceduresOnly.Checked = settings.tournamentGreedyProcOnly;
+
+                global.Verschnittoptimierung.checkBox_greedy1.Checked = settings.greedy1;
+                global.Verschnittoptimierung.checkBox_greedy2.Checked = settings.greedy2;
+                global.Verschnittoptimierung.checkBox_greedy3.Checked = settings.greedy3;
+                global.Verschnittoptimierung.checkBox_greedy4.Checked = settings.greedy4;
+                global.Verschnittoptimierung.checkBox_greedy5.Checked = settings.greedy5;
+                global.Verschnittoptimierung.checkBox_greedy6.Checked = settings.greedy6;
+                global.Verschnittoptimierung.checkBox_greedy7.Checked = settings.greedy7;
+                global.Verschnittoptimierung.checkBox_greedy8.Checked = settings.greedy8;
+                global.Verschnittoptimierung.checkBox_greedy9.Checked = settings.greedy9;
+                global.Verschnittoptimierung.checkBox_greedy10.Checked = settings.greedy10;
+                global.Verschnittoptimierung.checkBox_greedy11.Checked = settings.greedy11;
+                global.Verschnittoptimierung.checkBox_greedy12.Checked = settings.greedy12;
+                global.Verschnittoptimierung.checkBox_greedy13.Checked = settings.greedy13;
+                global.Verschnittoptimierung.checkBox_greedy14.Checked = settings.greedy14;
+                global.Verschnittoptimierung.checkBox_greedy15.Checked = settings.greedy15;
+                global.Verschnittoptimierung.checkBox_greedy16.Checked = settings.greedy16;
+                
                 
                 System.Windows.Forms.MessageBox.Show("Settings were loaded successfully.");
             }
