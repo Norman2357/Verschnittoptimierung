@@ -31,9 +31,10 @@ namespace Verschnittoptimierung
             {
 
             }
+            
 
             // reset displayed values
-            if(global.runningProcess.existing == false)
+            if (global.runningProcess.existing == false)
             {
                 global.Verschnittoptimierung.cl_evolutionMue.Text = "";
                 global.Verschnittoptimierung.cl_evolutionLambda.Text = "";

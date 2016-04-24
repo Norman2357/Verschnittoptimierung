@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.numberBoards = new System.Windows.Forms.NumericUpDown();
@@ -113,6 +117,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.fitnessChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cl_evolutionLambda = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cl_evolutionMue = new System.Windows.Forms.TextBox();
@@ -134,6 +139,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.buttonReset = new System.Windows.Forms.Button();
             this.button_useBestSolution = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -157,6 +163,7 @@
             this.toolStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fitnessChart)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -1153,16 +1160,53 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label15);
+            this.groupBox6.Controls.Add(this.fitnessChart);
             this.groupBox6.Controls.Add(this.cl_evolutionLambda);
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.cl_evolutionMue);
             this.groupBox6.Controls.Add(this.label16);
-            this.groupBox6.Location = new System.Drawing.Point(11, 206);
+            this.groupBox6.Location = new System.Drawing.Point(6, 206);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(225, 338);
+            this.groupBox6.Size = new System.Drawing.Size(230, 338);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Evolution";
+            // 
+            // fitnessChart
+            // 
+            this.fitnessChart.BackColor = System.Drawing.Color.LightSteelBlue;
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 80F;
+            chartArea2.InnerPlotPosition.Width = 80F;
+            chartArea2.InnerPlotPosition.X = 20F;
+            chartArea2.InnerPlotPosition.Y = 10F;
+            chartArea2.Name = "ChartArea1";
+            this.fitnessChart.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.MaximumAutoSize = 30F;
+            legend2.Name = "Legend1";
+            this.fitnessChart.Legends.Add(legend2);
+            this.fitnessChart.Location = new System.Drawing.Point(6, 86);
+            this.fitnessChart.Name = "fitnessChart";
+            this.fitnessChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.fitnessChart.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Red,
+        System.Drawing.Color.Green};
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "worst";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "best";
+            this.fitnessChart.Series.Add(series3);
+            this.fitnessChart.Series.Add(series4);
+            this.fitnessChart.Size = new System.Drawing.Size(218, 240);
+            this.fitnessChart.TabIndex = 36;
+            this.fitnessChart.Text = "chart1";
+            this.fitnessChart.Click += new System.EventHandler(this.chart1_Click);
             // 
             // cl_evolutionLambda
             // 
@@ -1212,7 +1256,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(133, 136);
+            this.label19.Location = new System.Drawing.Point(139, 136);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(15, 13);
             this.label19.TabIndex = 30;
@@ -1224,7 +1268,7 @@
             this.cl_wasteMaterialPercentage.Enabled = false;
             this.cl_wasteMaterialPercentage.Location = new System.Drawing.Point(94, 133);
             this.cl_wasteMaterialPercentage.Name = "cl_wasteMaterialPercentage";
-            this.cl_wasteMaterialPercentage.Size = new System.Drawing.Size(33, 20);
+            this.cl_wasteMaterialPercentage.Size = new System.Drawing.Size(41, 20);
             this.cl_wasteMaterialPercentage.TabIndex = 29;
             // 
             // cl_objectsPlaced
@@ -1355,6 +1399,15 @@
             this.button_useBestSolution.UseVisualStyleBackColor = false;
             this.button_useBestSolution.Click += new System.EventHandler(this.button_useBestSolution_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 13);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Fitness Chart";
+            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1420,6 +1473,7 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fitnessChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1531,6 +1585,8 @@
         public System.Windows.Forms.CheckBox checkBox_greedyTournamentPopulation;
         public System.Windows.Forms.Button button_greedySelectAll;
         public System.Windows.Forms.Button button_useBestSolution;
+        public System.Windows.Forms.DataVisualization.Charting.Chart fitnessChart;
+        public System.Windows.Forms.Label label15;
     }
 }
 

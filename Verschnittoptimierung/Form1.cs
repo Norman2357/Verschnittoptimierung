@@ -406,5 +406,10 @@ namespace Verschnittoptimierung
                 button_useBestSolution.Enabled = false;
             }
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

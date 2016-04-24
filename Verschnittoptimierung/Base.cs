@@ -74,6 +74,7 @@ namespace Verschnittoptimierung
         public List<int> tournamentGreedyMethods;
 
         public Solution bestSolution;
+        public int evolutionStep;
 
         private Base()
         {
@@ -98,6 +99,7 @@ namespace Verschnittoptimierung
             this.tournamentGreedyMethods = new List<int>();
 
             this.bestSolution = null;
+            this.evolutionStep = 0;
         }
 
         public static Base GetInstance()

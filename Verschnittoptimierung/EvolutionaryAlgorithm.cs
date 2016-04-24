@@ -35,6 +35,10 @@ namespace Verschnittoptimierung
                 if (global.runningProcess.firstStep)
                 {
                     global.changeCounter = 0;
+                    global.evolutionStep = 0;
+
+                    tools.CleanFitnessChart();
+
                     global.populationSmall = new List<PopulationElement>();
                     List<int> greediesForRand = new List<int>();
                     if (!global.tournamentPopulation)
@@ -258,6 +262,12 @@ namespace Verschnittoptimierung
             classificationNumbers.GetAndShowAllClassificationNumbers();
             Show show = new Show(global);
             show.ShowSolution(global.solution);
+
+            // show/update fitness chart
+            global.evolutionStep++;
+            global.Verschnittoptimierung.fitnessChart.Series["best"].Points.AddXY(global.evolutionStep, global.populationSmall[0].fitnessValue);
+            global.Verschnittoptimierung.fitnessChart.Series["worst"].Points.AddXY(global.evolutionStep, global.populationSmall[global.populationSmall.Count - 1].fitnessValue);
+            
         }
 
         public double CalculateFilledPercentageBoard(Board board)

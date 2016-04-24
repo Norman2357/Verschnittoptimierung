@@ -486,6 +486,9 @@ namespace Verschnittoptimierung
             UnlockFillButtons();
             UnlockEvAlgButtons();
 
+            Tools tools = new Tools();
+            tools.CleanFitnessChart();
+
             global.Verschnittoptimierung.button_useBestSolution.Enabled = true;
         }
 
@@ -790,6 +793,22 @@ namespace Verschnittoptimierung
                 }
             }
         }
+
+
+        public void CleanFitnessChart()
+        {
+            Base global = Base.GetInstance();
+
+            while (global.Verschnittoptimierung.fitnessChart.Series["best"].Points.Count > 0)
+            {
+                global.Verschnittoptimierung.fitnessChart.Series["best"].Points.RemoveAt(0);
+            }
+            while (global.Verschnittoptimierung.fitnessChart.Series["worst"].Points.Count > 0)
+            {
+                global.Verschnittoptimierung.fitnessChart.Series["worst"].Points.RemoveAt(0);
+            }
+        }
+
 
 
     }
