@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.numberBoards = new System.Windows.Forms.NumericUpDown();
@@ -100,6 +100,13 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.fitnessValue = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -129,13 +136,6 @@
             this.processRunning_gear = new System.Windows.Forms.PictureBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
-            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonQuickStep = new System.Windows.Forms.Button();
             this.ButtonSingleStep = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -986,6 +986,66 @@
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // Menu
+            // 
+            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
+            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveBenchmark,
+            this.LoadBenchmark,
+            this.SaveSolution,
+            this.LoadSolution,
+            this.SaveSettings,
+            this.LoadSettings});
+            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
+            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(29, 22);
+            this.Menu.Text = "Menu";
+            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
+            // 
+            // SaveBenchmark
+            // 
+            this.SaveBenchmark.Name = "SaveBenchmark";
+            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.SaveBenchmark.Text = "Save Benchmark";
+            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
+            // 
+            // LoadBenchmark
+            // 
+            this.LoadBenchmark.Name = "LoadBenchmark";
+            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.LoadBenchmark.Text = "Load Benchmark";
+            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
+            // 
+            // SaveSolution
+            // 
+            this.SaveSolution.Name = "SaveSolution";
+            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
+            this.SaveSolution.Text = "Save Solution";
+            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
+            // 
+            // LoadSolution
+            // 
+            this.LoadSolution.Name = "LoadSolution";
+            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
+            this.LoadSolution.Text = "Load Solution";
+            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
+            // 
+            // SaveSettings
+            // 
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
+            this.SaveSettings.Text = "Save Settings";
+            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
+            // 
+            // LoadSettings
+            // 
+            this.LoadSettings.Name = "LoadSettings";
+            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
+            this.LoadSettings.Text = "Load Settings";
+            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1054,33 +1114,33 @@
             // fitnessChart
             // 
             this.fitnessChart.BackColor = System.Drawing.Color.LightSteelBlue;
-            chartArea1.InnerPlotPosition.Auto = false;
-            chartArea1.InnerPlotPosition.Height = 80F;
-            chartArea1.InnerPlotPosition.Width = 80F;
-            chartArea1.InnerPlotPosition.X = 20F;
-            chartArea1.InnerPlotPosition.Y = 10F;
-            chartArea1.Name = "ChartArea1";
-            this.fitnessChart.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.MaximumAutoSize = 30F;
-            legend1.Name = "Legend1";
-            this.fitnessChart.Legends.Add(legend1);
+            chartArea8.InnerPlotPosition.Auto = false;
+            chartArea8.InnerPlotPosition.Height = 80F;
+            chartArea8.InnerPlotPosition.Width = 80F;
+            chartArea8.InnerPlotPosition.X = 20F;
+            chartArea8.InnerPlotPosition.Y = 10F;
+            chartArea8.Name = "ChartArea1";
+            this.fitnessChart.ChartAreas.Add(chartArea8);
+            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend8.MaximumAutoSize = 30F;
+            legend8.Name = "Legend1";
+            this.fitnessChart.Legends.Add(legend8);
             this.fitnessChart.Location = new System.Drawing.Point(6, 86);
             this.fitnessChart.Name = "fitnessChart";
             this.fitnessChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.fitnessChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red,
         System.Drawing.Color.Green};
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "worst";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "best";
-            this.fitnessChart.Series.Add(series1);
-            this.fitnessChart.Series.Add(series2);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series15.Legend = "Legend1";
+            series15.Name = "worst";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series16.Legend = "Legend1";
+            series16.Name = "best";
+            this.fitnessChart.Series.Add(series15);
+            this.fitnessChart.Series.Add(series16);
             this.fitnessChart.Size = new System.Drawing.Size(218, 240);
             this.fitnessChart.TabIndex = 36;
             this.fitnessChart.Text = "chart1";
@@ -1299,66 +1359,6 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // Menu
-            // 
-            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
-            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveBenchmark,
-            this.LoadBenchmark,
-            this.SaveSolution,
-            this.LoadSolution,
-            this.SaveSettings,
-            this.LoadSettings});
-            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
-            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(29, 22);
-            this.Menu.Text = "Menu";
-            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
-            // 
-            // SaveBenchmark
-            // 
-            this.SaveBenchmark.Name = "SaveBenchmark";
-            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.SaveBenchmark.Text = "Save Benchmark";
-            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
-            // 
-            // LoadBenchmark
-            // 
-            this.LoadBenchmark.Name = "LoadBenchmark";
-            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.LoadBenchmark.Text = "Load Benchmark";
-            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
-            // 
-            // SaveSolution
-            // 
-            this.SaveSolution.Name = "SaveSolution";
-            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
-            this.SaveSolution.Text = "Save Solution";
-            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
-            // 
-            // LoadSolution
-            // 
-            this.LoadSolution.Name = "LoadSolution";
-            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
-            this.LoadSolution.Text = "Load Solution";
-            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
-            // 
-            // SaveSettings
-            // 
-            this.SaveSettings.Name = "SaveSettings";
-            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
-            this.SaveSettings.Text = "Save Settings";
-            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
-            // 
-            // LoadSettings
-            // 
-            this.LoadSettings.Name = "LoadSettings";
-            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
-            this.LoadSettings.Text = "Load Settings";
-            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
-            // 
             // buttonQuickStep
             // 
             this.buttonQuickStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuickStep.BackgroundImage")));
@@ -1461,9 +1461,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.display);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Verschnittoptimierung1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Verschnittoptimierung - Norman Naujokat";
+            this.Text = resources.GetString("$this.Text");
             this.Load += new System.EventHandler(this.Verschnittoptimierung_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
