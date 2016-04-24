@@ -26,6 +26,10 @@ namespace Verschnittoptimierung
             global.runningProcess.state = 1;
             Tools tools = new Tools();
 
+            // display running process display
+            global.Verschnittoptimierung.processRunning_gear.Visible = true;
+            global.Verschnittoptimierung.processRunning_label.Visible = true;
+
             // change "true" to an abort requirement, for example "best solution better than 95%"
             // best solution = global.solution (is set after each step/evolutionary step)
             int rim = 100;
@@ -267,7 +271,10 @@ namespace Verschnittoptimierung
             global.evolutionStep++;
             global.Verschnittoptimierung.fitnessChart.Series["best"].Points.AddXY(global.evolutionStep, global.populationSmall[0].fitnessValue);
             global.Verschnittoptimierung.fitnessChart.Series["worst"].Points.AddXY(global.evolutionStep, global.populationSmall[global.populationSmall.Count - 1].fitnessValue);
-            
+
+            // hide running process display
+            global.Verschnittoptimierung.processRunning_gear.Visible = false;
+            global.Verschnittoptimierung.processRunning_label.Visible = false;
         }
 
         public double CalculateFilledPercentageBoard(Board board)

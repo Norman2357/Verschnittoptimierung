@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.numberBoards = new System.Windows.Forms.NumericUpDown();
@@ -48,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.boardWidth = new System.Windows.Forms.NumericUpDown();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox_Priority = new System.Windows.Forms.GroupBox();
             this.radioButton_min_xr_y = new System.Windows.Forms.RadioButton();
@@ -64,7 +63,6 @@
             this.groupBox_BoardStrategy = new System.Windows.Forms.GroupBox();
             this.radioButton_BestFit = new System.Windows.Forms.RadioButton();
             this.radioButton_FirstFit = new System.Windows.Forms.RadioButton();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox_EvolAlg_general = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -99,24 +97,14 @@
             this.label26 = new System.Windows.Forms.Label();
             this.display = new System.Windows.Forms.Panel();
             this.buttonInDisplay = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.ButtonSingleStep = new System.Windows.Forms.Button();
-            this.buttonQuickStep = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
-            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.fitnessValue = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.fitnessChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cl_evolutionLambda = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -137,9 +125,23 @@
             this.Output = new System.Windows.Forms.Label();
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.button_useBestSolution = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
+            this.processRunning_gear = new System.Windows.Forms.PictureBox();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonQuickStep = new System.Windows.Forms.Button();
+            this.ButtonSingleStep = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.processRunning_label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
@@ -164,6 +166,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fitnessChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processRunning_gear)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -389,19 +392,6 @@
             0,
             0});
             // 
-            // button2
-            // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button2.Location = new System.Drawing.Point(0, 187);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(31, 71);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Thistle;
@@ -571,19 +561,6 @@
             this.radioButton_FirstFit.Text = "FF";
             this.radioButton_FirstFit.UseVisualStyleBackColor = true;
             this.radioButton_FirstFit.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button4.Location = new System.Drawing.Point(0, 268);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(31, 146);
-            this.button4.TabIndex = 4;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox_EvolAlg_general
             // 
@@ -977,21 +954,6 @@
             this.buttonInDisplay.UseVisualStyleBackColor = true;
             this.buttonInDisplay.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
-            this.button1.Location = new System.Drawing.Point(0, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(31, 127);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
-            // 
             // comboBox1
             // 
             this.comboBox1.Items.AddRange(new object[] {
@@ -1005,28 +967,6 @@
             this.comboBox1.Text = "None";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // ButtonSingleStep
-            // 
-            this.ButtonSingleStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSingleStep.BackgroundImage")));
-            this.ButtonSingleStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ButtonSingleStep.Location = new System.Drawing.Point(192, 635);
-            this.ButtonSingleStep.Name = "ButtonSingleStep";
-            this.ButtonSingleStep.Size = new System.Drawing.Size(32, 23);
-            this.ButtonSingleStep.TabIndex = 7;
-            this.ButtonSingleStep.UseVisualStyleBackColor = true;
-            this.ButtonSingleStep.Click += new System.EventHandler(this.buttonSingleStep_Click);
-            // 
-            // buttonQuickStep
-            // 
-            this.buttonQuickStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuickStep.BackgroundImage")));
-            this.buttonQuickStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonQuickStep.Location = new System.Drawing.Point(230, 635);
-            this.buttonQuickStep.Name = "buttonQuickStep";
-            this.buttonQuickStep.Size = new System.Drawing.Size(32, 23);
-            this.buttonQuickStep.TabIndex = 8;
-            this.buttonQuickStep.UseVisualStyleBackColor = true;
-            this.buttonQuickStep.Click += new System.EventHandler(this.buttonQuickStep_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -1035,66 +975,6 @@
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Perform Action";
-            // 
-            // Menu
-            // 
-            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
-            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveBenchmark,
-            this.LoadBenchmark,
-            this.SaveSolution,
-            this.LoadSolution,
-            this.SaveSettings,
-            this.LoadSettings});
-            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
-            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(29, 22);
-            this.Menu.Text = "Menu";
-            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
-            // 
-            // SaveBenchmark
-            // 
-            this.SaveBenchmark.Name = "SaveBenchmark";
-            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.SaveBenchmark.Text = "Save Benchmark";
-            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
-            // 
-            // LoadBenchmark
-            // 
-            this.LoadBenchmark.Name = "LoadBenchmark";
-            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.LoadBenchmark.Text = "Load Benchmark";
-            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
-            // 
-            // SaveSolution
-            // 
-            this.SaveSolution.Name = "SaveSolution";
-            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
-            this.SaveSolution.Text = "Save Solution";
-            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
-            // 
-            // LoadSolution
-            // 
-            this.LoadSolution.Name = "LoadSolution";
-            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
-            this.LoadSolution.Text = "Load Solution";
-            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
-            // 
-            // SaveSettings
-            // 
-            this.SaveSettings.Name = "SaveSettings";
-            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
-            this.SaveSettings.Text = "Save Settings";
-            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
-            // 
-            // LoadSettings
-            // 
-            this.LoadSettings.Name = "LoadSettings";
-            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
-            this.LoadSettings.Text = "Load Settings";
-            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
             // 
             // toolStrip1
             // 
@@ -1122,17 +1002,6 @@
             this.fitnessValue.Name = "fitnessValue";
             this.fitnessValue.Size = new System.Drawing.Size(0, 13);
             this.fitnessValue.TabIndex = 12;
-            // 
-            // button7
-            // 
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.Location = new System.Drawing.Point(1115, 12);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(29, 23);
-            this.button7.TabIndex = 13;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox5
             // 
@@ -1173,36 +1042,45 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Evolution";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(10, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 13);
+            this.label15.TabIndex = 32;
+            this.label15.Text = "Fitness Chart";
+            // 
             // fitnessChart
             // 
             this.fitnessChart.BackColor = System.Drawing.Color.LightSteelBlue;
-            chartArea2.InnerPlotPosition.Auto = false;
-            chartArea2.InnerPlotPosition.Height = 80F;
-            chartArea2.InnerPlotPosition.Width = 80F;
-            chartArea2.InnerPlotPosition.X = 20F;
-            chartArea2.InnerPlotPosition.Y = 10F;
-            chartArea2.Name = "ChartArea1";
-            this.fitnessChart.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.MaximumAutoSize = 30F;
-            legend2.Name = "Legend1";
-            this.fitnessChart.Legends.Add(legend2);
+            chartArea1.InnerPlotPosition.Auto = false;
+            chartArea1.InnerPlotPosition.Height = 80F;
+            chartArea1.InnerPlotPosition.Width = 80F;
+            chartArea1.InnerPlotPosition.X = 20F;
+            chartArea1.InnerPlotPosition.Y = 10F;
+            chartArea1.Name = "ChartArea1";
+            this.fitnessChart.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.MaximumAutoSize = 30F;
+            legend1.Name = "Legend1";
+            this.fitnessChart.Legends.Add(legend1);
             this.fitnessChart.Location = new System.Drawing.Point(6, 86);
             this.fitnessChart.Name = "fitnessChart";
             this.fitnessChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.fitnessChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red,
         System.Drawing.Color.Green};
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "worst";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "best";
-            this.fitnessChart.Series.Add(series3);
-            this.fitnessChart.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "worst";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "best";
+            this.fitnessChart.Series.Add(series1);
+            this.fitnessChart.Series.Add(series2);
             this.fitnessChart.Size = new System.Drawing.Size(218, 240);
             this.fitnessChart.TabIndex = 36;
             this.fitnessChart.Text = "chart1";
@@ -1376,17 +1254,6 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // buttonReset
-            // 
-            this.buttonReset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonReset.BackgroundImage")));
-            this.buttonReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonReset.Location = new System.Drawing.Point(281, 635);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(32, 23);
-            this.buttonReset.TabIndex = 16;
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
-            // 
             // button_useBestSolution
             // 
             this.button_useBestSolution.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -1399,14 +1266,172 @@
             this.button_useBestSolution.UseVisualStyleBackColor = false;
             this.button_useBestSolution.Click += new System.EventHandler(this.button_useBestSolution_Click);
             // 
-            // label15
+            // processRunning_gear
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 68);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 13);
-            this.label15.TabIndex = 32;
-            this.label15.Text = "Fitness Chart";
+            this.processRunning_gear.Image = global::Verschnittoptimierung.Properties.Resources.gear2;
+            this.processRunning_gear.Location = new System.Drawing.Point(909, 610);
+            this.processRunning_gear.Name = "processRunning_gear";
+            this.processRunning_gear.Size = new System.Drawing.Size(38, 40);
+            this.processRunning_gear.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.processRunning_gear.TabIndex = 18;
+            this.processRunning_gear.TabStop = false;
+            this.processRunning_gear.Visible = false;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonReset.BackgroundImage")));
+            this.buttonReset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonReset.Location = new System.Drawing.Point(281, 635);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(32, 23);
+            this.buttonReset.TabIndex = 16;
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // button7
+            // 
+            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.Location = new System.Drawing.Point(1115, 12);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(29, 23);
+            this.button7.TabIndex = 13;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // Menu
+            // 
+            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
+            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveBenchmark,
+            this.LoadBenchmark,
+            this.SaveSolution,
+            this.LoadSolution,
+            this.SaveSettings,
+            this.LoadSettings});
+            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
+            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(29, 22);
+            this.Menu.Text = "Menu";
+            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
+            // 
+            // SaveBenchmark
+            // 
+            this.SaveBenchmark.Name = "SaveBenchmark";
+            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.SaveBenchmark.Text = "Save Benchmark";
+            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
+            // 
+            // LoadBenchmark
+            // 
+            this.LoadBenchmark.Name = "LoadBenchmark";
+            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.LoadBenchmark.Text = "Load Benchmark";
+            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
+            // 
+            // SaveSolution
+            // 
+            this.SaveSolution.Name = "SaveSolution";
+            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
+            this.SaveSolution.Text = "Save Solution";
+            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
+            // 
+            // LoadSolution
+            // 
+            this.LoadSolution.Name = "LoadSolution";
+            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
+            this.LoadSolution.Text = "Load Solution";
+            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
+            // 
+            // SaveSettings
+            // 
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
+            this.SaveSettings.Text = "Save Settings";
+            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
+            // 
+            // LoadSettings
+            // 
+            this.LoadSettings.Name = "LoadSettings";
+            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
+            this.LoadSettings.Text = "Load Settings";
+            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
+            // 
+            // buttonQuickStep
+            // 
+            this.buttonQuickStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonQuickStep.BackgroundImage")));
+            this.buttonQuickStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonQuickStep.Location = new System.Drawing.Point(230, 635);
+            this.buttonQuickStep.Name = "buttonQuickStep";
+            this.buttonQuickStep.Size = new System.Drawing.Size(32, 23);
+            this.buttonQuickStep.TabIndex = 8;
+            this.buttonQuickStep.UseVisualStyleBackColor = true;
+            this.buttonQuickStep.Click += new System.EventHandler(this.buttonQuickStep_Click);
+            // 
+            // ButtonSingleStep
+            // 
+            this.ButtonSingleStep.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ButtonSingleStep.BackgroundImage")));
+            this.ButtonSingleStep.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ButtonSingleStep.Location = new System.Drawing.Point(192, 635);
+            this.ButtonSingleStep.Name = "ButtonSingleStep";
+            this.ButtonSingleStep.Size = new System.Drawing.Size(32, 23);
+            this.ButtonSingleStep.TabIndex = 7;
+            this.ButtonSingleStep.UseVisualStyleBackColor = true;
+            this.ButtonSingleStep.Click += new System.EventHandler(this.buttonSingleStep_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.button4.Location = new System.Drawing.Point(0, 268);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(31, 146);
+            this.button4.TabIndex = 4;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.button2.Location = new System.Drawing.Point(0, 187);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(31, 71);
+            this.button2.TabIndex = 2;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)), true);
+            this.button1.Location = new System.Drawing.Point(0, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(31, 127);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
+            // 
+            // processRunning_label
+            // 
+            this.processRunning_label.AutoSize = true;
+            this.processRunning_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.processRunning_label.Location = new System.Drawing.Point(954, 619);
+            this.processRunning_label.Name = "processRunning_label";
+            this.processRunning_label.Size = new System.Drawing.Size(178, 13);
+            this.processRunning_label.TabIndex = 19;
+            this.processRunning_label.Text = "Process running, please wait..";
+            this.processRunning_label.Visible = false;
             // 
             // Verschnittoptimierung1
             // 
@@ -1414,6 +1439,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.processRunning_label);
+            this.Controls.Add(this.processRunning_gear);
             this.Controls.Add(this.button_useBestSolution);
             this.Controls.Add(this.groupBox_EvolAlg_general);
             this.Controls.Add(this.groupBox2);
@@ -1474,6 +1501,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fitnessChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.processRunning_gear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1587,6 +1615,8 @@
         public System.Windows.Forms.Button button_useBestSolution;
         public System.Windows.Forms.DataVisualization.Charting.Chart fitnessChart;
         public System.Windows.Forms.Label label15;
+        public System.Windows.Forms.PictureBox processRunning_gear;
+        public System.Windows.Forms.Label processRunning_label;
     }
 }
 

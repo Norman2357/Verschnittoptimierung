@@ -490,6 +490,9 @@ namespace Verschnittoptimierung
             tools.CleanFitnessChart();
 
             global.Verschnittoptimierung.button_useBestSolution.Enabled = true;
+
+            global.Verschnittoptimierung.processRunning_gear.Visible = false;
+            global.Verschnittoptimierung.processRunning_label.Visible = false;
         }
 
         public void LockFillButtons()

@@ -147,6 +147,10 @@
     <Content Include="images\buttonLocalOptimization.JPG" />
     <Content Include="images\buttonReset.JPG" />
     <Content Include="images\buttonSingleStep.JPG" />
+    <Content Include="images\gear.JPG" />
+    <Content Include="images\gear.png" />
+    <Content Include="images\gear1.jpg" />
+    <Content Include="images\logo.png" />
     <Content Include="images\menu.JPG" />
     <Content Include="Resources\BenchmarkNr.txt" />
     <Content Include="Resources\FolderPathGeneral.txt" />
