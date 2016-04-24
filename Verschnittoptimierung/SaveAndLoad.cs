@@ -258,6 +258,9 @@ namespace Verschnittoptimierung
                 settings.boardWidth = Convert.ToInt32(global.Verschnittoptimierung.boardWidth.Value);
                 settings.objectsBoardMin = Convert.ToInt32(global.Verschnittoptimierung.objectsMinNumber.Value);
                 settings.objectsBoardMax = Convert.ToInt32(global.Verschnittoptimierung.objectsMaxNumber.Value);
+                settings.colorMixed = global.Verschnittoptimierung.radioButton_colorSchemeMixed.Checked;
+                settings.colorBiological = global.Verschnittoptimierung.radioButton_colorSchemeBiological.Checked;
+                settings.colorConservative = global.Verschnittoptimierung.radioButton_colorSchemeConservative.Checked;
 
                 // fill
                 settings.bestFit = global.Verschnittoptimierung.radioButton_BestFit.Checked;
@@ -380,6 +383,18 @@ namespace Verschnittoptimierung
                 global.Verschnittoptimierung.boardWidth.Value = settings.boardWidth;
                 global.Verschnittoptimierung.objectsMinNumber.Value = settings.objectsBoardMin;
                 global.Verschnittoptimierung.objectsMaxNumber.Value = settings.objectsBoardMax;
+                if(settings.colorMixed)
+                {
+                    global.Verschnittoptimierung.radioButton_colorSchemeMixed.Checked = true;
+                }
+                else if(settings.colorBiological)
+                {
+                    global.Verschnittoptimierung.radioButton_colorSchemeBiological.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_colorSchemeConservative.Checked = true;
+                }
 
                     // fill settings
                 if(settings.bestFit)

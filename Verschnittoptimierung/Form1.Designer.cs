@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox_colorScheme = new System.Windows.Forms.GroupBox();
+            this.radioButton_colorSchemeConservative = new System.Windows.Forms.RadioButton();
+            this.radioButton_colorSchemeBiological = new System.Windows.Forms.RadioButton();
+            this.radioButton_colorSchemeMixed = new System.Windows.Forms.RadioButton();
             this.label12 = new System.Windows.Forms.Label();
             this.numberBoards = new System.Windows.Forms.NumericUpDown();
             this.objectsMaxNumber = new System.Windows.Forms.NumericUpDown();
@@ -143,6 +147,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.processRunning_label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox_colorScheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).BeginInit();
@@ -172,6 +177,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.Controls.Add(this.groupBox_colorScheme);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.numberBoards);
             this.groupBox1.Controls.Add(this.objectsMaxNumber);
@@ -188,12 +194,56 @@
             this.groupBox1.Controls.Add(this.boardWidth);
             this.groupBox1.Location = new System.Drawing.Point(31, 50);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 140);
+            this.groupBox1.Size = new System.Drawing.Size(258, 194);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General Settings";
             this.groupBox1.Visible = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // groupBox_colorScheme
+            // 
+            this.groupBox_colorScheme.Controls.Add(this.radioButton_colorSchemeConservative);
+            this.groupBox_colorScheme.Controls.Add(this.radioButton_colorSchemeBiological);
+            this.groupBox_colorScheme.Controls.Add(this.radioButton_colorSchemeMixed);
+            this.groupBox_colorScheme.Location = new System.Drawing.Point(8, 145);
+            this.groupBox_colorScheme.Name = "groupBox_colorScheme";
+            this.groupBox_colorScheme.Size = new System.Drawing.Size(244, 43);
+            this.groupBox_colorScheme.TabIndex = 2;
+            this.groupBox_colorScheme.TabStop = false;
+            this.groupBox_colorScheme.Text = "Color Scheme";
+            // 
+            // radioButton_colorSchemeConservative
+            // 
+            this.radioButton_colorSchemeConservative.AutoSize = true;
+            this.radioButton_colorSchemeConservative.Location = new System.Drawing.Point(153, 19);
+            this.radioButton_colorSchemeConservative.Name = "radioButton_colorSchemeConservative";
+            this.radioButton_colorSchemeConservative.Size = new System.Drawing.Size(86, 17);
+            this.radioButton_colorSchemeConservative.TabIndex = 4;
+            this.radioButton_colorSchemeConservative.Text = "conservative";
+            this.radioButton_colorSchemeConservative.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_colorSchemeBiological
+            // 
+            this.radioButton_colorSchemeBiological.AutoSize = true;
+            this.radioButton_colorSchemeBiological.Location = new System.Drawing.Point(69, 19);
+            this.radioButton_colorSchemeBiological.Name = "radioButton_colorSchemeBiological";
+            this.radioButton_colorSchemeBiological.Size = new System.Drawing.Size(69, 17);
+            this.radioButton_colorSchemeBiological.TabIndex = 3;
+            this.radioButton_colorSchemeBiological.Text = "biological";
+            this.radioButton_colorSchemeBiological.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_colorSchemeMixed
+            // 
+            this.radioButton_colorSchemeMixed.AutoSize = true;
+            this.radioButton_colorSchemeMixed.Checked = true;
+            this.radioButton_colorSchemeMixed.Location = new System.Drawing.Point(7, 19);
+            this.radioButton_colorSchemeMixed.Name = "radioButton_colorSchemeMixed";
+            this.radioButton_colorSchemeMixed.Size = new System.Drawing.Size(52, 17);
+            this.radioButton_colorSchemeMixed.TabIndex = 0;
+            this.radioButton_colorSchemeMixed.TabStop = true;
+            this.radioButton_colorSchemeMixed.Text = "mixed";
+            this.radioButton_colorSchemeMixed.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -228,7 +278,7 @@
             // 
             // objectsMaxNumber
             // 
-            this.objectsMaxNumber.Location = new System.Drawing.Point(196, 112);
+            this.objectsMaxNumber.Location = new System.Drawing.Point(188, 112);
             this.objectsMaxNumber.Maximum = new decimal(new int[] {
             200,
             0,
@@ -1114,33 +1164,33 @@
             // fitnessChart
             // 
             this.fitnessChart.BackColor = System.Drawing.Color.LightSteelBlue;
-            chartArea8.InnerPlotPosition.Auto = false;
-            chartArea8.InnerPlotPosition.Height = 80F;
-            chartArea8.InnerPlotPosition.Width = 80F;
-            chartArea8.InnerPlotPosition.X = 20F;
-            chartArea8.InnerPlotPosition.Y = 10F;
-            chartArea8.Name = "ChartArea1";
-            this.fitnessChart.ChartAreas.Add(chartArea8);
-            legend8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend8.MaximumAutoSize = 30F;
-            legend8.Name = "Legend1";
-            this.fitnessChart.Legends.Add(legend8);
+            chartArea1.InnerPlotPosition.Auto = false;
+            chartArea1.InnerPlotPosition.Height = 80F;
+            chartArea1.InnerPlotPosition.Width = 80F;
+            chartArea1.InnerPlotPosition.X = 20F;
+            chartArea1.InnerPlotPosition.Y = 10F;
+            chartArea1.Name = "ChartArea1";
+            this.fitnessChart.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.MaximumAutoSize = 30F;
+            legend1.Name = "Legend1";
+            this.fitnessChart.Legends.Add(legend1);
             this.fitnessChart.Location = new System.Drawing.Point(6, 86);
             this.fitnessChart.Name = "fitnessChart";
             this.fitnessChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.fitnessChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red,
         System.Drawing.Color.Green};
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Legend = "Legend1";
-            series15.Name = "worst";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series16.Legend = "Legend1";
-            series16.Name = "best";
-            this.fitnessChart.Series.Add(series15);
-            this.fitnessChart.Series.Add(series16);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "worst";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "best";
+            this.fitnessChart.Series.Add(series1);
+            this.fitnessChart.Series.Add(series2);
             this.fitnessChart.Size = new System.Drawing.Size(218, 240);
             this.fitnessChart.TabIndex = 36;
             this.fitnessChart.Text = "chart1";
@@ -1439,6 +1489,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.processRunning_label);
             this.Controls.Add(this.processRunning_gear);
             this.Controls.Add(this.button_useBestSolution);
@@ -1453,7 +1504,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonQuickStep);
             this.Controls.Add(this.ButtonSingleStep);
             this.Controls.Add(this.comboBox1);
@@ -1468,6 +1518,8 @@
             this.Load += new System.EventHandler(this.Verschnittoptimierung_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox_colorScheme.ResumeLayout(false);
+            this.groupBox_colorScheme.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMaxNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectsMinNumber)).EndInit();
@@ -1618,6 +1670,10 @@
         public System.Windows.Forms.Label label15;
         public System.Windows.Forms.PictureBox processRunning_gear;
         public System.Windows.Forms.Label processRunning_label;
+        public System.Windows.Forms.GroupBox groupBox_colorScheme;
+        public System.Windows.Forms.RadioButton radioButton_colorSchemeMixed;
+        public System.Windows.Forms.RadioButton radioButton_colorSchemeConservative;
+        public System.Windows.Forms.RadioButton radioButton_colorSchemeBiological;
     }
 }
 

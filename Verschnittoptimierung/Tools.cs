@@ -513,6 +513,9 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_Priority.Enabled = false;
 
             global.Verschnittoptimierung.comboBox1.Enabled = false;
+
+            // unlock color scheme selection too
+            global.Verschnittoptimierung.groupBox_colorScheme.Enabled = false;
         }
 
         public void UnlockFillButtons()
@@ -533,6 +536,9 @@ namespace Verschnittoptimierung
             global.Verschnittoptimierung.groupBox_Priority.Enabled = true;
 
             global.Verschnittoptimierung.comboBox1.Enabled = true;
+
+            // unlock color scheme selection too
+            global.Verschnittoptimierung.groupBox_colorScheme.Enabled = true;
         }
 
         public void LockEvAlgButtons()
@@ -541,6 +547,9 @@ namespace Verschnittoptimierung
 
             global.Verschnittoptimierung.groupBox_EvolAlg_general.Enabled = false;
             global.Verschnittoptimierung.comboBox1.Enabled = false;
+            // lock color scheme selection too
+            global.Verschnittoptimierung.groupBox_colorScheme.Enabled = false;
+
         }
 
         public void UnlockEvAlgButtons()
@@ -549,6 +558,9 @@ namespace Verschnittoptimierung
 
             global.Verschnittoptimierung.groupBox_EvolAlg_general.Enabled = true;
             global.Verschnittoptimierung.comboBox1.Enabled = true;
+
+            // unlock color scheme selection too
+            global.Verschnittoptimierung.groupBox_colorScheme.Enabled = true;
         }
 
 

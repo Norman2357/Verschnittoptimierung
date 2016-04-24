@@ -146,15 +146,42 @@ namespace Verschnittoptimierung
                         // 2. draw rect
                         // 2.1 chosing color
                         List<Color> colorList = new List<Color>();
-                        colorList.Add(Color.Red);
-                        colorList.Add(Color.Orange);
-                        colorList.Add(Color.Yellow);
-                        colorList.Add(Color.Blue);
-                        colorList.Add(Color.Violet);
-                        colorList.Add(Color.Pink);
-                        colorList.Add(Color.Purple);
-                        colorList.Add(Color.Black);
-                        colorList.Add(Color.White);
+                        if(global.Verschnittoptimierung.radioButton_colorSchemeMixed.Checked)
+                        {
+                            colorList.Add(Color.Red);
+                            colorList.Add(Color.Orange);
+                            colorList.Add(Color.Yellow);
+                            colorList.Add(Color.Blue);
+                            colorList.Add(Color.Violet);
+                            colorList.Add(Color.Pink);
+                            colorList.Add(Color.Purple);
+                            colorList.Add(Color.Black);
+                            colorList.Add(Color.White);
+                        }
+                        if (global.Verschnittoptimierung.radioButton_colorSchemeBiological.Checked)
+                        {
+                            colorList.Add(Color.ForestGreen);
+                            colorList.Add(Color.Green);
+                            colorList.Add(Color.LightSkyBlue);
+                            colorList.Add(Color.LawnGreen);
+                            colorList.Add(Color.SteelBlue);
+                            colorList.Add(Color.LightGreen);
+                            colorList.Add(Color.CadetBlue);
+                            colorList.Add(Color.DarkOliveGreen);
+                            colorList.Add(Color.SkyBlue);
+                        }
+                        if (global.Verschnittoptimierung.radioButton_colorSchemeConservative.Checked)
+                        {
+                            colorList.Add(Color.Gray);
+                            colorList.Add(Color.Gold);
+                            colorList.Add(Color.DarkGray);
+                            colorList.Add(Color.Brown);
+                            colorList.Add(Color.Silver);
+                            colorList.Add(Color.Gray);
+                            colorList.Add(Color.DarkBlue);
+                            colorList.Add(Color.DarkSlateGray);
+                            colorList.Add(Color.WhiteSmoke);
+                        }
 
                         Color chosenColor = colorList[colorPosition % 8];
                         

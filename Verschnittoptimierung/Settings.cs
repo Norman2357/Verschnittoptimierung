@@ -17,6 +17,9 @@ namespace Verschnittoptimierung
         public int boardWidth;
         public int objectsBoardMin;
         public int objectsBoardMax;
+        public Boolean colorMixed;
+        public Boolean colorBiological;
+        public Boolean colorConservative;
 
         // fill settings
         public Boolean bestFit;
