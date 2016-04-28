@@ -79,6 +79,8 @@ namespace Verschnittoptimierung
                         // before creating benchmark clear the screen
                         // clear screen
                         global.Verschnittoptimierung.display.Invalidate();
+                        global.bestSolution = null;
+                        global.Verschnittoptimierung.button_useBestSolution.Enabled = false;
                         
 
                         // create benchmark
