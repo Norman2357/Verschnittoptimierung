@@ -272,6 +272,9 @@ namespace Verschnittoptimierung
                 settings.min_xl_y = global.Verschnittoptimierung.radioButton_min_xl_y.Checked;
 
                 // evolutionary
+                settings.muePlusLambdaSelection = global.Verschnittoptimierung.radioButton_selMuePlusLambda.Checked;
+                settings.mueCommaLambdaSelection = global.Verschnittoptimierung.radioButton_selMueCommaLambda.Checked;
+                settings.maximumIterations = Convert.ToInt32(global.Verschnittoptimierung.evAlg_numberMaxIterations.Value);
                 settings.mue = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mue.Value);
                 settings.mult = Convert.ToInt32(global.Verschnittoptimierung.evAlg_mult.Value);
                 settings.mutationRate = (float)global.Verschnittoptimierung.evAlg_mutationRate.Value;
@@ -442,6 +445,15 @@ namespace Verschnittoptimierung
                 }
 
                 // evolutionary settings
+                if(settings.muePlusLambdaSelection)
+                {
+                    global.Verschnittoptimierung.radioButton_selMuePlusLambda.Checked = true;
+                }
+                else
+                {
+                    global.Verschnittoptimierung.radioButton_selMueCommaLambda.Checked = true;
+                }
+                global.Verschnittoptimierung.evAlg_numberMaxIterations.Value = settings.maximumIterations;
                 global.Verschnittoptimierung.evAlg_mue.Value = settings.mue;
                 global.Verschnittoptimierung.evAlg_mult.Value = settings.mult;
                 global.Verschnittoptimierung.evAlg_mutationRate.Value = Convert.ToDecimal(settings.mutationRate);
@@ -473,6 +485,6 @@ namespace Verschnittoptimierung
                 System.Windows.Forms.MessageBox.Show("Settings could not be loaded. Please make sure to select the correct file path.");
             }
         }
-
+        
     }
 }

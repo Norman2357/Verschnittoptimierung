@@ -146,6 +146,8 @@
     <Content Include="images\buttonGeneralSettings.JPG" />
     <Content Include="images\buttonLocalOptimization.JPG" />
     <Content Include="images\buttonReset.JPG" />
+    <Content Include="images\buttonResetBestSolution.JPG" />
+    <Content Include="images\buttonResetBestSolution1.JPG" />
     <Content Include="images\buttonSingleStep.JPG" />
     <Content Include="images\gear.JPG" />
     <Content Include="images\gear.png" />

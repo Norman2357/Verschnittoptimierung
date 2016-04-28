@@ -32,7 +32,16 @@ namespace Verschnittoptimierung
 
             // change "true" to an abort requirement, for example "best solution better than 95%"
             // best solution = global.solution (is set after each step/evolutionary step)
-            int rim = 100;
+            int rim = 20;
+            try
+            {
+                rim = Convert.ToInt32(global.Verschnittoptimierung.evAlg_numberMaxIterations.Value);
+            }
+            catch(Exception ex)
+            {
+                rim = 20;
+            }
+
             while (rim > 0 && global.changeCounter < 10)
             {
                 // creating a basic population
@@ -192,19 +201,33 @@ namespace Verschnittoptimierung
         public PopulationElement SelectBestElement(Boolean delete)
         {
             Base global = Base.GetInstance();
-            PopulationElement bestElement = global.populationSmall[0];
-            Boolean bestFoundInSmall = true;
+            PopulationElement bestElement = new PopulationElement();
+            if (global.populationLarge.Count > 0)
+            {
+                bestElement = global.populationLarge[0];
+            }
+            
+            Boolean bestFoundInSmall = false;
             int positionBestFound = 0;
 
-            for(int i = 0; i < global.populationSmall.Count; i++)
+            if(global.Verschnittoptimierung.radioButton_selMuePlusLambda.Checked || global.populationLarge.Count == 0)
             {
-                if(global.populationSmall[i].fitnessValue < bestElement.fitnessValue)
+                bestElement = global.populationSmall[0];
+                bestFoundInSmall = true;
+                positionBestFound = 0;
+
+
+                for (int i = 0; i < global.populationSmall.Count; i++)
                 {
-                    bestElement = global.populationSmall[i];
-                    bestFoundInSmall = true;
-                    positionBestFound = i;
+                    if (global.populationSmall[i].fitnessValue < bestElement.fitnessValue)
+                    {
+                        bestElement = global.populationSmall[i];
+                        bestFoundInSmall = true;
+                        positionBestFound = i;
+                    }
                 }
             }
+
             for(int i = 0; i < global.populationLarge.Count; i++)
             {
                 if(global.populationLarge[i].fitnessValue < bestElement.fitnessValue)
@@ -232,7 +255,23 @@ namespace Verschnittoptimierung
             List<PopulationElement> bestList = new List<PopulationElement>();
             for(int i = 0; i < global.mue; i++)
             {
-                bestList.Add(SelectBestElement(true));
+                Boolean duplicate = false;
+                PopulationElement element = SelectBestElement(true);
+                for(int j = 0; j < bestList.Count; j++)
+                {
+                    if(bestList[j].fitnessValue == element.fitnessValue)
+                    {
+                        duplicate = true;
+                    }
+                }
+                if(duplicate == false || global.populationLarge.Count == 0)
+                {
+                    bestList.Add(element);
+                }
+                else
+                {
+                    i--;
+                }
             }
             return bestList;
         }

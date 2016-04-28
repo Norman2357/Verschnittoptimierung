@@ -411,5 +411,12 @@ namespace Verschnittoptimierung
         {
 
         }
+
+        private void button_ResetBestSolution_Click(object sender, EventArgs e)
+        {
+            Base global = Base.GetInstance();
+            global.bestSolution = null;
+            global.Verschnittoptimierung.button_useBestSolution.Enabled = false;
+        }
     }
 }

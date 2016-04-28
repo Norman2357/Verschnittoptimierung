@@ -31,6 +31,9 @@ namespace Verschnittoptimierung
         public Boolean min_xl_y;
 
         // evolutionary settings
+        public Boolean muePlusLambdaSelection;
+        public Boolean mueCommaLambdaSelection;
+        public int maximumIterations;
         public int mue;
         public int mult;
         public float mutationRate;

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Verschnittoptimierung1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox_colorScheme = new System.Windows.Forms.GroupBox();
             this.radioButton_colorSchemeConservative = new System.Windows.Forms.RadioButton();
@@ -68,6 +68,12 @@
             this.radioButton_BestFit = new System.Windows.Forms.RadioButton();
             this.radioButton_FirstFit = new System.Windows.Forms.RadioButton();
             this.groupBox_EvolAlg_general = new System.Windows.Forms.GroupBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.evAlg_numberMaxIterations = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton_selMueCommaLambda = new System.Windows.Forms.RadioButton();
+            this.radioButton_selMuePlusLambda = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.checkBox_greedyTournamentProceduresOnly = new System.Windows.Forms.CheckBox();
@@ -104,13 +110,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
-            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
-            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.fitnessValue = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -137,15 +136,23 @@
             this.buttonSelectView = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.button_useBestSolution = new System.Windows.Forms.Button();
+            this.processRunning_label = new System.Windows.Forms.Label();
+            this.button_ResetBestSolution = new System.Windows.Forms.Button();
             this.processRunning_gear = new System.Windows.Forms.PictureBox();
             this.buttonReset = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.Menu = new System.Windows.Forms.ToolStripDropDownButton();
+            this.SaveBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadBenchmark = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSolution = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonQuickStep = new System.Windows.Forms.Button();
             this.ButtonSingleStep = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.processRunning_label = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox_colorScheme.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberBoards)).BeginInit();
@@ -159,6 +166,9 @@
             this.groupBox_PlacingStrategy.SuspendLayout();
             this.groupBox_BoardStrategy.SuspendLayout();
             this.groupBox_EvolAlg_general.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_numberMaxIterations)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.evAlg_mue)).BeginInit();
@@ -615,27 +625,104 @@
             // groupBox_EvolAlg_general
             // 
             this.groupBox_EvolAlg_general.BackColor = System.Drawing.Color.PaleGreen;
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox10);
+            this.groupBox_EvolAlg_general.Controls.Add(this.groupBox4);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox3);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox9);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox8);
             this.groupBox_EvolAlg_general.Controls.Add(this.groupBox7);
             this.groupBox_EvolAlg_general.Location = new System.Drawing.Point(31, 268);
             this.groupBox_EvolAlg_general.Name = "groupBox_EvolAlg_general";
-            this.groupBox_EvolAlg_general.Size = new System.Drawing.Size(396, 320);
+            this.groupBox_EvolAlg_general.Size = new System.Drawing.Size(396, 326);
             this.groupBox_EvolAlg_general.TabIndex = 5;
             this.groupBox_EvolAlg_general.TabStop = false;
             this.groupBox_EvolAlg_general.Text = "Evolutionary Algorithm - Bombing Algorithm";
             this.groupBox_EvolAlg_general.Visible = false;
             this.groupBox_EvolAlg_general.Enter += new System.EventHandler(this.groupBox4_Enter);
             // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.evAlg_numberMaxIterations);
+            this.groupBox10.Controls.Add(this.label18);
+            this.groupBox10.Location = new System.Drawing.Point(237, 13);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(153, 41);
+            this.groupBox10.TabIndex = 7;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Maximum Iterations";
+            // 
+            // evAlg_numberMaxIterations
+            // 
+            this.evAlg_numberMaxIterations.Location = new System.Drawing.Point(91, 15);
+            this.evAlg_numberMaxIterations.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.evAlg_numberMaxIterations.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.evAlg_numberMaxIterations.Name = "evAlg_numberMaxIterations";
+            this.evAlg_numberMaxIterations.Size = new System.Drawing.Size(56, 20);
+            this.evAlg_numberMaxIterations.TabIndex = 11;
+            this.evAlg_numberMaxIterations.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 19);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(87, 13);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "for (µ,λ)-selection";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.radioButton_selMueCommaLambda);
+            this.groupBox4.Controls.Add(this.radioButton_selMuePlusLambda);
+            this.groupBox4.Location = new System.Drawing.Point(10, 16);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(223, 38);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Selection";
+            // 
+            // radioButton_selMueCommaLambda
+            // 
+            this.radioButton_selMueCommaLambda.AutoSize = true;
+            this.radioButton_selMueCommaLambda.Location = new System.Drawing.Point(122, 15);
+            this.radioButton_selMueCommaLambda.Name = "radioButton_selMueCommaLambda";
+            this.radioButton_selMueCommaLambda.Size = new System.Drawing.Size(90, 17);
+            this.radioButton_selMueCommaLambda.TabIndex = 3;
+            this.radioButton_selMueCommaLambda.Text = "(µ,λ)-selection";
+            this.radioButton_selMueCommaLambda.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_selMuePlusLambda
+            // 
+            this.radioButton_selMuePlusLambda.AutoSize = true;
+            this.radioButton_selMuePlusLambda.Checked = true;
+            this.radioButton_selMuePlusLambda.Location = new System.Drawing.Point(6, 15);
+            this.radioButton_selMuePlusLambda.Name = "radioButton_selMuePlusLambda";
+            this.radioButton_selMuePlusLambda.Size = new System.Drawing.Size(93, 17);
+            this.radioButton_selMuePlusLambda.TabIndex = 0;
+            this.radioButton_selMuePlusLambda.TabStop = true;
+            this.radioButton_selMuePlusLambda.Text = "(µ+λ)-selection";
+            this.radioButton_selMuePlusLambda.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.checkBox_greedyTournamentProceduresOnly);
             this.groupBox3.Controls.Add(this.checkBox_greedyTournamentPopulation);
-            this.groupBox3.Location = new System.Drawing.Point(237, 23);
+            this.groupBox3.Location = new System.Drawing.Point(237, 54);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(153, 98);
+            this.groupBox3.Size = new System.Drawing.Size(153, 77);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tournament";
@@ -643,7 +730,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(30, 65);
+            this.label14.Location = new System.Drawing.Point(23, 60);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(82, 13);
             this.label14.TabIndex = 2;
@@ -652,7 +739,7 @@
             // checkBox_greedyTournamentProceduresOnly
             // 
             this.checkBox_greedyTournamentProceduresOnly.AutoSize = true;
-            this.checkBox_greedyTournamentProceduresOnly.Location = new System.Drawing.Point(13, 46);
+            this.checkBox_greedyTournamentProceduresOnly.Location = new System.Drawing.Point(13, 41);
             this.checkBox_greedyTournamentProceduresOnly.Name = "checkBox_greedyTournamentProceduresOnly";
             this.checkBox_greedyTournamentProceduresOnly.Size = new System.Drawing.Size(114, 17);
             this.checkBox_greedyTournamentProceduresOnly.TabIndex = 1;
@@ -676,9 +763,9 @@
             this.groupBox9.Controls.Add(this.label31);
             this.groupBox9.Controls.Add(this.evAlg_mult);
             this.groupBox9.Controls.Add(this.label30);
-            this.groupBox9.Location = new System.Drawing.Point(10, 23);
+            this.groupBox9.Location = new System.Drawing.Point(10, 33);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(223, 48);
+            this.groupBox9.Size = new System.Drawing.Size(223, 49);
             this.groupBox9.TabIndex = 33;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "(µ+λ)-selection";
@@ -686,7 +773,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(150, 24);
+            this.label29.Location = new System.Drawing.Point(150, 27);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(65, 13);
             this.label29.TabIndex = 9;
@@ -694,7 +781,7 @@
             // 
             // evAlg_mue
             // 
-            this.evAlg_mue.Location = new System.Drawing.Point(22, 22);
+            this.evAlg_mue.Location = new System.Drawing.Point(22, 25);
             this.evAlg_mue.Minimum = new decimal(new int[] {
             1,
             0,
@@ -712,7 +799,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(6, 22);
+            this.label31.Location = new System.Drawing.Point(6, 27);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(13, 13);
             this.label31.TabIndex = 5;
@@ -720,7 +807,7 @@
             // 
             // evAlg_mult
             // 
-            this.evAlg_mult.Location = new System.Drawing.Point(104, 22);
+            this.evAlg_mult.Location = new System.Drawing.Point(104, 25);
             this.evAlg_mult.Minimum = new decimal(new int[] {
             1,
             0,
@@ -738,7 +825,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(75, 24);
+            this.label30.Location = new System.Drawing.Point(75, 27);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(26, 13);
             this.label30.TabIndex = 7;
@@ -763,9 +850,9 @@
             this.groupBox8.Controls.Add(this.checkBox_greedy3);
             this.groupBox8.Controls.Add(this.checkBox_greedy2);
             this.groupBox8.Controls.Add(this.checkBox_greedy1);
-            this.groupBox8.Location = new System.Drawing.Point(9, 124);
+            this.groupBox8.Location = new System.Drawing.Point(9, 133);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(381, 189);
+            this.groupBox8.Size = new System.Drawing.Size(381, 190);
             this.groupBox8.TabIndex = 33;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Greedy Processes";
@@ -944,7 +1031,7 @@
             // 
             this.groupBox7.Controls.Add(this.evAlg_mutationRate);
             this.groupBox7.Controls.Add(this.label26);
-            this.groupBox7.Location = new System.Drawing.Point(9, 73);
+            this.groupBox7.Location = new System.Drawing.Point(9, 83);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(224, 48);
             this.groupBox7.TabIndex = 5;
@@ -1036,66 +1123,6 @@
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // Menu
-            // 
-            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
-            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveBenchmark,
-            this.LoadBenchmark,
-            this.SaveSolution,
-            this.LoadSolution,
-            this.SaveSettings,
-            this.LoadSettings});
-            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
-            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(29, 22);
-            this.Menu.Text = "Menu";
-            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
-            // 
-            // SaveBenchmark
-            // 
-            this.SaveBenchmark.Name = "SaveBenchmark";
-            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.SaveBenchmark.Text = "Save Benchmark";
-            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
-            // 
-            // LoadBenchmark
-            // 
-            this.LoadBenchmark.Name = "LoadBenchmark";
-            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
-            this.LoadBenchmark.Text = "Load Benchmark";
-            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
-            // 
-            // SaveSolution
-            // 
-            this.SaveSolution.Name = "SaveSolution";
-            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
-            this.SaveSolution.Text = "Save Solution";
-            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
-            // 
-            // LoadSolution
-            // 
-            this.LoadSolution.Name = "LoadSolution";
-            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
-            this.LoadSolution.Text = "Load Solution";
-            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
-            // 
-            // SaveSettings
-            // 
-            this.SaveSettings.Name = "SaveSettings";
-            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
-            this.SaveSettings.Text = "Save Settings";
-            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
-            // 
-            // LoadSettings
-            // 
-            this.LoadSettings.Name = "LoadSettings";
-            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
-            this.LoadSettings.Text = "Load Settings";
-            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1164,33 +1191,33 @@
             // fitnessChart
             // 
             this.fitnessChart.BackColor = System.Drawing.Color.LightSteelBlue;
-            chartArea1.InnerPlotPosition.Auto = false;
-            chartArea1.InnerPlotPosition.Height = 80F;
-            chartArea1.InnerPlotPosition.Width = 80F;
-            chartArea1.InnerPlotPosition.X = 20F;
-            chartArea1.InnerPlotPosition.Y = 10F;
-            chartArea1.Name = "ChartArea1";
-            this.fitnessChart.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.MaximumAutoSize = 30F;
-            legend1.Name = "Legend1";
-            this.fitnessChart.Legends.Add(legend1);
+            chartArea2.InnerPlotPosition.Auto = false;
+            chartArea2.InnerPlotPosition.Height = 80F;
+            chartArea2.InnerPlotPosition.Width = 80F;
+            chartArea2.InnerPlotPosition.X = 20F;
+            chartArea2.InnerPlotPosition.Y = 10F;
+            chartArea2.Name = "ChartArea1";
+            this.fitnessChart.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.MaximumAutoSize = 30F;
+            legend2.Name = "Legend1";
+            this.fitnessChart.Legends.Add(legend2);
             this.fitnessChart.Location = new System.Drawing.Point(6, 86);
             this.fitnessChart.Name = "fitnessChart";
             this.fitnessChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.fitnessChart.PaletteCustomColors = new System.Drawing.Color[] {
         System.Drawing.Color.Red,
         System.Drawing.Color.Green};
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "worst";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "best";
-            this.fitnessChart.Series.Add(series1);
-            this.fitnessChart.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "worst";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "best";
+            this.fitnessChart.Series.Add(series3);
+            this.fitnessChart.Series.Add(series4);
             this.fitnessChart.Size = new System.Drawing.Size(218, 240);
             this.fitnessChart.TabIndex = 36;
             this.fitnessChart.Text = "chart1";
@@ -1376,6 +1403,28 @@
             this.button_useBestSolution.UseVisualStyleBackColor = false;
             this.button_useBestSolution.Click += new System.EventHandler(this.button_useBestSolution_Click);
             // 
+            // processRunning_label
+            // 
+            this.processRunning_label.AutoSize = true;
+            this.processRunning_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.processRunning_label.Location = new System.Drawing.Point(954, 619);
+            this.processRunning_label.Name = "processRunning_label";
+            this.processRunning_label.Size = new System.Drawing.Size(178, 13);
+            this.processRunning_label.TabIndex = 19;
+            this.processRunning_label.Text = "Process running, please wait..";
+            this.processRunning_label.Visible = false;
+            // 
+            // button_ResetBestSolution
+            // 
+            this.button_ResetBestSolution.BackgroundImage = global::Verschnittoptimierung.Properties.Resources.buttonResetBestSolution1;
+            this.button_ResetBestSolution.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_ResetBestSolution.Location = new System.Drawing.Point(289, 600);
+            this.button_ResetBestSolution.Name = "button_ResetBestSolution";
+            this.button_ResetBestSolution.Size = new System.Drawing.Size(32, 23);
+            this.button_ResetBestSolution.TabIndex = 20;
+            this.button_ResetBestSolution.UseVisualStyleBackColor = true;
+            this.button_ResetBestSolution.Click += new System.EventHandler(this.button_ResetBestSolution_Click);
+            // 
             // processRunning_gear
             // 
             this.processRunning_gear.Image = global::Verschnittoptimierung.Properties.Resources.gear2;
@@ -1408,6 +1457,66 @@
             this.button7.TabIndex = 13;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // Menu
+            // 
+            this.Menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Menu.BackgroundImage")));
+            this.Menu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveBenchmark,
+            this.LoadBenchmark,
+            this.SaveSolution,
+            this.LoadSolution,
+            this.SaveSettings,
+            this.LoadSettings});
+            this.Menu.Image = ((System.Drawing.Image)(resources.GetObject("Menu.Image")));
+            this.Menu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(29, 22);
+            this.Menu.Text = "Menu";
+            this.Menu.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
+            // 
+            // SaveBenchmark
+            // 
+            this.SaveBenchmark.Name = "SaveBenchmark";
+            this.SaveBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.SaveBenchmark.Text = "Save Benchmark";
+            this.SaveBenchmark.Click += new System.EventHandler(this.SaveBenchmark_Click);
+            // 
+            // LoadBenchmark
+            // 
+            this.LoadBenchmark.Name = "LoadBenchmark";
+            this.LoadBenchmark.Size = new System.Drawing.Size(163, 22);
+            this.LoadBenchmark.Text = "Load Benchmark";
+            this.LoadBenchmark.Click += new System.EventHandler(this.LoadBenchmark_Click);
+            // 
+            // SaveSolution
+            // 
+            this.SaveSolution.Name = "SaveSolution";
+            this.SaveSolution.Size = new System.Drawing.Size(163, 22);
+            this.SaveSolution.Text = "Save Solution";
+            this.SaveSolution.Click += new System.EventHandler(this.SaveSolution_Click);
+            // 
+            // LoadSolution
+            // 
+            this.LoadSolution.Name = "LoadSolution";
+            this.LoadSolution.Size = new System.Drawing.Size(163, 22);
+            this.LoadSolution.Text = "Load Solution";
+            this.LoadSolution.Click += new System.EventHandler(this.LoadSolution_Click);
+            // 
+            // SaveSettings
+            // 
+            this.SaveSettings.Name = "SaveSettings";
+            this.SaveSettings.Size = new System.Drawing.Size(163, 22);
+            this.SaveSettings.Text = "Save Settings";
+            this.SaveSettings.Click += new System.EventHandler(this.SaveSettings_Click);
+            // 
+            // LoadSettings
+            // 
+            this.LoadSettings.Name = "LoadSettings";
+            this.LoadSettings.Size = new System.Drawing.Size(163, 22);
+            this.LoadSettings.Text = "Load Settings";
+            this.LoadSettings.Click += new System.EventHandler(this.LoadSettings_Click);
             // 
             // buttonQuickStep
             // 
@@ -1472,23 +1581,13 @@
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             // 
-            // processRunning_label
-            // 
-            this.processRunning_label.AutoSize = true;
-            this.processRunning_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.processRunning_label.Location = new System.Drawing.Point(954, 619);
-            this.processRunning_label.Name = "processRunning_label";
-            this.processRunning_label.Size = new System.Drawing.Size(178, 13);
-            this.processRunning_label.TabIndex = 19;
-            this.processRunning_label.Text = "Process running, please wait..";
-            this.processRunning_label.Visible = false;
-            // 
             // Verschnittoptimierung1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1151, 689);
+            this.Controls.Add(this.button_ResetBestSolution);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.processRunning_label);
             this.Controls.Add(this.processRunning_gear);
@@ -1535,6 +1634,11 @@
             this.groupBox_BoardStrategy.ResumeLayout(false);
             this.groupBox_BoardStrategy.PerformLayout();
             this.groupBox_EvolAlg_general.ResumeLayout(false);
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.evAlg_numberMaxIterations)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -1674,6 +1778,13 @@
         public System.Windows.Forms.RadioButton radioButton_colorSchemeMixed;
         public System.Windows.Forms.RadioButton radioButton_colorSchemeConservative;
         public System.Windows.Forms.RadioButton radioButton_colorSchemeBiological;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.RadioButton radioButton_selMueCommaLambda;
+        public System.Windows.Forms.RadioButton radioButton_selMuePlusLambda;
+        public System.Windows.Forms.GroupBox groupBox10;
+        public System.Windows.Forms.NumericUpDown evAlg_numberMaxIterations;
+        public System.Windows.Forms.Label label18;
+        public System.Windows.Forms.Button button_ResetBestSolution;
     }
 }
 
