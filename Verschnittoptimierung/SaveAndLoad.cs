@@ -10,7 +10,7 @@ namespace Verschnittoptimierung
 {
     class SaveAndLoad
     {
-        Base global;
+        Base global; 
 
         public SaveAndLoad(Base global)
         {
