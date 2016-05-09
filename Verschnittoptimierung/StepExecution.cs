@@ -180,7 +180,7 @@ namespace Verschnittoptimierung
 
                         int selection = 1;
                         
-                        // for testing: greedy 1
+                        // greedy 1
                         if(selection == 1)
                         {
                             Fill fill = new Fill();

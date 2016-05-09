@@ -227,7 +227,7 @@ namespace Verschnittoptimierung
                         {
                             // check for best solution and set if necessary
                             tools.CheckForBestSolution();
-
+                            
                             // show solution
                             Show show = new Show(global);
                             show.ShowSolution(global.solution);
